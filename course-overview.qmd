@@ -1,0 +1,102 @@
+---
+title: "Digital Agriculture"
+subtitle: "Dier & Data"
+---
+
+# Course Description
+
+Digital Agriculture is an innovative and interdisciplinary field that leverages technology and data-driven approaches to revolutionize agriculture practices. This course provides an in-depth exploration of the principles, tools, and applications of digital agriculture, equipping students with the knowledge and skills to address the challenges and opportunities in modern agriculture.
+
+## Course Objectives
+
+1.  Understand the fundamentals of digital agriculture and its current challenges.
+
+2.  Explore the various technologies, precision farming techniques and digital tools used in agriculture.
+
+3.  Perform data collection, visualisation, analysis, and interpretation in digital agriculture.
+
+4.  Develop practical skills through hands-on programming activities.
+
+5.  Explore the applications of artificial intelligence and machine learning in agriculture.
+
+6.  Understand the importance of data privacy and security in digital agriculture.
+
+7.  Evaluate the economic, environmental, and social impacts of digital agriculture.
+
+## Course Outline
+
+### Week 1: Introduction to Digital Agriculture
+
+\- Historical perspective and digital transformation of agriculture and its challenges
+
+\- Challenges of data privacy in agriculture (incl. legal considerations)
+
+\- Economic benefits and challenges
+
+\- Social and ethical considerations
+
+### Week 2: Data in Agriculture
+
+\- Data collection methods (sensors, satellites, etc.)
+
+\- Data analysis and visualization tools
+
+\- Data-driven decision-making in farming
+
+### Week 3: Technologies in Agriculture
+
+\- Principles of precision agriculture
+
+\- Farm management systems
+
+\- Farm machinery and automation
+
+### Week 4: Artificial Intelligence and Machine Learning
+
+\- Introduction to AI and ML in agriculture
+
+## Course Format
+
+This course will consist of a combination of lectures, hands-on practical sessions, case studies, group discussions, and guest lectures from industry experts. Students will also have the opportunity to work on a real-world project related to digital agriculture.
+
+### Course textbook
+
+While there is no official textbook for the course, we will be assigning readings from the following textbooks.
+
+-   [R for Data Science](https://r4ds.had.co.nz/) by Garret Grolemund and Hadley Wickham.
+
+-   Weekly assignments come from the [Introduction to Data Science](https://rafalab.dfci.harvard.edu/dsbook-part-1/) handbook by Rafael Irizarry.
+
+### Lectures and labs
+
+The goal of both the lectures and the labs is for them to be as interactive as possible. My role as instructor is to introduce you new tools and techniques, but it is up to you to take them and make use of them. A lot of what you do in this course will involve writing code, and coding is a skill that is best learned by doing. Therefore, as much as possible, you will be working on a variety of tasks and activities throughout each lecture and lab. You are expected to attend all lecture and lab sessions and meaningfully contribute to in-class exercises and discussion. Additionally, some lectures will feature assignments that will be graded. In addition to application exercises will be periodic activities help build a learning community. These will be short, fun activities that will help everyone in the class connect throughout the semester.
+
+You are expected to bring a laptop to each class so that you can take part in the in-class exercises. Please make sure your laptop is fully charged before you come to class as the number of outlets in the classroom might not be sufficient to accommodate everyone.
+
+## Course Assessment
+
+Assessment methods may include individual assignments, presentations and a final group project assesment.
+
+By the end of this course, students will have gained a comprehensive understanding of how digital technologies are transforming agriculture and will be well-equipped to contribute to the advancement of sustainable and efficient farming practices in the digital age.
+
+# Utrecht Community Standard
+
+```{=html}
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_KN97j30ST4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen> </iframe>
+```
+## Inclusive community
+
+It is my intent that students from all diverse backgrounds and perspectives be well-served by this course, that students' learning needs be addressed both in and out of class, and that the diversity that the students bring to this class be viewed as a resource, strength, and benefit. It is my intent to present materials and activities that are respectful of diversity and in alignment with xxx. Your suggestions are encouraged and appreciated. Please let me know ways to improve the effectiveness of the course for you personally, or for other students or student groups.
+
+Furthermore, I would like to create a learning environment for my students that supports a diversity of thoughts, perspectives and experiences, and honors your identities. To help accomplish this:
+
+-   If you feel like your performance in the class is being impacted by your experiences outside of class, please don't hesitate to come and talk with me. If you prefer to speak with someone outside of the course, your academic dean is an excellent resource.
+-   I (like many people) am still in the process of learning about diverse perspectives and identities. If something was said in class (by anyone) that made you feel uncomfortable, please let me or a member of the teaching team know.
+
+## Communication
+
+All lecture notes, assignment instructions, an up-to-date schedule, and other course materials may be found on the course website at [bovi-analytics.github.io/DigitalAgriculture/](https://bovi-analytics.github.io/DigitalAgriculture/).
+
+I will regularly send course announcements via email or others, make sure to check one or the other of these regularly.
+
+# 

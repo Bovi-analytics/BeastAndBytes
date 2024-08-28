@@ -1,0 +1,33 @@
+---
+title: "Teaching team"
+---
+
+## Instructor
+
+![](images/team/MielHostens.png){fig-alt="Headshot of Dr. Miel Hostens" style="float:right;padding: 0 0 0 10px;" width="150"}
+
+[Dr. Miel Hostens](https://bovi-analytics.com/researchers/miel-hostens.html) (he/his) is assistant professor at department of Population Health Sciences (0.9 FTE -- Utrecht University) and at department of Laboratory for Animal Nutrition and Animal Product Quality (0.1 FTE -- Ghent University) focusing on the creation of methodologies using precision dairy farming to monitor sustainable food production systems from a global perspective.
+
++-------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| Office hours                        | Location                                                                                                             |
++=====================================+======================================================================================================================+
+| Anytime                             | [Slack](https://bovi-analytics.slack.com/) & [Teams](https://teams.microsoft.com/l/chat/0/0?users=m.m.hostens@uu.nl) |
++-------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| Tuesday - Friday 9:00 am - 18:00 pm | Utrech University, Department of Population Health Sciences                                                          |
+|                                     |                                                                                                                      |
+|                                     | Yalelaan 7, 3584 CL Utrecht, room MGB-0.029                                                                          |
++-------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+| Mondays 9:00 am - 18:00 pm          | Ghent University, Department of Animal Sciences and Aquatic Ecology\                                                 |
+|                                     | Campus Coupure, Coupure Links 653, B-9000 Gent, block F\                                                             |
++-------------------------------------+----------------------------------------------------------------------------------------------------------------------+
+
+If these times don't work for you or you'd like to schedule a one-on-one meeting, you can do so at [this link](https://outlook.office365.com/owa/calendar/MielHostens@solisservices.onmicrosoft.com/bookings/).
+
+## Teachers
+
+|                                     | Name                                                            | Bio                                                                                                                                                                                                                                                                                                                                      | Location  |
+|:-----------------------------------:|-----------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|
+|  ![](images/team/YaraSlegers.jpg)   | [Yara Slegers](https://www.uu.nl/medewerkers/YSlegers)          | Yara Slegers is a PhD candidate in the Farm Animal Health group at the department of Population Health Sciences. Her research focuses on the development of data-driven decision support tools for broiler farmers in Europe.                                                                                                            | MGB 1.039 |
+| ![](images/team/BelenRabaglino.jpg) | [Belen Rabaglino](https://www.uu.nl/medewerkers/MBRabaglino)    | Belen is an Assistant Professor of Ruminant Reproduction at the Division of Farm Animal Health, Department of Population Health Sciences. Her research focuses on using omics data science to understand the bidirectional molecular responses between the embryo and the uterus leading to pregnancy establishment.                     | MGB 0.030 |
+|  ![](images/team/HansVernooij.jpg)  | [Hans Vernooij](https://www.uu.nl/medewerkers/JCMVernooij/)     | In addition to classroom education in Methodology and Statistics (WDH/LVP) and Evidence Based Veterinary Medicine (EBVM) (VKR), I supervise students during the research internship in the master's program. Collecting and analyzing targeted data is important to answer the question. My challenge is to support the student in this. | MGB 1.003 |
+| ![](images/team/JanvandenBroek.jpg) | [Jan van den Broek](https://www.uu.nl/medewerkers/JvandenBroek) |                                                                                                                                                                                                                                                                                                                                          | MGB 1.012 |

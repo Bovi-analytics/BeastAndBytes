@@ -1,0 +1,60 @@
+---
+title: "Lecture 2 - Introduction to statistical programming"
+subtitle: "D&D DM-P-DD - Fall 2023"
+author: "Ass. Prof. Dr. Miel Hostens"
+footer:  "[https://bovi-analytics.github.io/DigitalAgriculture/](https://bovi-analytics.github.io/DigitalAgriculture/)"
+logo: "images/Bovi-Analytics-SmallLogo.png"
+format: 
+  revealjs: 
+    theme: slides.scss
+    transition: fade
+    slide-number: true
+editor: visual
+execute:
+  freeze: auto
+---
+
+```{r setup}
+#| include: false
+
+# List of packages for session
+.packages = c("countdown")
+
+# Install CRAN packages (if not already installed)
+.inst <- .packages %in% installed.packages()
+if(length(.packages[!.inst]) > 0) install.packages(.packages[!.inst])
+
+# Load packages into session 
+lapply(.packages, require, character.only=TRUE, quietly = TRUE)
+knitr::opts_chunk$set(
+  fig.width = 6,
+  fig.asp = 0.618,
+  fig.align = "center",
+  out.width = "90%"
+)
+```
+
+# Introduction to statistical programming
+
+## Statistical programming in R
+
+R is a programming language and free software environment used for statistical computing and graphics. It is widely used by statisticians, data scientists, and researchers for data analysis and visualization.
+
+## Computational setup of R
+
+-   See [link to course documentation](computing-access.html)
+-   There are several ways to work with R nowadays
+    -   R stand alone terminal (engine of the car)
+    -   R-studio (dashboard of the car)
+    -   Online environments eg. Google Colab
+
+## Computational setup of R
+
+| R & R-Studio                                     | Google Colab                                        |
+|--------------------------------------------------|-----------------------------------------------------|
+| Can be used througout the course                 | **Needs to be used for the team project!!!**        |
+| Allows integration with Git & GitHub (See later) | Easy integration with Git & GitHub (See later)      |
+| Online collaboration less easy                   | Allows online collaboration                         |
+| No warming of before being able to run R         | Warming of R in notebook takes some time initially  |
+
+# Demo
