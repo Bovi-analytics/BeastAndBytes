@@ -11,11 +11,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-# Website for Digital Agriculture (Dier & Data) at Utrecht University
+# Website for Beasts&Bytes at Cornell University
 
-<https://bovi-analytics.github.io/DigitalAgriculture/>
+[https://bovi-analytics.github.io/BeastsAndBytes/](https://bovi-analytics.github.io/DigitalAgriculture/){.uri}
 
-[Miel Hostens](https://www.bovi-analytics.com/) • Faculty of Veterinary Medicine • Utrecht University
+[Miel Hostens](https://bovi-analytics.com/researchers/miel-hostens.html) • College of Agriculture and Life Sciences • Cornell University
 
 ## After updating R
 
@@ -45,6 +45,18 @@ The pipeline does major tasks:
 
 -   **Upload resulting `_site/` folder to github pages**: This project is published using github pages using the `quarto publish gh-pages --no-browser` command
 
+## Color palette
+
+-   Penn red - 9c0001
+
+-   Platinum - d7dedc
+
+-   Timberwolf - cfcfcd
+
+-   Mountbatten pink - 9a879d
+
+-   Rich black - 01161e
+
 ## Licenses
 
 **Text and figures:** All prose and images are licensed under Creative Commons ([CC-BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/))
@@ -57,6 +69,6 @@ If ' 'gh-pages' is already checked out' error occurs -\> remove any folder in th
 
 ## Attribution
 
-Much of the content is based on [Digital Agriculture](https://bovi-analytics.github.io/DigitalAgriculture/) by Dr. Miel Hostens.
+Content is based on earlier work [Digital Agriculture](https://bovi-analytics.github.io/DigitalAgriculture/) by Dr. Miel Hostens.
 
 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" alt="Creative Commons License" style="border-width:0"/></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>

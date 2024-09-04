@@ -1,4 +1,4 @@
-# Website for Digital Agriculture (Dier & Data) at Utrecht University
+# Website for DataDigital Agriculture (Dier & Data) at Utrecht University
 
 🔗 https://bovi-analytics.github.io/DigitalAgriculture/
 
