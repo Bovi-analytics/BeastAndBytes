@@ -1,8 +1,8 @@
 ---
 title: "Lecture 1 - Meet + greet"
-subtitle: "D&D DM-P-DD - Fall 2023"
+subtitle: "ANSCI B&B - Spring 2024"
 author: "Ass. Prof. Dr. Miel Hostens"
-footer:  "[https://bovi-analytics.github.io/DigitalAgriculture/](https://bovi-analytics.github.io/DigitalAgriculture/)"
+footer:  "[https://bovi-analytics.github.io/DigitalAgriculture/](https://bovi-analytics.github.io/BeastsAndBytes/)"
 logo: "images/Bovi-Analytics-SmallLogo.png"
 format: 
   revealjs: 
@@ -29,11 +29,11 @@ library(countdown)
 :::
 
 ::: {.column width="50%"}
-**Dr Miel Hostens**
+**Prof. Dr. DVM Miel Hostens**
 
--   Assistant Professor
--   Sustainable Ruminant Health
--   Department of Population Health Science
+-   Associate Professor
+-   College of Agricultural and Life Sciences
+-   Department of Animal Science
 -   Find out more at [bovi-analytics.com](https://www.bovi-analytics.com)
 :::
 :::
@@ -54,11 +54,11 @@ library(countdown)
 
 ## Meet the other [experts](/course-team.html)
 
--   Belen Rabaglino
+-   Enhong Liu
 
--   Yara Slegers
+-   Sonam Yang (TA) - Graduate student & PhD candidate
 
--   Hans Vernooij
+-   Meike van Leerdam (TA) - Graduate student & PhD candidate
 
 -   ...
 
