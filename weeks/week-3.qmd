@@ -1,6 +1,6 @@
 ---
-title: "Week 1"
-subtitle: "Welcome Digital Ag"
+title: "Week 3"
+subtitle: "Welcome Beasts & Bytes"
 editor: visual
 ---
 
