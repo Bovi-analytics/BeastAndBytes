@@ -4,19 +4,19 @@ title: "Project description"
 
 ## Timeline
 
-[Topic ideas](#topic-ideas) due
+[Topic ideas](#topic-ideas) tbd
 
-[Proposal](#project-proposal) due
+[Proposal](#project-proposal) tbd
 
-[Draft report](#draft-report) due
+[Draft report](#draft-report) tbd
 
-[Peer review](#peer-review) due
+[Peer review](#peer-review) tbd
 
-[Final report](#written-report) due
+[Final report](#written-report) tbd
 
-[Video presentation + slides](#video-presentation--slides) and [final GitHub repo](#reproducibility---organization) due
+[Video presentation + slides](#video-presentation--slides) and [final GitHub repo](#reproducibility---organization) tbd
 
-[Presentation comments](#presentation-comments) due
+[Presentation comments](#presentation-comments) tbd
 
 ## Introduction
 
@@ -86,7 +86,7 @@ Submit a data dictionary for all the variables in your data set in the `README` 
 
 ### Submission
 
-Push all of your final changes to the GitHub repo, and submit the PDF of your proposal to Gradescope.
+Push all of your final changes to the GitHub repo, and submit the PDF of your proposal.
 
 Each component will be graded as follows:
 
