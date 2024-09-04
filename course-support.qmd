@@ -14,15 +14,19 @@ The entire teaching team is here to help you be successful in the course. You ar
 
 ## Weekly assignments
 
-As you can see in the [course overview](/course-overview.html), each week holds a 'Programming assignment deadline' at the end of the week. It is important that you stick to these deadlines as your correct submissions for this deadline will be used for the final grading. You are welcome to work on that during the week in your own time, but dedicated hours called 'Statistical Programming (WC)' are blocked within each week. Teaching assistants will be available during these hours if you require help or feedback.
+As you can see in the [course overview](/course-overview.html), each week holds a 'Programming assignment deadline' at the end of the week. It is important that you stick to these deadlines as your correct submissions for this deadline will be used for the final grading. You are welcome to work on that during the week in your own time, but dedicated lab hours are blocked within each week.
+
+Teaching assistants will be available during these hours if you require help or feedback.
 
 ## Discussion forum
 
-Have a question that might be valuable for all course participant? Prefer to write out your question in detail rather than asking in person? The online discussion forum is the best venue for these! We will use [github issue](https://github.com/Bovi-analytics/DairyHealthManagment/issues) as the online discussion forum. There is a chance another student has already asked a similar question, so please check the other posts before adding a new question. If you know the answer to a question that is posted, I encourage you to respond!
+Have a question that might be valuable for all course participant? Prefer to write out your question in detail rather than asking in person? The online discussion forum is the best venue for these! We will use [github issue](https://github.com/Bovi-analytics/BeastAndBytes/issues) as the online discussion forum. There is a chance another student has already asked a similar question, so please check the other posts before adding a new question. If you know the answer to a question that is posted, I encourage you to respond!
 
 ## Email
 
-Please refrain from emailing any course content questions (those should go here [github issue](https://github.com/Bovi-analytics/DairyHealthManagment/issues)), and only use email for questions about personal matters that may not be appropriate for the public course forum (e.g., illness, accommodations, etc.). For such matters, you may email Dr. Miel Hostens at [m.m.hostens\@uu.nl](mailto:m.m.hostens@uu.nl).
+Please refrain from emailing any course content questions (those should go here [github issue](https://github.com/Bovi-analytics/BeastAndBytes/issues)), and only use email for questions about personal matters that may not be appropriate for the public course forum (e.g., illness, accommodations, etc.).
+
+For such matters, you may email Dr. Miel Hostens at [miel.hostens\@cornell.edu](mailto:miel.hostens@cornell.edu).
 
 ## **Course materials costs**
 
