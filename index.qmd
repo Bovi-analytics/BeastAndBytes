@@ -1,5 +1,5 @@
 ---
-title: "Digital Agriculture"
+title: "Beasts & Bytes"
 tbl-colwidths: [5,5,15,5,5,5,5,5,5,5]
 ---
 
@@ -7,7 +7,7 @@ This page contains an outline of the topics, content, and assignments for the co
 
 ::: column-screen-inset-right
 |          Week           | Date             | Topic                                                              | Teachers                       |                                  Prepare                                   |                             Slides                              | Code'n Practice |                                 Assignment                                 |                             Project                              |
-|:------:|:-------|--------|--------|:------:|:------:|:------:|:------:|:------:|
+|:-----------------------:|:-----------------|--------------------------------------------------------------------|--------------------------------|:--------------------------------------------------------------------------:|:---------------------------------------------------------------:|:---------------:|:--------------------------------------------------------------------------:|:----------------------------------------------------------------:|
 | [1](/weeks/week-1.html) | Mon, 9:00-9:45   | Welcome to Digital Ag (HC)                                         | Miel Hostens                   |                                                                            |            [🖥️](slides/lec-1.html "Lecture slides")             |                 |                                                                            |                                                                  |
 |                         | Mon, 10:00-10:45 | Introduction to statisticalprogramming (WC)                        | Miel Hostens & Belen Rabaglino |     [📖](weeks/week-1.html#introduction-to-statistical-programming-wc)     |          [🖥️](/computing-access.html "Lecture slides")          |                 |                                                                            |                                                                  |
 |                         | Mon, 11:00-11h45 | Digital transformations in livestock and agriculture (IC) - Part A | Miel Hostens                   |                                                                            | [🖥️](https://prezi.com/view/K5uOZ9e0ilLYWFkgE27W/ "Lab slides") |                 |                                                                            |                                                                  |
@@ -44,5 +44,5 @@ knitr::knit_exit()
 ```
 
 |      |      |       | Prepare | Slides | AE  |                                                    Labs                                                    | HW  | Exam | Project |
-|--------|--------|--------|:------:|:------:|:------:|:------:|:------:|:------:|:------:|
+|------|------|-------|:-------:|:------:|:---:|:----------------------------------------------------------------------------------------------------------:|:---:|:----:|:-------:|
 | Week | Date | Topic |   📖    |   🖥️   | 📋  | [💻](https://sakai.duke.edu/samigo-app/servlet/Login?id=6fa7ebf3-01af-42a6-91ba-3e813d3901221641094171786) | ✍️  |  ✅  |   📂    |
