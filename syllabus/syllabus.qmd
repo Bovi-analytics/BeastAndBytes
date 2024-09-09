@@ -1,12 +1,17 @@
 ---
 title: "Beasts & Bytes"
 subtitle: "Data Science Applications in Agriculture"
+date: today
+author: "Miel Hostens"
 format:
   pdf:
-    toc: true
+    toc: false
     number-sections: true
     colorlinks: true
+    papersize: letter
 ---
+
+![](/images/B&BLogo.png){fig-align="center" width="300"}
 
 # Course description and aims
 
@@ -46,11 +51,11 @@ This course will consist of a combination of lectures, hands-on practical sessio
 
 ## General week format
 
-|     | Monday  | Tuesday | Wednesday         | Thursday                          | Friday                               |
-|--------------------------|---------------------------------------|-----------------------------------------|-------------------------------------------------|--------------------------------------|-----------------------------------|
-| am  |         |         |                   |                                   | Bi-weekly project management meeting |
-| pm  | Lecture |         | Weekly coding lab | Project (incl. 3 field trips or ) |                                      |
-|     |         |         |                   |                                   |                                      |
+|     | Monday  | Tuesday | Wednesday         | Thursday                               | Friday                               |
+|------------|------------|------------|------------|------------|------------|
+| am  | Lecture |         |                   |                                        | Bi-weekly project management meeting |
+| pm  |         |         | Weekly coding lab | Project (incl. 3 meetings with farmer) |                                      |
+|     |         |         |                   |                                        |                                      |
 
 ## Lectures
 
@@ -59,7 +64,6 @@ The goal of the lectures is to have them as interactive as possible (which requi
 ## Labs
 
 One the things you will definitely learn in this course will involve writing code, and coding is a skill that is best learned by doing. Therefore, as much as possible, you will need to finish a weekly coding assignment. Every week a new assignment will be opened for each of you on the online coding platform [Dodona](https://www.dodona.be/). There is a strict deadline at Friday evening 17:00 to finish the assignment, individually. The number of successfully finished assignments at the end of the course is part of your individual grading (see below).
-
 
 ## Weekly project meetings
 
@@ -106,7 +110,7 @@ Assessment methods will include individual coding assignments and a group projec
 ## Group assessment
 
 | Component graded                                                                           | Weight | Remark                                                                                                                      |
-|--------------------------------------------------------------------------------------------------------------------------------------------------|-------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|-------------------------|------------------|-----------------------------|
 | Use of appropriate naming conventions used throughout project (subgroups)                  | 20%    | Failure to use any naming convention in the project will result in failing the entire group project.                        |
 | FAIR principle compliance in reporting, documentation of data and coding through notebooks | 20%    | Failure to implement the FAIR principles will result in failing the entire group project.                                   |
 | Project presentation                                                                       | 30%    | We will discuss within the group how to assess each individuals contribution (as some people maybe will not be presenting). |
@@ -164,7 +168,4 @@ Absolute integrity is expected of every Cornell student in all academic undertak
 
 A Cornell student’s submission of work for academic credit indicates that the work is the student’s own. All outside assistance should be acknowledged, and the student’s academic position truthfully reported at all times. In addition, Cornell students have a right to expect academic integrity from each of their peers.
 
-This a [guideline for students](https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/guidelines-for-students/) offered through the [Office of the Dean of Faculty](https://deanoffaculty.cornell.edu/)
-
-# 
-
+This a [guideline for students](https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/guidelines-for-students/) offered through the [Office of the Dean of Faculty](https://deanoffaculty.cornell.edu/).
