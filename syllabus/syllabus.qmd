@@ -27,6 +27,16 @@ By the end of the course, students will have gained practical experience and dev
 
 This course accounts for 4 credits
 
+# Prerequisites
+
+A statistical course such one of the following is not required but strongly advised:
+
+-   STSCI 2150/5150 Introductory Statistics for Biology
+
+-   BTRY3010/STSCI2200 & BTRY5010/STSCI5200: Biological Statistics I
+
+-   ILRST/STSCI 2100: Introductory Statistics
+
 # Learning outcomes
 
 1.  Explain the fundamentals of data science and digital agriculture including their interdisciplinary challenges.
@@ -51,11 +61,15 @@ This course will consist of a combination of lectures, hands-on practical sessio
 
 ## General week format
 
-|   | Monday | Tuesday | Wednesday | Thursday | Friday |
-|----|----|----|----|----|----|
-| am | Lecture |  |  |  | Bi-weekly project management meeting |
-| pm |  |  | Weekly coding lab | Project (incl. 3 meetings with farmer) |  |
-|  |  |  |  |  |  |
++----------------+----------+----------+--------------------+----------+--------------------+
+|                | Monday   | Tuesday  | Wednesday          | Thursday | Friday             |
++================+==========+==========+====================+==========+====================+
+| 10:10-11:00 am | Lecture  |          |                    |          | Project discussion |
++----------------+----------+----------+--------------------+----------+--------------------+
+| 1:25-4:25 pm   |          |          | Lab -              | Lab -    |                    |
+|                |          |          |                    |          |                    |
+|                |          |          | Code'n in practice | Project  |                    |
++----------------+----------+----------+--------------------+----------+--------------------+
 
 ## Lectures
 
@@ -109,12 +123,17 @@ Assessment methods will include individual coding assignments and a group projec
 
 ## Group assessment
 
-| Component graded | Remark | Weight |
-|----|----|----|
-| Use of appropriate naming conventions used throughout project (subgroups) | Failure to use any naming convention in the project will result in failing the entire group project. | 20% |
-| FAIR principle compliance in reporting, documentation of data and coding through notebooks | Failure to implement the FAIR principles will result in failing the entire group project. | 20% |
-| Project presentation | We will discuss within the group how to assess each individuals contribution, as some people maybe will not be presenting but will have had other contribution. | 30% |
-| Project report (entire group) |  | 30% |
++--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+
+| Component graded                                                                           | Remark                                                                                                                                                          | Weight               |
++============================================================================================+=================================================================================================================================================================+======================+
+| Use of appropriate naming conventions used throughout project (subgroups)                  | Failure to use any naming convention in the project will result in failing the entire group project.                                                            | 20%                  |
++--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+
+| FAIR principle compliance in reporting, documentation of data and coding through notebooks | Failure to implement the FAIR principles will result in failing the entire group project.                                                                       | 20%                  |
++--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+
+| Project presentation                                                                       | We will discuss within the group how to assess each individuals contribution, as some people maybe will not be presenting but will have had other contribution. | 30%                  |
++--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+
+| Project report (entire group)                                                              |                                                                                                                                                                 | 30%                  |
++--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+
 
 ## Individual assessment
 
