@@ -88,7 +88,7 @@
     "href": "slides/lec-1.html#meet-the-teacher",
     "title": "Lecture 1 - Meet + greet",
     "section": "Meet the teacher",
-    "text": "Meet the teacher\n\n\n\n\n\n\n\n\nProf. Dr. DVM Miel Hostens\n\nAssociate Professor\nCollege of Agricultural and Life Sciences\nDepartment of Animal Science\nFind out more at bovi-analytics.com"
+    "text": "Meet the teacher\n\n\n\n\n\n\n\n\nAssociate Prof. dr. Miel Hostens DVM\n\nAssociate Professor\nCollege of Agricultural and Life Sciences\nDepartment of Animal Science\nFind out more at bovi-analytics.com"
   },
   {
     "objectID": "slides/lec-1.html#meet-your-teacher-when-he-was-young",
@@ -109,7 +109,7 @@
     "href": "slides/lec-1.html#meet-the-other-experts",
     "title": "Lecture 1 - Meet + greet",
     "section": "Meet the other experts",
-    "text": "Meet the other experts\n\nEnhong Liu\nSonam Yang (TA) - Graduate student & PhD candidate\nMeike van Leerdam (TA) - Graduate student & PhD candidate\n…"
+    "text": "Meet the other experts\n\nEnhong Liu (Post-Doc)\nSonam Yang (TA) - Graduate student & PhD candidate\nMeike van Leerdam (TA) - Graduate student & PhD candidate"
   },
   {
     "objectID": "slides/lec-1.html#what-is-digital-agriculture",
@@ -123,14 +123,14 @@
     "href": "slides/lec-1.html#course-learning-objectives-part-1",
     "title": "Lecture 1 - Meet + greet",
     "section": "Course learning objectives (part 1)",
-    "text": "Course learning objectives (part 1)\n\nUnderstand the fundamentals of digital agriculture and its current challenges.\nExplore the various technologies, precision farming techniques and digital tools used in agriculture.\nPerform data collection, visualisation, analysis, and interpretation in digital agriculture.\nDevelop practical skills through hands-on programming activities."
+    "text": "Course learning objectives (part 1)\n\nExplain the fundamentals of data science and digital agriculture including their interdisciplinary challenges.\nImplement the various data science technologies, precision farming techniques and digital tools used in modern agriculture.\nConduct data collection, visualization, analysis, and interpretation within the context of digital agriculture."
   },
   {
     "objectID": "slides/lec-1.html#course-learning-objectives-part-2",
     "href": "slides/lec-1.html#course-learning-objectives-part-2",
     "title": "Lecture 1 - Meet + greet",
     "section": "Course learning objectives (part 2)",
-    "text": "Course learning objectives (part 2)\n\nExplore the applications of artificial intelligence and machine learning in agriculture.\nUnderstand the importance of data privacy and security in digital agriculture.\nEvaluate the economic, environmental, and social impacts of digital agriculture."
+    "text": "Course learning objectives (part 2)\n\nAcquire practical skills through hands-on programming activities.\nExplore the applications of machine learning and artificial intelligence in agriculture.\nRecognize the significance of, and apply data privacy and security techniques in digital agriculture."
   },
   {
     "objectID": "slides/lec-1.html#topics-that-will-be-covered",
@@ -151,35 +151,35 @@
     "href": "slides/lec-1.html#weekly-programming-assignment-1",
     "title": "Lecture 1 - Meet + greet",
     "section": "Weekly programming assignment",
-    "text": "Weekly programming assignment\nSign in to Dodona using your Utrecht sign-in"
+    "text": "Weekly programming assignment\nSign in to Dodona using your Cornell Microsoft365 or Google sign-in"
   },
   {
     "objectID": "slides/lec-1.html#weekly-programming-assignment-2",
     "href": "slides/lec-1.html#weekly-programming-assignment-2",
     "title": "Lecture 1 - Meet + greet",
     "section": "Weekly programming assignment",
-    "text": "Weekly programming assignment\nSubscribe to this course"
+    "text": "Weekly programming assignment\nSubscribe to this course https://dodona.be/en/courses/4716/?secret=czy8G"
   },
   {
     "objectID": "slides/lec-1.html#weekly-programming-assignment-3",
     "href": "slides/lec-1.html#weekly-programming-assignment-3",
     "title": "Lecture 1 - Meet + greet",
     "section": "Weekly programming assignment",
-    "text": "Weekly programming assignment\n\nMake sure to reach each of the deadlines\n\n\n\nDeadline\nAssignment\n\n\n\n\nFr, Nov 17th 17:00\nR Basics\n\n\nFr, Nov 24th 17:00\nProgramming basics\n\n\nFr. Dec 1st 17:00\nThe tidyverse\n\n\nFr, Dec 8th 17:00\nImporting Data\n\n\nFr, Dec 15th 17:00\nTBD"
+    "text": "Weekly programming assignment\n\nMake sure to reach each of the deadlines\n\n\n\nDeadline\nAssignment\n\n\n\n\nTuesday, Jan 29th 24:00\nR Basics\n\n\nTuesday, Feb 4th 24:00\nProgramming basics\n\n\nTuesday. Feb 11th 24:00\nThe tidyverse\n\n\nTuesday, Feb 18th 24:00\nImporting Data\n\n\nTuesday, Feb 25th 24:00\n…"
   },
   {
     "objectID": "slides/lec-1.html#homepage",
     "href": "slides/lec-1.html#homepage",
     "title": "Lecture 1 - Meet + greet",
     "section": "Homepage",
-    "text": "Homepage\nhttps://github.com/Bovi-analytics/Digital Agriculture\n\nAll relevant course materials (and history)\nLinks to Teams, GitHub, Dodona, etc.\nLet’s take a tour!"
+    "text": "Homepage\nhttps://github.com/Bovi-analytics/Beasts & Bytes\n\nAll relevant course materials (and history)\nLinks to Teams, GitHub, Dodona, etc.\nLet’s take a tour!"
   },
   {
     "objectID": "slides/lec-1.html#activities-prepare-participate-practice-perform",
     "href": "slides/lec-1.html#activities-prepare-participate-practice-perform",
     "title": "Lecture 1 - Meet + greet",
     "section": "Activities: Prepare, Participate, Practice, Perform",
-    "text": "Activities: Prepare, Participate, Practice, Perform\n\nPrepare: Introduce new content and prepare for lectures by completing the readings\nParticipate: Attend and actively participate in lectures and labs, herd visits\nPractice: Practice your programming skills\nPerform: Put together what you’ve learned to analyze real-world data\n\nDodona assignments x 5"
+    "text": "Activities: Prepare, Participate, Practice, Perform\n\nPrepare: Introduce new content and prepare for lectures by completing the readings\nParticipate: Attend and actively participate in lectures and labs, herd visits\nPractice: Practice your programming skills\nPerform: Put together what you’ve learned to analyze real-world data\n\nDodona assignments"
   },
   {
     "objectID": "slides/lec-1.html#grading",
@@ -214,14 +214,14 @@
     "href": "slides/lec-1.html#team-project",
     "title": "Lecture 1 - Meet + greet",
     "section": "Team project",
-    "text": "Team project\n\nTeam update fridays are supposed to be completed collaboratively.\nMost of the times we will meet in classrooms at the Martinus G. de Bruin building.\nTeam updates will be at the Future Learning Spaces at the Buys Ballotgebouw; rooms 3.19 or 3.22, unless communicated otherwise."
+    "text": "Team project\n\nTeam update fridays are supposed to be completed collaboratively.\nMost of the times we will meet in classrooms at the Morrison Hall building."
   },
   {
     "objectID": "slides/lec-1.html#academic-integrity",
     "href": "slides/lec-1.html#academic-integrity",
     "title": "Lecture 1 - Meet + greet",
     "section": "Academic integrity",
-    "text": "Academic integrity\n\nTo uphold the Utrecht University Code of Conduct:\n\nI will not lie, cheat, or steal in my academic endeavors;\nI will conduct myself honorably in all my endeavors; and\nI will act if the Code is compromised."
+    "text": "Academic integrity\n\nTo uphold the Cornell Academic Integrity Guide:\n\nI will not lie, cheat, or steal in my academic endeavors;\nI will conduct myself honorably in all my endeavors; and\nI will act if the Code is compromised."
   },
   {
     "objectID": "slides/lec-1.html#farm-data",
@@ -249,7 +249,7 @@
     "href": "slides/lec-1.html#this-weeks-first-tasks",
     "title": "Lecture 1 - Meet + greet",
     "section": "This week’s first tasks",
-    "text": "This week’s first tasks\n\nGet a Dodona account if you don’t have one, you’ll need it for Wednesday first lab.\nCommunicate your Gmail account with m.m.hostens@uu.nl so I can connect you to the Digital Agriculture Google Drive and Google Colab environment.\n\n\n\n\n\nhttps://bovi-analytics.github.io/DigitalAgriculture/"
+    "text": "This week’s first tasks\n\nGet a Dodona account if you don’t have one, you’ll need it for Wednesday first lab.\nCommunicate your Gmail account with miel.hostens@cornell.edu so I can connect you to the Beasts&Bytes Google Drive and Google Colab environment.\n\n\n\n\n\nhttps://bovi-analytics.github.io/BeastsAndBytes/"
   },
   {
     "objectID": "project-description.html",
@@ -593,7 +593,7 @@
     "href": "course-objectives.html",
     "title": "Learning objectives",
     "section": "",
-    "text": "By the end of this course, …\n\nThe student understands the fundamentals of data science and digital agriculture including the interdisciplenary challenges.\nThe student explored the various data science technologies, precision farming techniques and digital tools used in modern agriculture.\nThe student can conduct data collection, visualization, analysis, and interpretation within the context of digital agriculture.\nThe student has acquired practical skills through hands-on programming activities.\nThe student explored the applications of machine learning and artificial intelligence in agriculture.\nThe student recognizes the significance of and utilizes data privacy and security in digital agriculture.",
+    "text": "Explain the fundamentals of data science and digital agriculture including their interdisciplinary challenges.\nImplement the various data science technologies, precision farming techniques and digital tools used in modern agriculture.\nConduct data collection, visualization, analysis, and interpretation within the context of digital agriculture.\nAcquire practical skills through hands-on programming activities.\nExplore the applications of machine learning and artificial intelligence in agriculture.\nRecognize the significance of, and apply data privacy and security techniques in digital agriculture.",
     "crumbs": [
       "Course information",
       "Course objectives"
@@ -604,7 +604,7 @@
     "href": "course-objectives.html#learning-objectives",
     "title": "Learning objectives",
     "section": "",
-    "text": "By the end of this course, …\n\nThe student understands the fundamentals of data science and digital agriculture including the interdisciplenary challenges.\nThe student explored the various data science technologies, precision farming techniques and digital tools used in modern agriculture.\nThe student can conduct data collection, visualization, analysis, and interpretation within the context of digital agriculture.\nThe student has acquired practical skills through hands-on programming activities.\nThe student explored the applications of machine learning and artificial intelligence in agriculture.\nThe student recognizes the significance of and utilizes data privacy and security in digital agriculture.",
+    "text": "Explain the fundamentals of data science and digital agriculture including their interdisciplinary challenges.\nImplement the various data science technologies, precision farming techniques and digital tools used in modern agriculture.\nConduct data collection, visualization, analysis, and interpretation within the context of digital agriculture.\nAcquire practical skills through hands-on programming activities.\nExplore the applications of machine learning and artificial intelligence in agriculture.\nRecognize the significance of, and apply data privacy and security techniques in digital agriculture.",
     "crumbs": [
       "Course information",
       "Course objectives"
@@ -701,7 +701,7 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Beasts & Bytes",
+    "title": "Data Science Applications in Agriculture",
     "section": "",
     "text": "This page contains an outline of the topics, content, and assignments for the course. Note that this schedule will be updated as the course progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nTeachers\nPrepare\nLecture\nCode’n practice\nProject\nProgress meeting\n\n\n\n\n1\n1/20\nIntroduction\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n2\n1/27\nData science basics\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n3\n2/3\nProgramming basics\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n4\n2/10\nData manipulation & project\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n5\n2/17\nData visualization 1\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n6\n2/24\nData visualization 2\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n7\n3/3\nData reshaping\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n8\n3/10\nData joining\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n9\n3/17\nData parsing\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n10\n3/24\nExtracting data from other sources\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n11\n3/31\nString processing\n\n📖\n🖥️\n\n📂\n✍️\n\n\n12\n4/7\nText analysis\n\n📖\n🖥️\n\n📂\n✍️\n\n\n13\n4/14\nTBD\n\n📖\n🖥️\n\n📂\n✍️\n\n\n14\n4/21\nProject presentation & report\n\n\n\n\n📂",
     "crumbs": [
@@ -819,7 +819,7 @@
     "href": "weeks/week-1.html#introduction-to-statistical-programming-wc",
     "title": "Week 1",
     "section": "Introduction to statistical programming (WC)",
-    "text": "Introduction to statistical programming (WC)\n📖 Within the statistical programming labs, we will follow the Introduction to Data Science handbook by Rafael Irizarry.\n📧 Send email with your Gmail address to me (m.m.hostens@uu.nl) so I can give you access to Google Drive and Google Colab.\n💻 You will have to install R & R-studio on your computer.",
+    "text": "Introduction to statistical programming (WC)\n📖 Within the statistical programming labs, we will follow the Introduction to Data Science handbook by Rafael Irizarry.\n📧 Send email with your Gmail address to me (miel.hostens@cornell.edu) so I can give you access to Google Drive and Google Colab.\n💻 You will have to install R & R-studio on your computer.",
     "crumbs": [
       "Weekly materials",
       "Week 1"
@@ -830,18 +830,7 @@
     "href": "weeks/week-1.html#a-guideline-to-reproducible-fair-data-science-ic",
     "title": "Week 1",
     "section": "A guideline to reproducible & FAIR data science (IC)",
-    "text": "A guideline to reproducible & FAIR data science (IC)\n📺 Get familiar with FAIR by looking at this video.\n📖 Read the intial publication on The FAIR Guiding Principles for scientific data management and stewardschip.\n🔬 Explore the vision of Utrecht University on FAIR principles and their cheatsheets.\n💻 Check for reproducible advise in the tutorials at the bovi-analytics website.\n🧑🏽‍🏫 Discuss with the entire team and Dr. Miel Hostens (contact him on his desk) on how this will reflect on your team project.",
-    "crumbs": [
-      "Weekly materials",
-      "Week 1"
-    ]
-  },
-  {
-    "objectID": "weeks/week-1.html#challenges-of-data-privacy-ic",
-    "href": "weeks/week-1.html#challenges-of-data-privacy-ic",
-    "title": "Week 1",
-    "section": "Challenges of data privacy (IC)",
-    "text": "Challenges of data privacy (IC)\n💻 Follow the e-learning module on ‘Privacy basics for researchers’ during the planned moment.\n🧑🏽‍🏫 Discuss with the entire team and Dr. Hans Vernooij (contact him on his desk) on the impact for the team project.\n\nBack to course schedule ⏎",
+    "text": "A guideline to reproducible & FAIR data science (IC)\n📺 Get familiar with FAIR by looking at this video.\n📖 Read the intial publication on The FAIR Guiding Principles for scientific data management and stewardschip.\n🔬 Explore the vision of Cornell University on FAIR principles and their Fair checklist.\n💻 Check for reproducible advise in the tutorials at the bovi-analytics website.\n🧑🏽‍🏫 Discuss with the entire team and Dr. Miel Hostens (contact him on his desk) on how this will reflect on your team project.\n\nBack to course schedule ⏎",
     "crumbs": [
       "Weekly materials",
       "Week 1"
