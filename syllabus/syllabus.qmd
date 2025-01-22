@@ -61,15 +61,15 @@ This course will consist of a combination of lectures, hands-on practical sessio
 
 ## General week format
 
-+----------------+----------+----------+--------------------+----------+--------------------+
-|                | Monday   | Tuesday  | Wednesday          | Thursday | Friday             |
-+================+==========+==========+====================+==========+====================+
-| 10:10-11:00 am | Lecture  |          |                    |          | Project discussion |
-+----------------+----------+----------+--------------------+----------+--------------------+
-| 1:25-4:25 pm   |          |          | Lab -              | Lab -    |                    |
-|                |          |          |                    |          |                    |
-|                |          |          | Code'n in practice | Project  |                    |
-+----------------+----------+----------+--------------------+----------+--------------------+
++----------------+---------+---------+--------------------+----------+--------------------+
+|                | Monday  | Tuesday | Wednesday          | Thursday | Friday             |
++================+=========+=========+====================+==========+====================+
+| 10:10-11:00 am | Lecture |         |                    |          | Project discussion |
++----------------+---------+---------+--------------------+----------+--------------------+
+| 1:25-4:25 pm   |         |         | Lab -              | Lab -    |                    |
+|                |         |         |                    |          |                    |
+|                |         |         | Code'n in practice | Project  |                    |
++----------------+---------+---------+--------------------+----------+--------------------+
 
 ## Lectures
 
@@ -123,17 +123,12 @@ Assessment methods will include individual coding assignments and a group projec
 
 ## Group assessment
 
-+--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+
-| Component graded                                                                           | Remark                                                                                                                                                          | Weight               |
-+============================================================================================+=================================================================================================================================================================+======================+
-| Use of appropriate naming conventions used throughout project (subgroups)                  | Failure to use any naming convention in the project will result in failing the entire group project.                                                            | 20%                  |
-+--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+
-| FAIR principle compliance in reporting, documentation of data and coding through notebooks | Failure to implement the FAIR principles will result in failing the entire group project.                                                                       | 20%                  |
-+--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+
-| Project presentation                                                                       | We will discuss within the group how to assess each individuals contribution, as some people maybe will not be presenting but will have had other contribution. | 30%                  |
-+--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+
-| Project report (entire group)                                                              |                                                                                                                                                                 | 30%                  |
-+--------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------------------------------------------------------+----------------------+
+| Component graded | Remark | Weight |
+|----|----|----|
+| Use of appropriate naming conventions used throughout project (subgroups) | Failure to use any naming convention in the project will result in failing the entire group project. | 20% |
+| FAIR principle compliance in reporting, documentation of data and coding through notebooks | Failure to implement the FAIR principles will result in failing the entire group project. | 20% |
+| Project presentation | We will discuss within the group how to assess each individuals contribution, as some people maybe will not be presenting but will have had other contribution. | 30% |
+| Project report (entire group) |  | 30% |
 
 ## Individual assessment
 

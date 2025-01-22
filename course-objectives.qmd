@@ -4,18 +4,16 @@ title: "Learning objectives"
 
 ## Learning objectives
 
-By the end of this course, ...
+1.  Explain the fundamentals of data science and digital agriculture including their interdisciplinary challenges.
 
-1.  The student understands the fundamentals of data science and digital agriculture including the interdisciplenary challenges.
+2.  Implement the various data science technologies, precision farming techniques and digital tools used in modern agriculture.
 
-2.  The student explored the various data science technologies, precision farming techniques and digital tools used in modern agriculture.
+3.  Conduct data collection, visualization, analysis, and interpretation within the context of digital agriculture.
 
-3.  The student can conduct data collection, visualization, analysis, and interpretation within the context of digital agriculture.
+4.  Acquire practical skills through hands-on programming activities.
 
-4.  The student has acquired practical skills through hands-on programming activities.
+5.  Explore the applications of machine learning and artificial intelligence in agriculture.
 
-5.  The student explored the applications of machine learning and artificial intelligence in agriculture.
-
-6.  The student recognizes the significance of and utilizes data privacy and security in digital agriculture.
+6.  Recognize the significance of, and apply data privacy and security techniques in digital agriculture.
 
 ## 

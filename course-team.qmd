@@ -22,8 +22,8 @@ If these times don't work for you or you'd like to schedule a one-on-one meeting
 
 ## Teaching assistants
 
-|                                                   | Name              | Bio | Location          |
-|:-------------------------------------------------:|-------------------|-----|-------------------|
-|    ![](images/team/EnhongLiu.png){width="150"}    | Enhong Liu        |     | Remote            |
-|    ![](images/team/SonamYang.png){width="150"}    | Sonam Yang        |     | 407 Morrison Hall |
-| ![](images/team/MeikeVanLeerdam.png){width="149"} | Meike van Leerdam |     | 407 Morrison Hall |
+|   | Name | Location |
+|:--:|----|----|
+| ![](images/team/EnhongLiu.png){width="150"} | [Enhong Liu](https://bovi-analytics.com/researchers/enhong-liu.html) | Remote |
+| ![](images/team/SonamYang.png){width="150"} | [Sonam Yang](https://bovi-analytics.com/researchers/sonam-yang.html) | 407 Morrison Hall |
+| ![](images/team/MeikeVanLeerdam.png){width="149"} | [Meike van Leerdam](https://bovi-analytics.com/researchers/meike-van-leerdam.html) | 407 Morrison Hall |

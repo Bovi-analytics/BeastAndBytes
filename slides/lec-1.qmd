@@ -1,8 +1,8 @@
 ---
 title: "Lecture 1 - Meet + greet"
-subtitle: "ANSCI B&B - Spring 2024"
+subtitle: "ANSCI 4940 - Spring 2025"
 author: "Ass. Prof. Dr. Miel Hostens"
-footer:  "[https://bovi-analytics.github.io/DigitalAgriculture/](https://bovi-analytics.github.io/BeastsAndBytes/)"
+footer:  "[https://bovi-analytics.github.io/BeastsAndBytes/](https://bovi-analytics.github.io/BeastsAndBytes/)"
 logo: "images/Bovi-Analytics-SmallLogo.png"
 format: 
   revealjs: 
@@ -23,20 +23,20 @@ library(countdown)
 
 ## Meet the teacher
 
-::: columns
+::::: columns
 ::: {.column width="50%"}
 ![](images/lec-1/MielHostens.png){fig-alt="Headshot of Dr. Miel Hostens" fig-align="center" width="164"}
 :::
 
 ::: {.column width="50%"}
-**Prof. Dr. DVM Miel Hostens**
+**Associate Prof. dr. Miel Hostens DVM**
 
 -   Associate Professor
 -   College of Agricultural and Life Sciences
 -   Department of Animal Science
 -   Find out more at [bovi-analytics.com](https://www.bovi-analytics.com)
 :::
-:::
+:::::
 
 ## Meet your teacher, when he was young!
 
@@ -54,13 +54,11 @@ library(countdown)
 
 ## Meet the other [experts](/course-team.html)
 
--   Enhong Liu
+-   Enhong Liu (Post-Doc)
 
 -   Sonam Yang (TA) - Graduate student & PhD candidate
 
 -   Meike van Leerdam (TA) - Graduate student & PhD candidate
-
--   ...
 
 # Digital Agriculture
 
@@ -74,21 +72,19 @@ library(countdown)
 
 ## Course learning objectives (part 1)
 
-1.  Understand the fundamentals of digital agriculture and its current challenges.
+1.  Explain the fundamentals of data science and digital agriculture including their interdisciplinary challenges.
 
-2.  Explore the various technologies, precision farming techniques and digital tools used in agriculture.
+2.  Implement the various data science technologies, precision farming techniques and digital tools used in modern agriculture.
 
-3.  Perform data collection, visualisation, analysis, and interpretation in digital agriculture.
-
-4.  Develop practical skills through hands-on programming activities.
+3.  Conduct data collection, visualization, analysis, and interpretation within the context of digital agriculture.
 
 ## Course learning objectives (part 2)
 
-1.  Explore the applications of artificial intelligence and machine learning in agriculture.
+1.  Acquire practical skills through hands-on programming activities.
 
-2.  Understand the importance of data privacy and security in digital agriculture.
+2.  Explore the applications of machine learning and artificial intelligence in agriculture.
 
-3.  Evaluate the economic, environmental, and social impacts of digital agriculture.
+3.  Recognize the significance of, and apply data privacy and security techniques in digital agriculture.
 
 ## Topics that will be covered
 
@@ -110,15 +106,15 @@ library(countdown)
 
 ## Weekly programming assignment
 
-Sign in to Dodona using your Utrecht sign-in
+Sign in to Dodona using your Cornell Microsoft365 or Google sign-in
 
-![](images/lec-1/Dodona.png){width="957" height="62"}
+![](images/clipboard-856996611.png)
 
 ## Weekly programming assignment
 
-Subscribe to this course
+Subscribe to this course <https://dodona.be/en/courses/4716/?secret=czy8G>
 
-![](images/lec-1/Dodona2.png){width="186"}
+![](images/clipboard-1256781166.png){width="298"}
 
 ## Weekly programming assignment
 
@@ -126,13 +122,13 @@ Subscribe to this course
 
 **Make sure to reach each of the deadlines**
 
-| Deadline           | Assignment         |
-|--------------------|--------------------|
-| Fr, Nov 17th 17:00 | R Basics           |
-| Fr, Nov 24th 17:00 | Programming basics |
-| Fr. Dec 1st 17:00  | The tidyverse      |
-| Fr, Dec 8th 17:00  | Importing Data     |
-| Fr, Dec 15th 17:00 | TBD                |
+| Deadline                | Assignment         |
+|-------------------------|--------------------|
+| Tuesday, Jan 29th 24:00 | R Basics           |
+| Tuesday, Feb 4th 24:00  | Programming basics |
+| Tuesday. Feb 11th 24:00 | The tidyverse      |
+| Tuesday, Feb 18th 24:00 | Importing Data     |
+| Tuesday, Feb 25th 24:00 | ...                |
 
 </div>
 
@@ -140,7 +136,7 @@ Subscribe to this course
 
 ## Homepage
 
-[https://github.com/Bovi-analytics/](https://bovi-analytics.github.io/DairyHealthManagement/)[Digital Agriculture](https://bovi-analytics.github.io/DigitalAgriculture)
+[https://github.com/Bovi-analytics/](https://bovi-analytics.github.io/DairyHealthManagement/)[Beasts & Bytes](https://bovi-analytics.github.io/BeastAndBytes/)
 
 -   All relevant course materials (and history)
 -   Links to Teams, GitHub, Dodona, etc.
@@ -152,7 +148,7 @@ Subscribe to this course
 -   **Participate:** Attend and actively participate in lectures and labs, herd visits
 -   **Practice:** Practice your programming skills
 -   **Perform:** Put together what you've learned to analyze real-world data
-    -   Dodona assignments x 5
+    -   Dodona assignments
 
 ## Grading {.smaller}
 
@@ -195,13 +191,11 @@ It is my intent that students from all diverse backgrounds and perspectives be w
 
 -   **Team update fridays** are supposed to be completed collaboratively.
 
--   Most of the times we will meet in classrooms at the **Martinus G. de Bruin** building.
-
--   Team updates will be at the [Future Learning Spaces](https://www.uu.nl/onderwijs/future-learning-spaces/learning-spaces/teaching-learning-lab) at the Buys Ballotgebouw; rooms 3.19 or 3.22, unless communicated otherwise.
+-   Most of the times we will meet in classrooms at the **Morrison Hall** building.
 
 ## Academic integrity
 
-> To uphold the [Utrecht University Code of Conduct](https://students.uu.nl/en/practical-information/policies-and-procedures/regulations):
+> To uphold the [Cornell Academic Integrity Guide](https://deanoffaculty.cornell.edu/faculty-and-academic-affairs/academic-integrity/guidelines-for-students/):
 >
 > -   I will not lie, cheat, or steal in my academic endeavors;
 >
@@ -225,7 +219,7 @@ It is my intent that students from all diverse backgrounds and perspectives be w
 
 Ask if you're not sure if something violates a policy!
 
-# Making Digital Agriculture a success
+# Making Data Science Applications in Agriculture course a success
 
 ## Five tips for success
 
@@ -238,4 +232,4 @@ Ask if you're not sure if something violates a policy!
 ## This week's first tasks
 
 -   Get a Dodona account if you don't have one, you'll need it for Wednesday first lab.
--   Communicate your Gmail account with m.m.hostens\@uu.nl so I can connect you to the Digital Agriculture Google Drive and Google Colab environment.
+-   Communicate your Gmail account with miel.hostens\@cornell.edu so I can connect you to the Beasts&Bytes Google Drive and Google Colab environment.
