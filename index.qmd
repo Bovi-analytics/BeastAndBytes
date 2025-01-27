@@ -1,5 +1,5 @@
 ---
-title: "Data Science Applications in Agriculture""
+title: "Data Science Applications in Agriculture"
 tbl-colwidths: [5,5,15,5,5,5,5,5,5,5]
 ---
 
@@ -8,8 +8,8 @@ This page contains an outline of the topics, content, and assignments for the co
 ::: column-screen-inset-right
 | Week | Date | Topic | Teachers | Prepare | Lecture | Code'n practice | Project | Progress meeting |
 |:------:|:-------|--------|--------|:------:|:------:|:------:|:------:|:------:|
-| 1 | 1/20 | Introduction |  | 📖 | [🖥️](slides/lec-1.html) | [💻](https://www.dodona.be) | 📂 | ✍️ |
-| 2 | 1/27 | Data science basics |  | 📖 | 🖥️ | 💻 | 📂 | ✍️ |
+| 1 | 1/20 | Introduction | Dr. Hostens | 📖 | [🖥️](slides/lec-1.html) | [💻](https://www.dodona.be) | 📂 | ✍️ |
+| 2 | 1/27 | Data science basics | Dr. Hostens | 📖 | [🖥️](slides/lec-2.html) | [💻](https://www.dodona.be) | 📂 | ✍️ |
 | 3 | 2/3 | Programming basics |  | 📖 | 🖥️ | 💻 | 📂 | ✍️ |
 | 4 | 2/10 | Data manipulation & project |  | 📖 | 🖥️ | 💻 | 📂 | ✍️ |
 | 5 | 2/17 | Data visualization 1 |  | 📖 | 🖥️ | 💻 | 📂 | ✍️ |
