@@ -703,7 +703,7 @@
     "href": "index.html",
     "title": "Data Science Applications in Agriculture",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the course. Note that this schedule will be updated as the course progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nTeachers\nPrepare\nLecture\nCode’n practice\nProject\nProgress meeting\n\n\n\n\n1\n1/20\nIntroduction\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n2\n1/27\nData science basics\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n3\n2/3\nProgramming basics\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n4\n2/10\nData manipulation & project\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n5\n2/17\nData visualization 1\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n6\n2/24\nData visualization 2\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n7\n3/3\nData reshaping\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n8\n3/10\nData joining\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n9\n3/17\nData parsing\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n10\n3/24\nExtracting data from other sources\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n11\n3/31\nString processing\n\n📖\n🖥️\n\n📂\n✍️\n\n\n12\n4/7\nText analysis\n\n📖\n🖥️\n\n📂\n✍️\n\n\n13\n4/14\nTBD\n\n📖\n🖥️\n\n📂\n✍️\n\n\n14\n4/21\nProject presentation & report\n\n\n\n\n📂",
+    "text": "This page contains an outline of the topics, content, and assignments for the course. Note that this schedule will be updated as the course progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nTeachers\nPrepare\nLecture\nCode’n practice\nProject\nProgress meeting\n\n\n\n\n1\n1/20\nIntroduction\nDr. Hostens\n📖\n🖥️\n💻\n📂\n✍️\n\n\n2\n1/27\nData science basics\nDr. Hostens\n📖\n🖥️\n💻\n📂\n✍️\n\n\n3\n2/3\nProgramming basics\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n4\n2/10\nData manipulation & project\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n5\n2/17\nData visualization 1\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n6\n2/24\nData visualization 2\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n7\n3/3\nData reshaping\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n8\n3/10\nData joining\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n9\n3/17\nData parsing\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n10\n3/24\nExtracting data from other sources\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n11\n3/31\nString processing\n\n📖\n🖥️\n\n📂\n✍️\n\n\n12\n4/7\nText analysis\n\n📖\n🖥️\n\n📂\n✍️\n\n\n13\n4/14\nTBD\n\n📖\n🖥️\n\n📂\n✍️\n\n\n14\n4/21\nProject presentation & report\n\n\n\n\n📂",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -772,25 +772,18 @@
     ]
   },
   {
-    "objectID": "slides/lec-2.html#statistical-programming-in-r",
-    "href": "slides/lec-2.html#statistical-programming-in-r",
-    "title": "Lecture 2 - Introduction to statistical programming",
-    "section": "Statistical programming in R",
-    "text": "Statistical programming in R\nR is a programming language and free software environment used for statistical computing and graphics. It is widely used by statisticians, data scientists, and researchers for data analysis and visualization."
+    "objectID": "slides/lec-2.html#what-are-the-fair-principles",
+    "href": "slides/lec-2.html#what-are-the-fair-principles",
+    "title": "Lecture 2 - Reproducible & FAIR data science",
+    "section": "What are the FAIR principles",
+    "text": "What are the FAIR principles\nFAIR data is data which meets the FAIR principles of findability, accessibility, interoperability, and reusability (FAIR).[1][2] The acronym and principles were defined in a March 2016 paper in the journal Scientific Data by a consortium of scientists and organizations.[1]"
   },
   {
-    "objectID": "slides/lec-2.html#computational-setup-of-r",
-    "href": "slides/lec-2.html#computational-setup-of-r",
-    "title": "Lecture 2 - Introduction to statistical programming",
-    "section": "Computational setup of R",
-    "text": "Computational setup of R\n\nSee link to course documentation\nThere are several ways to work with R nowadays\n\nR stand alone terminal (engine of the car)\nR-studio (dashboard of the car)\nOnline environments eg. Google Colab"
-  },
-  {
-    "objectID": "slides/lec-2.html#computational-setup-of-r-1",
-    "href": "slides/lec-2.html#computational-setup-of-r-1",
-    "title": "Lecture 2 - Introduction to statistical programming",
-    "section": "Computational setup of R",
-    "text": "Computational setup of R\n\n\n\n\n\n\n\nR & R-Studio\nGoogle Colab\n\n\n\n\nCan be used througout the course\nNeeds to be used for the team project!!!\n\n\nAllows integration with Git & GitHub (See later)\nEasy integration with Git & GitHub (See later)\n\n\nOnline collaboration less easy\nAllows online collaboration\n\n\nNo warming of before being able to run R\nWarming of R in notebook takes some time initially"
+    "objectID": "slides/lec-2.html#the-principles",
+    "href": "slides/lec-2.html#the-principles",
+    "title": "Lecture 2 - Reproducible & FAIR data science",
+    "section": "The principles",
+    "text": "The principles\nGet to know the principle\n\nGet familiar with FAIR by looking at this video.\nRead the intial publication on The FAIR Guiding Principles for scientific data management and stewardschip.\nExplore the vision of Cornell University on FAIR principles and their cheatsheets.\nCheck for reproducible advise in the tutorials at the bovi-analytics website.\nDiscuss with the entire team and Dr. Miel Hostens (contact him on his desk) on how this will reflect on your team project.\n\nFindable\nThe first step in (re)using data is to find them. Metadata and data should be easy to find for both humans and computers. Machine-readable metadata are essential for automatic discovery of datasets and services, so this is an essential component of the FAIRification process.\nF1. (Meta)data are assigned a globally unique and persistent identifier\nF2. Data are described with rich metadata (defined by R1 below)\nF3. Metadata clearly and explicitly include the identifier of the data they describe\nF4. (Meta)data are registered or indexed in a searchable resource\nAccessible\nOnce the user finds the required data, they need to know how they can be accessed, possibly including authentication and authorisation.\nA1. (Meta)data are retrievable by their identifier using a standardised communications protocol\nA1.1 The protocol is open, free, and universally implementable\nA1.2 The protocol allows for an authentication and authorisation procedure, where necessary\nA2. Metadata are accessible, even when the data are no longer available\nInteroperable\nThe data usually need to be integrated with other data. In addition, the data need to interoperate with applications or workflows for analysis, storage, and processing.\nI1. (Meta)data use a formal, accessible, shared, and broadly applicable language for knowledge representation.\nI2. (Meta)data use vocabularies that follow FAIR principles\nI3. (Meta)data include qualified references to other (meta)data\nReusable\nThe ultimate goal of FAIR is to optimise the reuse of data. To achieve this, metadata and data should be well-described so that they can be replicated and/or combined in different settings.\nR1. (Meta)data are richly described with a plurality of accurate and relevant attributes\nR1.1. (Meta)data are released with a clear and accessible data usage license\nR1.2. (Meta)data are associated with detailed provenance\nR1.3. (Meta)data meet domain-relevant community standards\n\n\n\n\nhttps://bovi-analytics.github.io/DigitalAgriculture/"
   },
   {
     "objectID": "supplemental/operations-in-r.html",
