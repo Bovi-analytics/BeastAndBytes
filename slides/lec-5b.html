@@ -29,71 +29,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="../site_libs/revealjs/dist/theme/quarto.css">
   <link href="../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
@@ -415,145 +350,15 @@
 <section id="goals" class="slide level2">
 <h2>Goals</h2>
 <ul>
-<li>Modeling with a single predictor</li>
-<li>Model parameters, estimates, and error terms</li>
-<li>Interpreting slopes and intercepts</li>
+<li>Recap simple linear regression (Interpreting slopes and intercepts)</li>
+<li>Linear regression with multiple predictors</li>
+<li>Logistic regression</li>
 </ul>
-</section>
-<section id="setup" class="slide level2">
-<h2>Setup</h2>
 </section></section>
-<section>
-<section id="correlation-vs.-causation" class="title-slide slide level1 center">
-<h1>Correlation vs.&nbsp;causation</h1>
-
-</section>
-<section id="spurious-correlations" class="slide level2">
-<h2>Spurious correlations</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/mozarella-ce-phd.png" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div>
-
-<aside><div>
-<p>Source: <a href="https://www.tylervigen.com/spurious-correlations">tylervigen.com/spurious-correlations</a></p>
-</div></aside></section>
-<section id="spurious-correlations-1" class="slide level2">
-<h2>Spurious correlations</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="images/pool-nick-cage.png" class="quarto-figure quarto-figure-center"></p>
-</figure>
-</div>
-
-<aside><div>
-<p>Source: <a href="https://www.tylervigen.com/spurious-correlations">tylervigen.com/spurious-correlations</a></p>
-</div></aside></section></section>
 <section>
 <section id="linear-regression-with-a-single-predictor" class="title-slide slide level1 center">
 <h1>Linear regression with a single predictor</h1>
 
-</section>
-<section id="read-the-data" class="slide level2">
-<h2>Read the data</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>df_raw_cattle_numbers <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">'https://raw.githubusercontent.com/Bovi-analytics/minor-digital-agriculture/refs/heads/main/data/fao-cattle-numbers.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="data-prep" class="slide level2">
-<h2>Data prep</h2>
-<ul>
-<li>Select columns needed : <code>Year</code> and <code>Value</code></li>
-<li>Apply correct FAIR naming convention</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>df_cattle_numbers <span class="ot">&lt;-</span> df_raw_cattle_numbers <span class="sc">%&gt;%</span></span>
-<span id="cb2-2"><a></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(Year, Value) <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a></a>  dplyr<span class="sc">::</span><span class="fu">rename</span>(</span>
-<span id="cb2-4"><a></a>    <span class="at">NumberOfCows =</span> Value</span>
-<span id="cb2-5"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="data-grouping" class="slide level2">
-<h2>Data grouping</h2>
-<ul>
-<li>Create a groupby <code>Year</code></li>
-<li>Create sum for entire world</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>df_total_cattle_numbers <span class="ot">&lt;-</span> df_cattle_numbers <span class="sc">%&gt;%</span></span>
-<span id="cb3-2"><a></a>  dplyr<span class="sc">::</span><span class="fu">group_by</span>(Year) <span class="sc">%&gt;%</span></span>
-<span id="cb3-3"><a></a>  dplyr<span class="sc">::</span><span class="fu">summarise</span>(</span>
-<span id="cb3-4"><a></a>    <span class="at">TotalNumberOfCows =</span> <span class="fu">sum</span>(NumberOfCows)<span class="sc">/</span><span class="dv">1000000000</span></span>
-<span id="cb3-5"><a></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="writing-the-data" class="slide level2">
-<h2>Writing the data</h2>
-<ul>
-<li>Write the data to csv</li>
-<li>Import in Tableau</li>
-</ul>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="fu">write_csv</span>(df_total_cattle_numbers, <span class="at">file =</span> <span class="st">"df_total_cattle_numbers.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-</section>
-<section id="data-overview" class="slide level2">
-<h2>Data overview</h2>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>df_total_cattle_numbers <span class="sc">%&gt;%</span></span>
-<span id="cb5-2"><a></a>  <span class="fu">select</span>(Year, TotalNumberOfCows)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 62 × 2
-    Year TotalNumberOfCows
-   &lt;int&gt;             &lt;dbl&gt;
- 1  1961             0.992
- 2  1962             1.00 
- 3  1963             1.02 
- 4  1964             1.04 
- 5  1965             1.06 
- 6  1966             1.08 
- 7  1967             1.11 
- 8  1968             1.12 
- 9  1969             1.13 
-10  1970             1.14 
-# ℹ 52 more rows</code></pre>
-</div>
-</div>
-</section>
-<section id="data-visualization" class="slide level2">
-<h2>Data visualization</h2>
-
-<img data-src="lec-4_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
-<section id="regression-model-1" class="slide level2">
-<h2>Regression model</h2>
-<p>A <strong>regression model</strong> is a function that describes the relationship between the outcome, <span class="math inline">\(Y\)</span>, and the predictor, <span class="math inline">\(X\)</span>.</p>
-<p><span class="math display">\[\begin{aligned} Y &amp;= \color{black}{\textbf{Model}} + \text{Error} \\[8pt]
-&amp;= \color{black}{\mathbf{f(X)}} + \epsilon \\[8pt]
-&amp;= \color{black}{\boldsymbol{\mu_{Y|X}}} + \epsilon \end{aligned}\]</span></p>
-</section>
-<section id="regression-model" class="slide level2">
-<h2>Regression model</h2>
-<div class="columns">
-<div class="column" style="width:30%;">
-<p><span class="math display">\[
-\begin{aligned} Y &amp;= \color{#325b74}{\textbf{Model}} + \text{Error} \\[8pt]
-&amp;= \color{#325b74}{\mathbf{f(X)}} + \epsilon \\[8pt]
-&amp;= \color{#325b74}{\boldsymbol{\mu_{Y|X}}} + \epsilon
-\end{aligned}
-\]</span></p>
-</div><div class="column" style="width:70%;">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="lec-4_files/figure-revealjs/unnamed-chunk-4-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div>
-</div></div>
 </section>
 <section id="simple-linear-regression" class="slide level2 smaller">
 <h2>Simple linear regression</h2>
@@ -565,108 +370,94 @@
 <li class="fragment"><span class="math inline">\(\epsilon\)</span>: Error (residual)</li>
 </ul>
 </div>
-</section>
-<section id="simple-linear-regression-1" class="slide level2">
-<h2>Simple linear regression</h2>
-<p><span class="math display">\[\Large{\hat{Y} = b_0 + b_1 X}\]</span></p>
-<ul>
-<li><span class="math inline">\(b_1\)</span>: Estimated slope of the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></li>
-<li><span class="math inline">\(b_0\)</span>: Estimated intercept of the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></li>
-<li>No error term!</li>
-</ul>
-</section>
-<section id="choosing-values-for-b_1-and-b_0" class="slide level2">
-<h2>Choosing values for <span class="math inline">\(b_1\)</span> and <span class="math inline">\(b_0\)</span></h2>
-
-<img data-src="lec-4_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
-<section id="residuals" class="slide level2">
-<h2>Residuals</h2>
-
-<img data-src="lec-4_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p><span class="math display">\[\text{residual} = \text{observed} - \text{predicted} = y - \hat{y}\]</span></p>
-</section>
-<section id="least-squares-line" class="slide level2 smaller">
-<h2>Least squares line</h2>
-<ul>
-<li>The residual for the <span class="math inline">\(i^{th}\)</span> observation is</li>
-</ul>
-<p><span class="math display">\[e_i = \text{observed} - \text{predicted} = y_i - \hat{y}_i\]</span></p>
-<ul>
-<li>The <strong>sum of squared</strong> residuals is</li>
-</ul>
-<p><span class="math display">\[e^2_1 + e^2_2 + \dots + e^2_n\]</span></p>
-<ul>
-<li>The <strong>least squares line</strong> is the one that <strong>minimizes the sum of squared residuals</strong></li>
-</ul>
-</section>
-<section id="least-squares-line-1" class="slide level2">
-<h2>Least squares line</h2>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 2 × 5
-  term         estimate std.error statistic  p.value
-  &lt;chr&gt;           &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
-1 (Intercept) -16.1      0.510        -31.7 3.85e-39
-2 Year          0.00879  0.000256      34.3 4.03e-41</code></pre>
-</div>
-</div>
 </section></section>
 <section>
-<section id="slope-and-intercept" class="title-slide slide level1 center">
-<h1>Slope and intercept</h1>
+<section id="logistic-regression" class="title-slide slide level1 center">
+<h1>Logistic regression</h1>
 
 </section>
-<section id="properties-of-least-squares-regression" class="slide level2">
-<h2>Properties of least squares regression</h2>
-<div>
+<section id="what-is-logistic-regression" class="slide level2">
+<h2>What is logistic regression?</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
-<li class="fragment"><p>The regression line goes through the center of mass point (the coordinates corresponding to average <span class="math inline">\(X\)</span> and average <span class="math inline">\(Y\)</span>): <span class="math inline">\(b_0 = \bar{Y} - b_1~\bar{X}\)</span></p></li>
-<li class="fragment"><p>Slope has the same sign as the correlation coefficient: <span class="math inline">\(b_1 = r \frac{s_Y}{s_X}\)</span></p></li>
-<li class="fragment"><p>Sum of the residuals is zero: <span class="math inline">\(\sum_{i = 1}^n \epsilon_i = 0\)</span></p></li>
-<li class="fragment"><p>Residuals and <span class="math inline">\(X\)</span> values are uncorrelated</p></li>
+<li><p>Similar to linear regression…. but</p></li>
+<li><p>Modeling tool when our response is categorical</p></li>
 </ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/logistic.png" class="quarto-figure quarto-figure-center"></p>
+</figure>
 </div>
+</div></div>
 </section>
-<section id="interpreting-the-slope" class="slide level2 smaller">
-<h2>Interpreting the slope</h2>
-<div class="panel-tabset">
-<ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Question</a></li><li><a href="#tabset-1-2">Submit</a></li></ul>
-<div class="tab-content">
-<div id="tabset-1-1">
-<div class="poll">
-<p>The slope of the model for predicting number of cows is 0.008785434.</p>
-</div>
-<p>How to interpret</p>
-</div>
-<div id="tabset-1-2">
-<iframe allowfullscreen="" frameborder="0" height="100%" mozallowfullscreen="" style="min-width: 500px; min-height: 355px" src="https://app.wooclap.com/STA199S24?from=status-bar?" width="100%"></iframe>
-</div>
-</div>
-</div>
-</section>
-<section id="interpreting-slope-intercept" class="slide level2">
-<h2>Interpreting slope &amp; intercept</h2>
-<p><span class="math display">\[\widehat{\text{Total number of cows}} = -16.1 + 0.008785434    \times \text{Year}\]</span></p>
-<div>
+<section id="modelling-binary-outcomes" class="slide level2">
+<h2>Modelling binary outcomes</h2>
 <ul>
-<li class="fragment"><strong>Slope:</strong> For every one point increase in <code>Year</code>, we expect the total number of cows to be higher by 0.008785434 points, on average.</li>
-<li class="fragment"><strong>Intercept:</strong> In <code>Year</code> is 0, we expect the total number of cows to be -16.1.</li>
-</ul>
-</div>
-</section>
-<section id="is-the-intercept-meaningful" class="slide level2">
-<h2>Is the intercept meaningful?</h2>
-<p>✅ The intercept is meaningful in context of the data if</p>
+<li><p>Variables with binary outcomes follow the <strong>Bernouilli distribution</strong>:</p>
 <ul>
-<li>the predictor can feasibly take values equal to or near zero or</li>
-<li>the predictor has values near zero in the observed data</li>
+<li><p><span class="math inline">\(y_i \sim Bern(p)\)</span></p></li>
+<li><p><span class="math inline">\(p\)</span>: Probability of success</p></li>
+<li><p><span class="math inline">\(1-p\)</span>: Probability of failure</p></li>
+</ul></li>
+<li><p>We can’t model <span class="math inline">\(y\)</span> directly, so instead we model <span class="math inline">\(p\)</span></p></li>
 </ul>
-<div class="fragment">
-<p>🛑 Otherwise, it might not be meaningful!</p>
+</section>
+<section id="linear-model" class="slide level2">
+<h2>Linear model</h2>
+<p><span class="math display">\[
+p_i = \beta_o + \beta_1 \times X_1 + \cdots + \epsilon
+\]</span></p>
+<ul>
+<li><p>But remember that <span class="math inline">\(p\)</span> must be between 0 and 1</p></li>
+<li><p>We need a <strong>link function</strong> that transforms the linear model to have an appropriate range</p></li>
+</ul>
+</section>
+<section id="logit-link-function" class="slide level2">
+<h2>Logit link function</h2>
+<p>The <strong>logit</strong> function take values between 0 and 1 (probabilities) and maps them to values in the range negative infinity to positive infinity:</p>
+<p><span class="math display">\[
+logit(p) = log \bigg( \frac{p}{1 - p} \bigg)
+\]</span></p>
+</section>
+<section id="this-isnt-exactly-what-we-need-though.." class="slide level2">
+<h2>This isn’t exactly what we need though…..</h2>
+<ul>
+<li><p>Recall, the goal is to take values between -<span class="math inline">\(\infty\)</span> and <span class="math inline">\(\infty\)</span> and map them to probabilities.</p></li>
+<li><p>We need the opposite of the link function… or the <em>inverse</em></p></li>
+<li><p>Taking the inverse of the logit function will map arbitrary real values back to the range [0, 1]</p></li>
+</ul>
+</section>
+<section id="generalized-linear-model" class="slide level2">
+<h2>Generalized linear model</h2>
+<ul>
+<li>We model the logit (log-odds) of <span class="math inline">\(p\)</span> :</li>
+</ul>
+<p><span class="math display">\[
+logit(p) = log \bigg( \frac{p}{1 - p} \bigg) = \beta_o + \beta_1 \times X1_i + \cdots + \epsilon
+\]</span></p>
+<ul>
+<li>Then take the inverse to obtain the predicted <span class="math inline">\(p\)</span>:</li>
+</ul>
+<p><span class="math display">\[
+p_i = \frac{e^{\beta_o + \beta_1 \times X1_i + \cdots + \epsilon}}{1 + e^{\beta_o + \beta_1 \times X1_i + \cdots + \epsilon}}
+\]</span></p>
+</section>
+<section id="a-logistic-model-visualized" class="slide level2">
+<h2>A logistic model visualized</h2>
+
+<img data-src="lec-5b_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<section id="takeaways" class="slide level2">
+<h2>Takeaways</h2>
+<ul>
+<li><p>Generalized linear models allow us to fit models to predict non-continuous outcomes</p></li>
+<li><p>Predicting binary outcomes requires modeling the log-odds of success, where p = probability of success</p></li>
+</ul>
 
 <div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 <p><a href="https://bovi-analytics.github.io/BeastsAndBytes/">https://bovi-analytics.github.io/BeastsAndBytes/</a></p>
-</div>
 </div>
 </div>
 </section></section>

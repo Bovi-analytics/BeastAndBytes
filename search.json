@@ -84,6 +84,125 @@
     "text": "Note\n\n\n\nComing soon"
   },
   {
+    "objectID": "slides/lec-5a.html#goals",
+    "href": "slides/lec-5a.html#goals",
+    "title": "Linear regression with multiple predictors",
+    "section": "Goals",
+    "text": "Goals\n\nRecap on modeling with one predictor\nModeling with two predictors\nInterpreting slopes and intercepts\nInterpreting interactions"
+  },
+  {
+    "objectID": "slides/lec-5a.html#setup",
+    "href": "slides/lec-5a.html#setup",
+    "title": "Linear regression with multiple predictors",
+    "section": "Setup",
+    "text": "Setup\n\nlibrary(dplyr)\nlibrary(tidyverse)\nlibrary(tidymodels)\nlibrary(jtools)\nlibrary(sjPlot)\nlibrary(sjmisc)\nggplot2::theme_set(theme_gray(base_size = 16))"
+  },
+  {
+    "objectID": "slides/lec-5a.html#simple-linear-regression",
+    "href": "slides/lec-5a.html#simple-linear-regression",
+    "title": "Linear regression with multiple predictors",
+    "section": "Simple linear regression",
+    "text": "Simple linear regression\nUse simple linear regression to model the relationship between a quantitative outcome (\\(Y\\)) and a single quantitative predictor (\\(X\\)): \\[\\Large{Y = \\beta_0 + \\beta_1 X + \\epsilon}\\]\n\n\n\\(\\beta_1\\): True slope of the relationship between \\(X\\) and \\(Y\\)\n\\(\\beta_0\\): True intercept of the relationship between \\(X\\) and \\(Y\\)\n\\(\\epsilon\\): Error (residual)"
+  },
+  {
+    "objectID": "slides/lec-5a.html#interpreting-slope-intercept",
+    "href": "slides/lec-5a.html#interpreting-slope-intercept",
+    "title": "Linear regression with multiple predictors",
+    "section": "Interpreting slope & intercept",
+    "text": "Interpreting slope & intercept\n\\[\\widehat{\\text{Total number of cows}} = -16.1 + 0.008785434    \\times \\text{Year}\\]\n\n\nSlope: For every one point increase in Year, we expect the total number of cows to be higher by 0.008785434 points, on average.\nIntercept: In Year is 0, we expect the total number of cows to be -16.1."
+  },
+  {
+    "objectID": "slides/lec-5a.html#read-the-data",
+    "href": "slides/lec-5a.html#read-the-data",
+    "title": "Linear regression with multiple predictors",
+    "section": "Read the data",
+    "text": "Read the data\n\ndf_raw_cattle_numbers &lt;- read.csv('https://raw.githubusercontent.com/Bovi-analytics/minor-digital-agriculture/refs/heads/main/data/fao-cattle-numbers.csv')"
+  },
+  {
+    "objectID": "slides/lec-5a.html#data-prep",
+    "href": "slides/lec-5a.html#data-prep",
+    "title": "Linear regression with multiple predictors",
+    "section": "Data prep",
+    "text": "Data prep\n\nSelect columns Year, Area and Value\nApply correct FAIR naming convention\nMutate NumberOfCows to be easier to interpret\nFilter specific countries\n\n\ndf_cattle_numbers &lt;- df_raw_cattle_numbers %&gt;%\n  dplyr::rename(\n    Country = Area,\n    NumberOfCows = Value\n  )  %&gt;%\n  dplyr::mutate(\n    NumberOfCows =  NumberOfCows/1000000\n  ) %&gt;%\n  dplyr::select(Year, Country, NumberOfCows) %&gt;%\n  dplyr::filter(\n    Country %in% c(\"Brazil\", \"United States of America\", \"India\")\n  )"
+  },
+  {
+    "objectID": "slides/lec-5a.html#data-overview",
+    "href": "slides/lec-5a.html#data-overview",
+    "title": "Linear regression with multiple predictors",
+    "section": "Data overview",
+    "text": "Data overview\n\ndf_cattle_numbers %&gt;%\n  select(Year, Country, NumberOfCows)\n\n    Year                  Country NumberOfCows\n1   1961                   Brazil     56.04131\n2   1962                   Brazil     57.73989\n3   1963                   Brazil     59.70304\n4   1964                   Brazil     61.73294\n5   1965                   Brazil     63.83186\n6   1966                   Brazil     66.00214\n7   1967                   Brazil     68.24622\n8   1968                   Brazil     70.56661\n9   1969                   Brazil     72.96586\n10  1970                   Brazil     75.44670\n11  1971                   Brazil     78.56226\n12  1972                   Brazil     83.00000\n13  1973                   Brazil     85.50000\n14  1974                   Brazil     90.43701\n15  1975                   Brazil     92.49536\n16  1976                   Brazil    101.67400\n17  1977                   Brazil    107.29656\n18  1978                   Brazil    106.94256\n19  1979                   Brazil    109.17749\n20  1980                   Brazil    118.97142\n21  1981                   Brazil    121.78501\n22  1982                   Brazil    123.48800\n23  1983                   Brazil    124.18600\n24  1984                   Brazil    127.65501\n25  1985                   Brazil    128.42267\n26  1986                   Brazil    132.22157\n27  1987                   Brazil    135.72029\n28  1988                   Brazil    139.59910\n29  1989                   Brazil    144.15410\n30  1990                   Brazil    147.10232\n31  1991                   Brazil    152.13550\n32  1992                   Brazil    154.22930\n33  1993                   Brazil    155.13407\n34  1994                   Brazil    158.24323\n35  1995                   Brazil    161.22794\n36  1996                   Brazil    158.28854\n37  1997                   Brazil    161.41616\n38  1998                   Brazil    163.15436\n39  1999                   Brazil    164.62104\n40  2000                   Brazil    169.87552\n41  2001                   Brazil    176.38873\n42  2002                   Brazil    185.34884\n43  2003                   Brazil    195.55158\n44  2004                   Brazil    204.51274\n45  2005                   Brazil    207.15670\n46  2006                   Brazil    205.88624\n47  2007                   Brazil    199.75201\n48  2008                   Brazil    202.30673\n49  2009                   Brazil    205.30795\n50  2010                   Brazil    209.54111\n51  2011                   Brazil    212.81531\n52  2012                   Brazil    211.27908\n53  2013                   Brazil    211.76429\n54  2014                   Brazil    212.36613\n55  2015                   Brazil    215.22051\n56  2016                   Brazil    218.19077\n57  2017                   Brazil    215.00358\n58  2018                   Brazil    213.80945\n59  2019                   Brazil    215.00896\n60  2020                   Brazil    217.83628\n61  2021                   Brazil    224.60199\n62  2022                   Brazil    234.35265\n63  1961                    India    175.60000\n64  1962                    India    173.90000\n65  1963                    India    173.97101\n66  1964                    India    175.80000\n67  1965                    India    175.90000\n68  1966                    India    176.21200\n69  1967                    India    176.38400\n70  1968                    India    176.73101\n71  1969                    India    177.08600\n72  1970                    India    177.44200\n73  1971                    India    177.81400\n74  1972                    India    178.38400\n75  1973                    India    178.33101\n76  1974                    India    178.58000\n77  1975                    India    179.45701\n78  1976                    India    180.35000\n79  1977                    India    180.28600\n80  1978                    India    181.99200\n81  1979                    India    184.30000\n82  1980                    India    186.50000\n83  1981                    India    188.70000\n84  1982                    India    192.45301\n85  1983                    India    193.79701\n86  1984                    India    195.15400\n87  1985                    India    196.52000\n88  1986                    India    197.89501\n89  1987                    India    199.69501\n90  1988                    India    200.65000\n91  1989                    India    201.60000\n92  1990                    India    202.50000\n93  1991                    India    203.50000\n94  1992                    India    204.58400\n95  1993                    India    203.63400\n96  1994                    India    202.68400\n97  1995                    India    201.73400\n98  1996                    India    200.78400\n99  1997                    India    198.88200\n100 1998                    India    196.53501\n101 1999                    India    194.21600\n102 2000                    India    191.92400\n103 2001                    India    189.66000\n104 2002                    India    187.42200\n105 2003                    India    185.18099\n106 2004                    India    188.57000\n107 2005                    India    192.02099\n108 2006                    India    195.53501\n109 2007                    India    199.07501\n110 2008                    India    197.44499\n111 2009                    India    195.81501\n112 2010                    India    194.18499\n113 2011                    India    192.55501\n114 2012                    India    190.90410\n115 2013                    India    189.00000\n116 2014                    India    187.00000\n117 2015                    India    188.07519\n118 2016                    India    189.15420\n119 2017                    India    190.48526\n120 2018                    India    191.95754\n121 2019                    India    193.46287\n122 2020                    India    194.90437\n123 2021                    India    192.87987\n124 2022                    India    193.60691\n125 1961 United States of America     97.70000\n126 1962 United States of America    100.36901\n127 1963 United States of America    104.48800\n128 1964 United States of America    107.90301\n129 1965 United States of America    109.00000\n130 1966 United States of America    108.86200\n131 1967 United States of America    108.78301\n132 1968 United States of America    109.37101\n133 1969 United States of America    110.01501\n134 1970 United States of America    112.36901\n135 1971 United States of America    114.57800\n136 1972 United States of America    117.86200\n137 1973 United States of America    121.53901\n138 1974 United States of America    127.78800\n139 1975 United States of America    132.02800\n140 1976 United States of America    127.98000\n141 1977 United States of America    122.81000\n142 1978 United States of America    116.37501\n143 1979 United States of America    110.86400\n144 1980 United States of America    111.24200\n145 1981 United States of America    114.35101\n146 1982 United States of America    115.44400\n147 1983 United States of America    115.00101\n148 1984 United States of America    113.36000\n149 1985 United States of America    109.58200\n150 1986 United States of America    105.37800\n151 1987 United States of America    102.11800\n152 1988 United States of America     99.62200\n153 1989 United States of America     96.74000\n154 1990 United States of America     95.81600\n155 1991 United States of America     96.39300\n156 1992 United States of America     97.55600\n157 1993 United States of America     99.17590\n158 1994 United States of America    100.97360\n159 1995 United States of America    102.78520\n160 1996 United States of America    103.54820\n161 1997 United States of America    101.65570\n162 1998 United States of America     99.74400\n163 1999 United States of America     99.11500\n164 2000 United States of America     98.19900\n165 2001 United States of America     97.29750\n166 2002 United States of America     96.72300\n167 2003 United States of America     96.10000\n168 2004 United States of America     94.88800\n169 2005 United States of America     95.01800\n170 2006 United States of America     96.70150\n171 2007 United States of America     96.57300\n172 2008 United States of America     96.03450\n173 2009 United States of America     94.72100\n174 2010 United States of America     94.08120\n175 2011 United States of America     92.88740\n176 2012 United States of America     91.16020\n177 2013 United States of America     90.09520\n178 2014 United States of America     88.52600\n179 2015 United States of America     89.14300\n180 2016 United States of America     91.88800\n181 2017 United States of America     93.62460\n182 2018 United States of America     94.29800\n183 2019 United States of America     94.80470\n184 2020 United States of America     93.79330\n185 2021 United States of America     93.78950\n186 2022 United States of America     92.07660"
+  },
+  {
+    "objectID": "slides/lec-5a.html#data-visualization",
+    "href": "slides/lec-5a.html#data-visualization",
+    "title": "Linear regression with multiple predictors",
+    "section": "Data visualization",
+    "text": "Data visualization"
+  },
+  {
+    "objectID": "slides/lec-5a.html#regression-model-1",
+    "href": "slides/lec-5a.html#regression-model-1",
+    "title": "Linear regression with multiple predictors",
+    "section": "Regression model",
+    "text": "Regression model\n\n\nm &lt;- lm(NumberOfCows ~ Year + Country, data = df_cattle_numbers)"
+  },
+  {
+    "objectID": "slides/lec-5a.html#multiple-linear-regression",
+    "href": "slides/lec-5a.html#multiple-linear-regression",
+    "title": "Linear regression with multiple predictors",
+    "section": "Multiple linear regression",
+    "text": "Multiple linear regression\nUse multiple linear regression to model the relationship between a quantitative outcome (\\(Y\\)) and a multiple quantitative predictors and factors (\\(X\\)): \\[\\Large{Y = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\epsilon}\\]\n\n\n\\(\\beta_1\\): True slope of the relationship between \\(X_1\\) and \\(Y\\)\n\\(\\beta_2\\): True slope of the relationship between \\(X_2\\) and \\(Y\\)\n\\(\\beta_0\\): True intercept of the relationship between \\(X\\) and \\(Y\\)\n\\(\\epsilon\\): Error (residual)"
+  },
+  {
+    "objectID": "slides/lec-5a.html#multiple-linear-regression-1",
+    "href": "slides/lec-5a.html#multiple-linear-regression-1",
+    "title": "Linear regression with multiple predictors",
+    "section": "Multiple linear regression",
+    "text": "Multiple linear regression\n\ncows_fit &lt;- linear_reg() |&gt;\n  fit(NumberOfCows ~ Year + Country, data = df_cattle_numbers)\n\ntidy(cows_fit)\n\n# A tibble: 4 × 5\n  term                             estimate std.error statistic  p.value\n  &lt;chr&gt;                               &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)                     -1785.      227.        -7.86 3.30e-13\n2 Year                                0.970     0.114      8.51 6.39e-15\n3 CountryIndia                       42.1       5.00       8.41 1.14e-14\n4 CountryUnited States of America   -44.2       5.00      -8.84 8.12e-16"
+  },
+  {
+    "objectID": "slides/lec-5a.html#is-the-intercept-meaningful",
+    "href": "slides/lec-5a.html#is-the-intercept-meaningful",
+    "title": "Linear regression with multiple predictors",
+    "section": "Is the intercept meaningful?",
+    "text": "Is the intercept meaningful?\n✅ The intercept is meaningful in context of the data if\n\nthe predictor can feasibly take values equal to or near zero or\nthe predictor has values near zero in the observed data\n\n🛑 Otherwise, in this case not meaningful & difficult to interpret!"
+  },
+  {
+    "objectID": "slides/lec-5a.html#make-intercept-more-interpretable",
+    "href": "slides/lec-5a.html#make-intercept-more-interpretable",
+    "title": "Linear regression with multiple predictors",
+    "section": "Make intercept more interpretable",
+    "text": "Make intercept more interpretable\n\nSubstract the initial value of year 1960 from each year value\nHow do you interpret the intercept of 116 now?\nDid the slope for Year or Country change\n\n\ncows_fit &lt;- linear_reg() |&gt;\n  fit(\n    NumberOfCows ~ Year + Country, \n    data = df_cattle_numbers %&gt;% dplyr::mutate(Year = Year - 1960))\ntidy(cows_fit)\n\n# A tibble: 4 × 5\n  term                            estimate std.error statistic  p.value\n  &lt;chr&gt;                              &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;\n1 (Intercept)                      117.        5.04      23.2  3.12e-56\n2 Year                               0.970     0.114      8.51 6.39e-15\n3 CountryIndia                      42.1       5.00       8.41 1.14e-14\n4 CountryUnited States of America  -44.2       5.00      -8.84 8.12e-16"
+  },
+  {
+    "objectID": "slides/lec-5a.html#plot-the-slope-effect-of-county",
+    "href": "slides/lec-5a.html#plot-the-slope-effect-of-county",
+    "title": "Linear regression with multiple predictors",
+    "section": "Plot the slope effect of County",
+    "text": "Plot the slope effect of County\nThe estimate for India and USA was +42M and -44M"
+  },
+  {
+    "objectID": "slides/lec-5a.html#plot-the-slope-effect-of-year",
+    "href": "slides/lec-5a.html#plot-the-slope-effect-of-year",
+    "title": "Linear regression with multiple predictors",
+    "section": "Plot the slope effect of Year",
+    "text": "Plot the slope effect of Year\nHow do you interpret the slope of 0.97, combined with this graph?"
+  },
+  {
+    "objectID": "slides/lec-5a.html#code-to-introduce-an-interaction-between-predictors",
+    "href": "slides/lec-5a.html#code-to-introduce-an-interaction-between-predictors",
+    "title": "Linear regression with multiple predictors",
+    "section": "Code to introduce an interaction between predictors",
+    "text": "Code to introduce an interaction between predictors\nUse * to make an interaction term\n\nYear * Country or\nYear + Country + Year:Country\n\n\n\nMODEL INFO:\nObservations: 186\nDependent Variable: NumberOfCows\nType: OLS linear regression \n\nMODEL FIT:\nF(5,180) = 1642.26, p = 0.00\nR² = 0.98\nAdj. R² = 0.98 \n\nStandard errors:OLS\n----------------------------------------------------------------\n                                     Est.   S.E.   t val.      p\n-------------------------------- -------- ------ -------- ------\n(Intercept)                         51.98   1.84    28.31   0.00\nYear                                 3.03   0.05    59.82   0.00\nCountryIndia                       127.86   2.60    49.25   0.00\nCountryUnited States of             64.76   2.60    24.94   0.00\nAmerica                                                         \nYear:CountryIndia                   -2.72   0.07   -38.00   0.00\nYear:CountryUnited States of        -3.46   0.07   -48.26   0.00\nAmerica                                                         \n----------------------------------------------------------------"
+  },
+  {
+    "objectID": "slides/lec-5a.html#lets-plot-the-interaction",
+    "href": "slides/lec-5a.html#lets-plot-the-interaction",
+    "title": "Linear regression with multiple predictors",
+    "section": "Lets plot the interaction",
+    "text": "Lets plot the interaction\n\n\n\n\nhttps://bovi-analytics.github.io/BeastsAndBytes/"
+  },
+  {
     "objectID": "slides/lec-2.html#what-are-the-fair-principles",
     "href": "slides/lec-2.html#what-are-the-fair-principles",
     "title": "Lecture 2 - Reproducible & FAIR data science",
@@ -888,7 +1007,7 @@
     "href": "slides/lec-4.html#data-prep",
     "title": "Linear regression with a single predictor",
     "section": "Data prep",
-    "text": "Data prep\n\nSelect columns need Year and Value\nApply correct FAIR naming convention\n\n\ndf_cattle_numbers &lt;- df_raw_cattle_numbers %&gt;%\n  dplyr::select(Year, Value) %&gt;%\n  dplyr::rename(\n    NumberOfCows = Value\n  )"
+    "text": "Data prep\n\nSelect columns needed : Year and Value\nApply correct FAIR naming convention\n\n\ndf_cattle_numbers &lt;- df_raw_cattle_numbers %&gt;%\n  dplyr::select(Year, Value) %&gt;%\n  dplyr::rename(\n    NumberOfCows = Value\n  )"
   },
   {
     "objectID": "slides/lec-4.html#data-grouping",
@@ -1001,6 +1120,76 @@
     "title": "Linear regression with a single predictor",
     "section": "Is the intercept meaningful?",
     "text": "Is the intercept meaningful?\n✅ The intercept is meaningful in context of the data if\n\nthe predictor can feasibly take values equal to or near zero or\nthe predictor has values near zero in the observed data\n\n\n🛑 Otherwise, it might not be meaningful!\n\n\n\nhttps://bovi-analytics.github.io/BeastsAndBytes/"
+  },
+  {
+    "objectID": "slides/lec-5b.html#goals",
+    "href": "slides/lec-5b.html#goals",
+    "title": "Linear regression with a single predictor",
+    "section": "Goals",
+    "text": "Goals\n\nRecap simple linear regression (Interpreting slopes and intercepts)\nLinear regression with multiple predictors\nLogistic regression"
+  },
+  {
+    "objectID": "slides/lec-5b.html#simple-linear-regression",
+    "href": "slides/lec-5b.html#simple-linear-regression",
+    "title": "Linear regression with a single predictor",
+    "section": "Simple linear regression",
+    "text": "Simple linear regression\nUse simple linear regression to model the relationship between a quantitative outcome (\\(Y\\)) and a single quantitative predictor (\\(X\\)): \\[\\Large{Y = \\beta_0 + \\beta_1 X + \\epsilon}\\]\n\n\n\\(\\beta_1\\): True slope of the relationship between \\(X\\) and \\(Y\\)\n\\(\\beta_0\\): True intercept of the relationship between \\(X\\) and \\(Y\\)\n\\(\\epsilon\\): Error (residual)"
+  },
+  {
+    "objectID": "slides/lec-5b.html#what-is-logistic-regression",
+    "href": "slides/lec-5b.html#what-is-logistic-regression",
+    "title": "Linear regression with a single predictor",
+    "section": "What is logistic regression?",
+    "text": "What is logistic regression?\n\n\n\nSimilar to linear regression…. but\nModeling tool when our response is categorical"
+  },
+  {
+    "objectID": "slides/lec-5b.html#modelling-binary-outcomes",
+    "href": "slides/lec-5b.html#modelling-binary-outcomes",
+    "title": "Linear regression with a single predictor",
+    "section": "Modelling binary outcomes",
+    "text": "Modelling binary outcomes\n\nVariables with binary outcomes follow the Bernouilli distribution:\n\n\\(y_i \\sim Bern(p)\\)\n\\(p\\): Probability of success\n\\(1-p\\): Probability of failure\n\nWe can’t model \\(y\\) directly, so instead we model \\(p\\)"
+  },
+  {
+    "objectID": "slides/lec-5b.html#linear-model",
+    "href": "slides/lec-5b.html#linear-model",
+    "title": "Linear regression with a single predictor",
+    "section": "Linear model",
+    "text": "Linear model\n\\[\np_i = \\beta_o + \\beta_1 \\times X_1 + \\cdots + \\epsilon\n\\]\n\nBut remember that \\(p\\) must be between 0 and 1\nWe need a link function that transforms the linear model to have an appropriate range"
+  },
+  {
+    "objectID": "slides/lec-5b.html#logit-link-function",
+    "href": "slides/lec-5b.html#logit-link-function",
+    "title": "Linear regression with a single predictor",
+    "section": "Logit link function",
+    "text": "Logit link function\nThe logit function take values between 0 and 1 (probabilities) and maps them to values in the range negative infinity to positive infinity:\n\\[\nlogit(p) = log \\bigg( \\frac{p}{1 - p} \\bigg)\n\\]"
+  },
+  {
+    "objectID": "slides/lec-5b.html#this-isnt-exactly-what-we-need-though..",
+    "href": "slides/lec-5b.html#this-isnt-exactly-what-we-need-though..",
+    "title": "Linear regression with a single predictor",
+    "section": "This isn’t exactly what we need though…..",
+    "text": "This isn’t exactly what we need though…..\n\nRecall, the goal is to take values between -\\(\\infty\\) and \\(\\infty\\) and map them to probabilities.\nWe need the opposite of the link function… or the inverse\nTaking the inverse of the logit function will map arbitrary real values back to the range [0, 1]"
+  },
+  {
+    "objectID": "slides/lec-5b.html#generalized-linear-model",
+    "href": "slides/lec-5b.html#generalized-linear-model",
+    "title": "Linear regression with a single predictor",
+    "section": "Generalized linear model",
+    "text": "Generalized linear model\n\nWe model the logit (log-odds) of \\(p\\) :\n\n\\[\nlogit(p) = log \\bigg( \\frac{p}{1 - p} \\bigg) = \\beta_o + \\beta_1 \\times X1_i + \\cdots + \\epsilon\n\\]\n\nThen take the inverse to obtain the predicted \\(p\\):\n\n\\[\np_i = \\frac{e^{\\beta_o + \\beta_1 \\times X1_i + \\cdots + \\epsilon}}{1 + e^{\\beta_o + \\beta_1 \\times X1_i + \\cdots + \\epsilon}}\n\\]"
+  },
+  {
+    "objectID": "slides/lec-5b.html#a-logistic-model-visualized",
+    "href": "slides/lec-5b.html#a-logistic-model-visualized",
+    "title": "Linear regression with a single predictor",
+    "section": "A logistic model visualized",
+    "text": "A logistic model visualized"
+  },
+  {
+    "objectID": "slides/lec-5b.html#takeaways",
+    "href": "slides/lec-5b.html#takeaways",
+    "title": "Linear regression with a single predictor",
+    "section": "Takeaways",
+    "text": "Takeaways\n\nGeneralized linear models allow us to fit models to predict non-continuous outcomes\nPredicting binary outcomes requires modeling the log-odds of success, where p = probability of success\n\n\n\n\nhttps://bovi-analytics.github.io/BeastsAndBytes/"
   },
   {
     "objectID": "supplemental/operations-in-r.html",
