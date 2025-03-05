@@ -524,7 +524,7 @@ p_i = \frac{e^{\beta_o + \beta_1 \times X1_i + \cdots + \epsilon}}{1 + e^{\beta_
 <section id="a-logistic-model-visualized" class="slide level2">
 <h2>A logistic model visualized</h2>
 
-<img data-src="lec-5b_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
+<img data-src="lec-6_files/figure-revealjs/unnamed-chunk-3-1.png" width="960" class="r-stretch"></section>
 <section id="takeaways" class="slide level2">
 <h2>Takeaways</h2>
 <ul>
@@ -537,9 +537,6 @@ p_i = \frac{e^{\beta_o + \beta_1 \times X1_i + \cdots + \epsilon}}{1 + e^{\beta_
 <h1>Example</h1>
 
 </section>
-<section id="setup" class="slide level2">
-<h2>Setup</h2>
-</section>
 <section id="read-the-data" class="slide level2">
 <h2>Read the data</h2>
 <div class="cell">
@@ -549,10 +546,9 @@ p_i = \frac{e^{\beta_o + \beta_1 \times X1_i + \cdots + \epsilon}}{1 + e^{\beta_
 <section id="data-prep" class="slide level2">
 <h2>Data prep</h2>
 <ul>
-<li>Select columns <code>InseminationNumber</code>, <code>Parity</code> and <code>ResultedInPregnancy</code></li>
-<li>Correct FAIR naming convention is in place</li>
 <li>Drop any columns with missing values using the <code>drop_na()</code> function</li>
 <li>Convert FALSE/NEGATIVE to 0/1</li>
+<li>Relevel to make Parity 1 the default</li>
 </ul>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>df_inseminations <span class="ot">&lt;-</span> df_raw_inseminations <span class="sc">%&gt;%</span> </span>
@@ -560,10 +556,12 @@ p_i = \frac{e^{\beta_o + \beta_1 \times X1_i + \cdots + \epsilon}}{1 + e^{\beta_
 <span id="cb2-3"><a></a>    <span class="at">Pregnant =</span> <span class="fu">factor</span>(<span class="fu">case_when</span>(</span>
 <span id="cb2-4"><a></a>      ResultedInPregnancy <span class="sc">==</span> <span class="cn">TRUE</span> <span class="sc">~</span> <span class="dv">1</span>, </span>
 <span id="cb2-5"><a></a>      ResultedInPregnancy <span class="sc">==</span> <span class="cn">FALSE</span> <span class="sc">~</span> <span class="dv">0</span></span>
-<span id="cb2-6"><a></a>      ))</span>
-<span id="cb2-7"><a></a>    ) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-8"><a></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb2-9"><a></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(Parity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-6"><a></a>      )),</span>
+<span id="cb2-7"><a></a>    <span class="at">Parity=</span><span class="fu">factor</span>(Parity),</span>
+<span id="cb2-8"><a></a>    <span class="at">Parity=</span><span class="fu">fct_relevel</span>(Parity,<span class="fu">c</span>(<span class="st">"1"</span>,<span class="st">"2"</span>,<span class="st">"&gt;2"</span>))</span>
+<span id="cb2-9"><a></a>    ) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-10"><a></a>  <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-11"><a></a>  dplyr<span class="sc">::</span><span class="fu">arrange</span>(Parity)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="data-overview" class="slide level2">
@@ -33913,9 +33911,10 @@ p_i = \frac{e^{\beta_o + \beta_1 \times X1_i + \cdots + \epsilon}}{1 + e^{\beta_
 <section id="data-visualization" class="slide level2">
 <h2>Data visualization</h2>
 
-<img data-src="lec-5b_files/figure-revealjs/unnamed-chunk-5-1.png" width="960" class="r-stretch"></section>
-<section id="logistic-regression-1" class="slide level2">
-<h2>Logistic regression</h2>
+<img data-src="lec-6_files/figure-revealjs/unnamed-chunk-4-1.png" width="960" class="r-stretch"></section>
+<section id="logistic-regression-model" class="slide level2">
+<h2>Logistic regression model</h2>
+<p>How to interpret</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>cows_fit <span class="ot">&lt;-</span> <span class="fu">glm</span>(Pregnant <span class="sc">~</span> Parity, <span class="at">data =</span> df_inseminations, <span class="at">family =</span> <span class="st">"binomial"</span>)</span>
 <span id="cb5-2"><a></a><span class="fu">summary</span>(cows_fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -33925,10 +33924,10 @@ Call:
 glm(formula = Pregnant ~ Parity, family = "binomial", data = df_inseminations)
 
 Coefficients:
-             Estimate Std. Error  z value Pr(&gt;|z|)    
-(Intercept) -1.078206   0.008367 -128.858  &lt; 2e-16 ***
-Parity1      0.217551   0.011478   18.955  &lt; 2e-16 ***
-Parity2      0.093484   0.012712    7.354 1.92e-13 ***
+             Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) -0.860655   0.007856 -109.55   &lt;2e-16 ***
+Parity2     -0.124067   0.012381  -10.02   &lt;2e-16 ***
+Parity&gt;2    -0.217551   0.011478  -18.95   &lt;2e-16 ***
 ---
 Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
@@ -33941,13 +33940,16 @@ AIC: 244399
 Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 </div>
+</section>
+<section id="logistic-regression-interpretation" class="slide level2">
+<h2>Logistic regression interpretation</h2>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">exp</span>(<span class="fu">confint</span>(cows_fit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                2.5 %    97.5 %
-(Intercept) 0.3346642 0.3458232
-Parity1     1.2153830 1.2713133
-Parity2     1.0709692 1.1256860</code></pre>
+(Intercept) 0.4164167 0.4294401
+Parity2     0.8621356 0.9050095
+Parity&gt;2    0.7865882 0.8227859</code></pre>
 </div>
 </div>
 
