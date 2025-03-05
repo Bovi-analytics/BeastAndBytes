@@ -33941,10 +33941,20 @@ Number of Fisher Scoring iterations: 4</code></pre>
 </div>
 </div>
 </section>
-<section id="logistic-regression-interpretation" class="slide level2">
-<h2>Logistic regression interpretation</h2>
+<section id="logistic-regression-interpretation-1" class="slide level2">
+<h2>Logistic regression interpretation 1</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">exp</span>(<span class="fu">confint</span>(cows_fit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a><span class="fu">exp</span>(<span class="fu">coef</span>(cows_fit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>(Intercept)     Parity2    Parity&gt;2 
+  0.4228850   0.8833209   0.8044869 </code></pre>
+</div>
+</div>
+</section>
+<section id="logistic-regression-interpretation-2" class="slide level2">
+<h2>Logistic regression interpretation 2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">exp</span>(<span class="fu">confint</span>(cows_fit))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                2.5 %    97.5 %
 (Intercept) 0.4164167 0.4294401

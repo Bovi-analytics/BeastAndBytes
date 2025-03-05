@@ -1234,11 +1234,18 @@
     "text": "Logistic regression model\nHow to interpret\n\ncows_fit &lt;- glm(Pregnant ~ Parity, data = df_inseminations, family = \"binomial\")\nsummary(cows_fit)\n\n\nCall:\nglm(formula = Pregnant ~ Parity, family = \"binomial\", data = df_inseminations)\n\nCoefficients:\n             Estimate Std. Error z value Pr(&gt;|z|)    \n(Intercept) -0.860655   0.007856 -109.55   &lt;2e-16 ***\nParity2     -0.124067   0.012381  -10.02   &lt;2e-16 ***\nParity&gt;2    -0.217551   0.011478  -18.95   &lt;2e-16 ***\n---\nSignif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1\n\n(Dispersion parameter for binomial family taken to be 1)\n\n    Null deviance: 244757  on 208133  degrees of freedom\nResidual deviance: 244393  on 208131  degrees of freedom\nAIC: 244399\n\nNumber of Fisher Scoring iterations: 4"
   },
   {
-    "objectID": "slides/lec-6.html#logistic-regression-interpretation",
-    "href": "slides/lec-6.html#logistic-regression-interpretation",
+    "objectID": "slides/lec-6.html#logistic-regression-interpretation-1",
+    "href": "slides/lec-6.html#logistic-regression-interpretation-1",
     "title": "Logistic regression",
-    "section": "Logistic regression interpretation",
-    "text": "Logistic regression interpretation\n\nexp(confint(cows_fit))\n\n                2.5 %    97.5 %\n(Intercept) 0.4164167 0.4294401\nParity2     0.8621356 0.9050095\nParity&gt;2    0.7865882 0.8227859\n\n\n\n\n\nhttps://bovi-analytics.github.io/BeastsAndBytes/"
+    "section": "Logistic regression interpretation 1",
+    "text": "Logistic regression interpretation 1\n\nexp(coef(cows_fit))\n\n(Intercept)     Parity2    Parity&gt;2 \n  0.4228850   0.8833209   0.8044869"
+  },
+  {
+    "objectID": "slides/lec-6.html#logistic-regression-interpretation-2",
+    "href": "slides/lec-6.html#logistic-regression-interpretation-2",
+    "title": "Logistic regression",
+    "section": "Logistic regression interpretation 2",
+    "text": "Logistic regression interpretation 2\n\nexp(confint(cows_fit))\n\n                2.5 %    97.5 %\n(Intercept) 0.4164167 0.4294401\nParity2     0.8621356 0.9050095\nParity&gt;2    0.7865882 0.8227859\n\n\n\n\n\nhttps://bovi-analytics.github.io/BeastsAndBytes/"
   },
   {
     "objectID": "supplemental/operations-in-r.html",
