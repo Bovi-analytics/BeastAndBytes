@@ -346,7 +346,7 @@
     "href": "index.html",
     "title": "Data Science Applications in Agriculture",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the course. Note that this schedule will be updated as the course progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nTeachers\nPrepare\nLecture\nCode’n practice\nProject\nProgress meeting\n\n\n\n\n1\n1/20\nIntroduction\nDr. Hostens\n📖\n🖥️ | 💻 | 📂 | ✍️ |\n\n\n\n\n\n2\n1/27\nData science basics\nDr. Hostens\n📖\n🖥️ | 💻 | 📂 | ✍️ |\n\n\n\n\n\n3\n2/3\nProgramming basics\nDr. Hostens\n📖\n🖥️ | 💻 | 📂 | ✍️ |\n\n\n\n\n\n4\n2/10\nSimple linear regression\nDr. Hostens\n📖\n🖥️ | 💻 | 📂 | ✍️ |\n\n\n\n\n\n5\n2/17\nFebr break\n\n📖\n🖥️ | 💻 | 📂 | ✍️ |\n\n\n\n\n\n6\n2/24\nMultiple linear regression\nDr. Hostens\n📖\n🎥\n🖥️ | 💻 | 📂 | ✍️ | | | | | | |\n\n\n\n\n\n7\n3/3\nData reshaping\n\n📖\n🖥️ | 💻 | 📂 | ✍️ |\n\n\n\n\n\n8\n3/10\nData joining\n\n📖\n🖥️ | 💻 | 📂 | ✍️ |\n\n\n\n\n\n9\n3/17\nData parsing\n\n📖\n🖥️ | 💻 | 📂 | ✍️ |\n\n\n\n\n\n10\n3/24\nExtracting data from other sources\n\n📖\n🖥️ | 💻 | 📂 | ✍️ |\n\n\n\n\n\n11\n3/31\nString processing\n\n📖\n🖥️ | | 📂 | ✍️ |\n\n\n\n\n\n12\n4/7\nText analysis\n\n📖\n🖥️ | | 📂 | ✍️ |\n\n\n\n\n\n13\n4/14\nTBD\n\n📖\n🖥️ | | 📂 | ✍️ |\n\n\n\n\n\n14\n4/21\nProject presentation & report\n\n\n\n\n📂",
+    "text": "This page contains an outline of the topics, content, and assignments for the course. Note that this schedule will be updated as the course progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nTeachers\nPrepare\nLecture\nCode’n practice\nProject\nProgress meeting\n\n\n\n\n1\n1/20\nIntroduction\nDr. Hostens\n📖\n🖥️\n💻\n📂\n✍️\n\n\n2\n1/27\nData science basics\nDr. Hostens\n📖\n🖥️\n💻\n📂\n✍️\n\n\n3\n2/3\nProgramming basics\nDr. Hostens\n📖\n🖥️\n💻\n📂\n✍️\n\n\n4\n2/10\nSimple linear regression\nDr. Hostens\n📖\n🖥️\n💻\n📂\n✍️\n\n\n5\n2/17\nFebruary break (no class)\n\n\n\n\n📂\n✍️\n\n\n6\n2/24\nMultiple linear regression\nDr. Hostens and S. Hayu\n📖\n🖥️\n💻\n📂\n✍️\n\n\n7\n3/3\nData visualisation\nDr. Hostens\n📖\n🖥️\n💻\n📂\n✍️\n\n\n8\n3/10\nTBD\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n9\n3/17\nTBD\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n10\n3/24\nTBD\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n11\n3/31\nSpring Break (no class)\n\n\n\n\n📂\n✍️\n\n\n12\n4/7\nTBD\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n13\n4/14\nTBD\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n14\n4/21\nProject presentation & report\n\n\n\n\n📂",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -1124,70 +1124,77 @@
   {
     "objectID": "slides/lec-5b.html#goals",
     "href": "slides/lec-5b.html#goals",
-    "title": "Linear regression with a single predictor",
+    "title": "Logistic regression",
     "section": "Goals",
-    "text": "Goals\n\nRecap simple linear regression (Interpreting slopes and intercepts)\nLinear regression with multiple predictors\nLogistic regression"
+    "text": "Goals\n\nRecap simple linear regression\nRecap linear regression with multiple predictors\nLogistic regression"
   },
   {
     "objectID": "slides/lec-5b.html#simple-linear-regression",
     "href": "slides/lec-5b.html#simple-linear-regression",
-    "title": "Linear regression with a single predictor",
+    "title": "Logistic regression",
     "section": "Simple linear regression",
     "text": "Simple linear regression\nUse simple linear regression to model the relationship between a quantitative outcome (\\(Y\\)) and a single quantitative predictor (\\(X\\)): \\[\\Large{Y = \\beta_0 + \\beta_1 X + \\epsilon}\\]\n\n\n\\(\\beta_1\\): True slope of the relationship between \\(X\\) and \\(Y\\)\n\\(\\beta_0\\): True intercept of the relationship between \\(X\\) and \\(Y\\)\n\\(\\epsilon\\): Error (residual)"
   },
   {
+    "objectID": "slides/lec-5b.html#multiple-linear-regression",
+    "href": "slides/lec-5b.html#multiple-linear-regression",
+    "title": "Logistic regression",
+    "section": "Multiple linear regression",
+    "text": "Multiple linear regression\nUse multiple linear regression to model the relationship between a quantitative outcome (\\(Y\\)) and a multiple quantitative predictors and factors (\\(X\\)): \\[\\Large{Y = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\epsilon}\\]\n\n\n\\(\\beta_1\\): True slope of the relationship between \\(X_1\\) and \\(Y\\)\n\\(\\beta_2\\): True slope of the relationship between \\(X_2\\) and \\(Y\\)\n\\(\\beta_0\\): True intercept of the relationship between \\(X\\) and \\(Y\\)\n\\(\\epsilon\\): Error (residual)"
+  },
+  {
     "objectID": "slides/lec-5b.html#what-is-logistic-regression",
     "href": "slides/lec-5b.html#what-is-logistic-regression",
-    "title": "Linear regression with a single predictor",
+    "title": "Logistic regression",
     "section": "What is logistic regression?",
     "text": "What is logistic regression?\n\n\n\nSimilar to linear regression…. but\nModeling tool when our response is categorical"
   },
   {
     "objectID": "slides/lec-5b.html#modelling-binary-outcomes",
     "href": "slides/lec-5b.html#modelling-binary-outcomes",
-    "title": "Linear regression with a single predictor",
+    "title": "Logistic regression",
     "section": "Modelling binary outcomes",
     "text": "Modelling binary outcomes\n\nVariables with binary outcomes follow the Bernouilli distribution:\n\n\\(y_i \\sim Bern(p)\\)\n\\(p\\): Probability of success\n\\(1-p\\): Probability of failure\n\nWe can’t model \\(y\\) directly, so instead we model \\(p\\)"
   },
   {
     "objectID": "slides/lec-5b.html#linear-model",
     "href": "slides/lec-5b.html#linear-model",
-    "title": "Linear regression with a single predictor",
+    "title": "Logistic regression",
     "section": "Linear model",
     "text": "Linear model\n\\[\np_i = \\beta_o + \\beta_1 \\times X_1 + \\cdots + \\epsilon\n\\]\n\nBut remember that \\(p\\) must be between 0 and 1\nWe need a link function that transforms the linear model to have an appropriate range"
   },
   {
     "objectID": "slides/lec-5b.html#logit-link-function",
     "href": "slides/lec-5b.html#logit-link-function",
-    "title": "Linear regression with a single predictor",
+    "title": "Logistic regression",
     "section": "Logit link function",
     "text": "Logit link function\nThe logit function take values between 0 and 1 (probabilities) and maps them to values in the range negative infinity to positive infinity:\n\\[\nlogit(p) = log \\bigg( \\frac{p}{1 - p} \\bigg)\n\\]"
   },
   {
     "objectID": "slides/lec-5b.html#this-isnt-exactly-what-we-need-though..",
     "href": "slides/lec-5b.html#this-isnt-exactly-what-we-need-though..",
-    "title": "Linear regression with a single predictor",
+    "title": "Logistic regression",
     "section": "This isn’t exactly what we need though…..",
     "text": "This isn’t exactly what we need though…..\n\nRecall, the goal is to take values between -\\(\\infty\\) and \\(\\infty\\) and map them to probabilities.\nWe need the opposite of the link function… or the inverse\nTaking the inverse of the logit function will map arbitrary real values back to the range [0, 1]"
   },
   {
     "objectID": "slides/lec-5b.html#generalized-linear-model",
     "href": "slides/lec-5b.html#generalized-linear-model",
-    "title": "Linear regression with a single predictor",
+    "title": "Logistic regression",
     "section": "Generalized linear model",
     "text": "Generalized linear model\n\nWe model the logit (log-odds) of \\(p\\) :\n\n\\[\nlogit(p) = log \\bigg( \\frac{p}{1 - p} \\bigg) = \\beta_o + \\beta_1 \\times X1_i + \\cdots + \\epsilon\n\\]\n\nThen take the inverse to obtain the predicted \\(p\\):\n\n\\[\np_i = \\frac{e^{\\beta_o + \\beta_1 \\times X1_i + \\cdots + \\epsilon}}{1 + e^{\\beta_o + \\beta_1 \\times X1_i + \\cdots + \\epsilon}}\n\\]"
   },
   {
     "objectID": "slides/lec-5b.html#a-logistic-model-visualized",
     "href": "slides/lec-5b.html#a-logistic-model-visualized",
-    "title": "Linear regression with a single predictor",
+    "title": "Logistic regression",
     "section": "A logistic model visualized",
     "text": "A logistic model visualized"
   },
   {
     "objectID": "slides/lec-5b.html#takeaways",
     "href": "slides/lec-5b.html#takeaways",
-    "title": "Linear regression with a single predictor",
+    "title": "Logistic regression",
     "section": "Takeaways",
     "text": "Takeaways\n\nGeneralized linear models allow us to fit models to predict non-continuous outcomes\nPredicting binary outcomes requires modeling the log-odds of success, where p = probability of success\n\n\n\n\nhttps://bovi-analytics.github.io/BeastsAndBytes/"
   },

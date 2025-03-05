@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.5.57">
 
   <meta name="dcterms.date" content="2025-02-10">
-  <title>Beasts &amp; Bytes – Linear regression with a single predictor</title>
+  <title>Beasts &amp; Bytes – Logistic regression</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -320,11 +320,11 @@
       margin-right: 0; 
     }
   </style>
-<meta property="og:title" content="Linear regression with a single predictor – Beasts &amp; Bytes">
-<meta property="og:description" content="Lecture 4">
+<meta property="og:title" content="Logistic regression – Beasts &amp; Bytes">
+<meta property="og:description" content="Lecture 5">
 <meta property="og:site_name" content="Beasts &amp; Bytes">
-<meta name="twitter:title" content="Linear regression with a single predictor – Beasts &amp; Bytes">
-<meta name="twitter:description" content="Lecture 4">
+<meta name="twitter:title" content="Logistic regression – Beasts &amp; Bytes">
+<meta name="twitter:description" content="Lecture 5">
 <meta name="twitter:image" content="https://bovi-analytics.github.io/BeastsAndBytes/slides/images/twitter-card.png">
 <meta name="twitter:creator" content="@MielHostens">
 <meta name="twitter:card" content="summary_large_image">
@@ -334,8 +334,8 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Linear regression with a single predictor</h1>
-  <p class="subtitle">Lecture 4</p>
+  <h1 class="title">Logistic regression</h1>
+  <p class="subtitle">Lecture 5</p>
 
 <div class="quarto-title-authors">
 </div>
@@ -350,14 +350,14 @@
 <section id="goals" class="slide level2">
 <h2>Goals</h2>
 <ul>
-<li>Recap simple linear regression (Interpreting slopes and intercepts)</li>
-<li>Linear regression with multiple predictors</li>
+<li>Recap simple linear regression</li>
+<li>Recap linear regression with multiple predictors</li>
 <li>Logistic regression</li>
 </ul>
 </section></section>
 <section>
-<section id="linear-regression-with-a-single-predictor" class="title-slide slide level1 center">
-<h1>Linear regression with a single predictor</h1>
+<section id="linear-regression" class="title-slide slide level1 center">
+<h1>Linear regression</h1>
 
 </section>
 <section id="simple-linear-regression" class="slide level2 smaller">
@@ -366,6 +366,18 @@
 <div>
 <ul>
 <li class="fragment"><span class="math inline">\(\beta_1\)</span>: True slope of the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></li>
+<li class="fragment"><span class="math inline">\(\beta_0\)</span>: True intercept of the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></li>
+<li class="fragment"><span class="math inline">\(\epsilon\)</span>: Error (residual)</li>
+</ul>
+</div>
+</section>
+<section id="multiple-linear-regression" class="slide level2 smaller">
+<h2>Multiple linear regression</h2>
+<p>Use <strong>multiple linear regression</strong> to model the relationship between a quantitative outcome (<span class="math inline">\(Y\)</span>) and a multiple quantitative predictors and factors (<span class="math inline">\(X\)</span>): <span class="math display">\[\Large{Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon}\]</span></p>
+<div>
+<ul>
+<li class="fragment"><span class="math inline">\(\beta_1\)</span>: True slope of the relationship between <span class="math inline">\(X_1\)</span> and <span class="math inline">\(Y\)</span></li>
+<li class="fragment"><span class="math inline">\(\beta_2\)</span>: True slope of the relationship between <span class="math inline">\(X_2\)</span> and <span class="math inline">\(Y\)</span></li>
 <li class="fragment"><span class="math inline">\(\beta_0\)</span>: True intercept of the relationship between <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span></li>
 <li class="fragment"><span class="math inline">\(\epsilon\)</span>: Error (residual)</li>
 </ul>
