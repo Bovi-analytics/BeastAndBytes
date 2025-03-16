@@ -1,6 +1,6 @@
 ---
-title: "Linear regression with a single predictor"
-subtitle: "Lecture 4"
+title: "Logistic regression"
+subtitle: "Lecture 5"
 date: "February 10, 2025"
 format: 
   revealjs:
@@ -14,17 +14,18 @@ format:
 #| message: false
 
 library(countdown)
+library(dplyr)
 library(tidyverse)
 ggplot2::theme_set(theme_gray(base_size = 16))
 ```
 
 ## Goals
 
--   Recap simple linear regression (Interpreting slopes and intercepts)
--   Linear regression with multiple predictors
+-   Recap simple linear regression
+-   Recap linear regression with multiple predictors
 -   Logistic regression
 
-# Linear regression with a single predictor
+# Linear regression
 
 ## Simple linear regression {.smaller}
 
@@ -32,6 +33,17 @@ Use **simple linear regression** to model the relationship between a quantitativ
 
 ::: incremental
 -   $\beta_1$: True slope of the relationship between $X$ and $Y$
+-   $\beta_0$: True intercept of the relationship between $X$ and $Y$
+-   $\epsilon$: Error (residual)
+:::
+
+## Multiple linear regression {.smaller}
+
+Use **multiple linear regression** to model the relationship between a quantitative outcome ($Y$) and a multiple quantitative predictors and factors ($X$): $$\Large{Y = \beta_0 + \beta_1 X_1 + \beta_2 X_2 + \epsilon}$$
+
+::: incremental
+-   $\beta_1$: True slope of the relationship between $X_1$ and $Y$
+-   $\beta_2$: True slope of the relationship between $X_2$ and $Y$
 -   $\beta_0$: True intercept of the relationship between $X$ and $Y$
 -   $\epsilon$: Error (residual)
 :::
@@ -137,3 +149,86 @@ plot.function(sigmoid, from = 0, to = 20, n = 101,
 -   Generalized linear models allow us to fit models to predict non-continuous outcomes
 
 -   Predicting binary outcomes requires modeling the log-odds of success, where p = probability of success
+
+# Example
+
+## Read the data
+
+```{r data-read}
+#| echo: true
+
+df_raw_inseminations <- read.csv('df_inseminations.csv')
+```
+
+## Data prep
+
+-   Drop any columns with missing values using the `drop_na()` function
+-   Convert FALSE/NEGATIVE to 0/1
+-   Relevel to make Parity 1 the default
+
+```{r data-prep-1}
+#| echo: true
+
+df_inseminations <- df_raw_inseminations %>% 
+  dplyr::mutate(
+    Pregnant = factor(case_when(
+      ResultedInPregnancy == TRUE ~ 1, 
+      ResultedInPregnancy == FALSE ~ 0
+      )),
+    Parity=factor(Parity),
+    Parity=fct_relevel(Parity,c("1","2",">2"))
+    ) %>% 
+  drop_na() %>%
+  dplyr::arrange(Parity)
+```
+
+## Data overview
+
+```{r data-overview}
+#| echo: true
+
+df_inseminations %>%
+  select(InseminationNumber , Parity, Pregnant)
+```
+
+## Data visualization
+
+```{r}
+#| echo: false
+
+ggplot(
+  df_inseminations,
+  aes(
+    x = factor(Parity,  level = c('1', '2', '>2')),
+    fill = ResultedInPregnancy)
+  ) + 
+  geom_bar(position = "fill")+ 
+  labs(
+    x = "Parity" , 
+    y = "Proportion pregnant"
+  )
+```
+
+## Logistic regression model
+
+How to interpret
+
+```{r}
+#| echo: true
+cows_fit <- glm(Pregnant ~ Parity, data = df_inseminations, family = "binomial")
+summary(cows_fit)
+```
+
+## Logistic regression interpretation 1
+
+```{r}
+#| echo: true
+exp(coef(cows_fit))
+```
+
+## Logistic regression interpretation 2 
+
+```{r}
+#| echo: true
+exp(confint(cows_fit))
+```

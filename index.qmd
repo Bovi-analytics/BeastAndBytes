@@ -7,20 +7,20 @@ This page contains an outline of the topics, content, and assignments for the co
 
 ::: column-screen-inset-right
 | Week | Date | Topic | Teachers | Prepare | Lecture | Code'n practice | Project | Progress meeting |
-|:------:|:-------|--------|--------|:------:|:------:|:------:|:------:|:------:|
+|:------:|:-------|--------|--------|:---------:|:------:|:------:|:------:|:------:|
 | 1 | 1/20 | Introduction | Dr. Hostens | 📖 | [🖥️](slides/lec-1.html) | [💻](https://www.dodona.be) | 📂 | ✍️ |
 | 2 | 1/27 | Data science basics | Dr. Hostens | 📖 | [🖥️](slides/lec-2.html) | [💻](https://www.dodona.be) | 📂 | ✍️ |
-| 3 | 2/3 | Programming basics |  | 📖 | 🖥️ | 💻 | 📂 | ✍️ |
-| 4 | 2/10 | Data manipulation & project |  | 📖 | 🖥️ | 💻 | 📂 | ✍️ |
-| 5 | 2/17 | Data visualization 1 |  | 📖 | 🖥️ | 💻 | 📂 | ✍️ |
-| 6 | 2/24 | Data visualization 2 |  | 📖 | 🖥️ | 💻 | 📂 | ✍️ |
-| 7 | 3/3 | Data reshaping |  | 📖 | 🖥️ | 💻 | 📂 | ✍️ |
-| 8 | 3/10 | Data joining |  | 📖 | 🖥️ | 💻 | 📂 | ✍️ |
-| 9 | 3/17 | Data parsing |  | 📖 | 🖥️ | 💻 | 📂 | ✍️ |
-| 10 | 3/24 | Extracting data from other sources |  | 📖 | 🖥️ | 💻 | 📂 | ✍️ |
-| 11 | 3/31 | String processing |  | 📖 | 🖥️ |  | 📂 | ✍️ |
-| 12 | 4/7 | Text analysis |  | 📖 | 🖥️ |  | 📂 | ✍️ |
-| 13 | 4/14 | TBD |  | 📖 | 🖥️ |  | 📂 | ✍️ |
+| 3 | 2/3 | Visualisation basics | Dr. Hostens | 📖 | [🖥️](https://prezi.com/view/WqkTyXcILsWRmOvVBM1M/) | [💻](https://www.dodona.be) | 📂 | ✍️ |
+| 4 | 2/10 | Simple linear regression | Dr. Hostens | 📖 | [🖥️](slides/lec-4.html) | [💻](https://www.dodona.be) | 📂 | ✍️ |
+| 5 | 2/17 | February break (no class) |  |  |  |  | 📂 | ✍️ |
+| 6 | 2/24 | Multiple linear regression | Dr. Hostens and S. Hayu | 📖 | [🖥️](slides/lec-5.html) | [💻](https://www.dodona.be) | 📂 | ✍️ |
+| 7 | 3/3 | Logistic regression | Dr. Hostens | 📖 | [🖥️](slides/lec-6.html) | [💻](https://www.dodona.be) | 📂 | ✍️ |
+| 8 | 3/10 | Data joining | Dr. Hostens | 📖 | [🖥️](slides/lec-7.html) | [💻](https://www.dodona.be) | 📂 | ✍️ |
+| 9 | 3/17 | Data transformations | Dr. Hostens | 📖 | [🖥️](slides/lec-8.html) | [💻](https://www.dodona.be) | 📂 | ✍️ |
+| 10 | 3/24 | Data transformations | Dr. Hostens | 📖 | [🖥️](slides/lec-9.html) | [💻](https://www.dodona.be) | 📂 | ✍️ |
+| 11 | 3/31 | Spring Break (no class) |  |  |  |  | 📂 | ✍️ |
+| 12 | 4/7 | TBD |  | 📖 | 🖥️ | [💻](https://www.dodona.be) | 📂 | ✍️ |
+| 13 | 4/14 | TBD |  | 📖 | 🖥️ | [💻](https://www.dodona.be) | 📂 | ✍️ |
 | 14 | 4/21 | Project presentation & report |  |  |  |  | 📂 |  |
 :::
 
