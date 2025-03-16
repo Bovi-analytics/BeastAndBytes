@@ -408,11 +408,11 @@
   <p class="date">2025-03-17</p>
 </section>
 <section>
-<section id="warm-up" class="title-slide slide level1 center">
+<section id="sec-warm-up" class="title-slide slide level1 center">
 <h1>Warm up</h1>
 
 </section>
-<section id="setup" class="slide level2">
+<section id="sec-setup" class="slide level2">
 <h2>Setup</h2>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
@@ -430,11 +430,11 @@
 </div>
 </section></section>
 <section>
-<section id="introduction" class="title-slide slide level1 center">
+<section id="sec-introduction" class="title-slide slide level1 center">
 <h1>Introduction</h1>
 
 </section>
-<section id="prerequisites" class="slide level2">
+<section id="sec-prerequisites" class="slide level2">
 <h2>Prerequisites</h2>
 <ul>
 <li>Numeric vectors are the backbone of data science</li>
@@ -445,11 +445,16 @@
 <span id="cb2-2"><a></a><span class="fu">library</span>(nycflights13)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="making-numbers" class="slide level2">
+<section id="sec-making-numbers" class="slide level2">
 <h2>Making numbers</h2>
-<p>In most cases, you’ll get numbers already recorded in one of R’s numeric types: * integer * double. In some cases, however, you’ll encounter them as strings, possibly because you’ve created them by pivoting from column headers or because something has gone wrong in your data import process.</p>
+<p>In most cases, you’ll get numbers already recorded in one of R’s numeric types:</p>
+<ul>
+<li><p>integer</p></li>
+<li><p>double.</p></li>
+</ul>
+<p>In some cases, however, you’ll encounter them as strings, possibly because you’ve created them by pivoting from column headers or because something has gone wrong in your data import process.</p>
 </section>
-<section id="parsing-numbers" class="slide level2">
+<section id="sec-parsing-numbers" class="slide level2">
 <h2>Parsing numbers</h2>
 <p>readr provides two useful functions for parsing strings into numbers: <code>parse_double()</code> and <code>parse_number()</code>. Use <code>parse_double()</code> when you have numbers that have been written as strings:</p>
 <div class="cell">
@@ -465,7 +470,7 @@
 </div>
 </section></section>
 <section>
-<section id="counts-1" class="title-slide slide level1 center">
+<section id="sec-counts" class="title-slide slide level1 center">
 <h1>Counts</h1>
 <p>The <code>dplyr::count()</code> is great for quick exploration and checks during analysis:</p>
 <div class="cell">
@@ -508,7 +513,11 @@
 # ℹ 95 more rows</code></pre>
 </div>
 </div>
-<p>If you want to see all the values: * <code>|&gt; View()</code> * <code>|&gt; print(n = Inf)</code>.</p>
+<p>If you want to see all the values:</p>
+<ul>
+<li><p><code>|&gt; View()</code></p></li>
+<li><p><code>|&gt; print(n = Inf)</code>.</p></li>
+</ul>
 </section>
 <section id="sec-counts-3" class="slide level2">
 <h2>Counts alternative</h2>
@@ -584,9 +593,10 @@
 <section id="sec-counts-6" class="slide level2">
 <h2>Weighted count</h2>
 <p>Weighted counts are a common problem so <code>count()</code> has a <code>wt</code> argument that does the same thing:</p>
-<pre><code>::: {.cell}
-
-:::</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode numberSource markdown number-lines code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a></a><span class="in">```{r}</span></span>
+<span id="cb10-2"><a></a><span class="in">#| results: false</span></span>
+<span id="cb10-3"><a></a><span class="in">flights |&gt; count(tailnum, wt = distance)</span></span>
+<span id="cb10-4"><a></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="sec-counts-7" class="slide level2">
 <h2>Counts missing</h2>
@@ -613,11 +623,11 @@
 </ul>
 </section></section>
 <section>
-<section id="numeric-transformations" class="title-slide slide level1 center">
+<section id="sec-numeric-transformations" class="title-slide slide level1 center">
 <h1>Numeric transformations</h1>
 <p>Transformation functions work well with <code>mutate()</code> because their output is the same length as the input.</p>
 </section>
-<section id="minimum-and-maximum" class="slide level2">
+<section id="sec-minimum-and-maximum-1" class="slide level2">
 <h2>Minimum and maximum</h2>
 <p>The arithmetic functions work with pairs of variables (or columns). Two closely related functions are <code>pmin()</code> and <code>pmax()</code>, which when given two or more variables will return the smallest or largest value in each row:</p>
 <div class="cell">
@@ -631,7 +641,7 @@
 </div>
 </div>
 </section>
-<section id="minimum-and-maximum-1" class="slide level2">
+<section id="sec-minimum-and-maximum-2" class="slide level2">
 <h2>Minimum and maximum</h2>
 <p>Note that these are different to the summary functions <code>min()</code> and <code>max()</code> which take multiple observations and return a single value. You can tell that you’ve used the wrong form when all the minimums and all the maximums have the same value:</p>
 <div class="cell">
@@ -645,7 +655,7 @@
 </div>
 </div>
 </section>
-<section id="modular-arithmetic" class="slide level2">
+<section id="sec-modular-arithmetic-1" class="slide level2">
 <h2>Modular arithmetic</h2>
 <p>Modular arithmetic is the technical name for the type of math you did before you learned about decimal places, i.e.&nbsp;division that yields a whole number and a remainder. In R, <code>%/%</code> does integer division and <code>%%</code> computes the remainder:</p>
 <div class="cell">
@@ -657,7 +667,7 @@
 </div>
 </div>
 </section>
-<section id="modular-arithmetic-1" class="slide level2">
+<section id="sec-modular-arithmetic-2" class="slide level2">
 <h2>Modular arithmetic</h2>
 <p>Modular arithmetic is handy for the <code>flights</code> dataset, because we can use it to unpack the <code>sched_dep_time</code> variable into <code>hour</code> and <code>minute</code>:</p>
 <div class="cell">
@@ -679,7 +689,7 @@
 </div>
 </div>
 </section>
-<section id="modular-arithmetic-2" class="slide level2">
+<section id="sec-modular-arithmetic-3" class="slide level2">
 <h2>Modular arithmetic</h2>
 <p>We can combine that with the <code>mean(is.na(x))</code> trick from <strong>?@sec-logical-summaries</strong> to see how the proportion of cancelled flights varies over the course of the day. The results are shown in <a href="#/fig-prop-cancelled" class="quarto-xref">Figure&nbsp;1</a>.</p>
 
@@ -687,17 +697,26 @@
 Figure&nbsp;1: A line plot with scheduled departure hour on the x-axis, and proportion of cancelled flights on the y-axis. Cancellations seem to accumulate over the course of the day until 8pm, very late flights are much less likely to be cancelled.
 </p></section></section>
 <section>
-<section id="logarithms" class="title-slide slide level1 center">
+<section id="sec-logarithms" class="title-slide slide level1 center">
 <h1>Logarithms</h1>
 
 </section>
-<section id="three-logarithms" class="slide level2">
+<section id="sec-three-logarithms" class="slide level2">
 <h2>Three logarithms</h2>
-<p>In R, you have a choice of three logarithms: * <code>log()</code> (the natural log, base e), * <code>log2()</code> (base 2), * <code>log10()</code> (base 10).</p>
+<p>In R, you have a choice of three logarithms:</p>
+<ul>
+<li><p><code>log()</code> (the natural log, base e),</p></li>
+<li><p><code>log2()</code> (base 2),</p></li>
+<li><p><code>log10()</code> (base 10).</p></li>
+</ul>
 </section>
-<section id="logarithm-recommendation" class="slide level2">
+<section id="sec-logarithm-recommendation" class="slide level2">
 <h2>Logarithm recommendation</h2>
-<p>We recommend using <code>log2()</code> or <code>log10()</code>: * <code>log2()</code> is easy to interpret because a difference of 1 on the log scale corresponds to doubling on the original scale and a difference of -1 corresponds to halving; * <code>log10()</code> is easy to back-transform because (e.g.) 3 is 10^3 = 1000.</p>
+<p>We recommend using <code>log2()</code> or <code>log10()</code>:</p>
+<ul>
+<li><p><code>log2()</code> is easy to interpret because a difference of 1 on the log scale corresponds to doubling on the original scale and a difference of -1 corresponds to halving;</p></li>
+<li><p><code>log10()</code> is easy to back-transform because (e.g.) 3 is 10^3 = 1000.</p></li>
+</ul>
 <p>The inverse of <code>log()</code> is <code>exp()</code>; to compute the inverse of <code>log2()</code> or <code>log10()</code> you’ll need to use <code>2^</code> or <code>10^</code>.</p>
 </section>
 <section id="sec-rounding" class="slide level2">
@@ -709,7 +728,7 @@ Figure&nbsp;1: A line plot with scheduled departure hour on the x-axis, and prop
 </div>
 </div>
 </section>
-<section id="sec-rounding" class="slide level2">
+<section id="sec-rounding-digits" class="slide level2">
 <h2>Rounding digits</h2>
 <p>You can control the precision of the rounding with the second argument, <code>digits</code>. <code>round(x, digits)</code> rounds to the nearest <code>10^-n</code> so <code>digits = 2</code> will round to the nearest 0.01. This definition is useful because it implies <code>round(x, -3)</code> will round to the nearest thousand, which indeed it does:</p>
 <div class="cell">
@@ -727,7 +746,7 @@ Figure&nbsp;1: A line plot with scheduled departure hour on the x-axis, and prop
 </div>
 </div>
 </section>
-<section id="sec-rounding" class="slide level2">
+<section id="sec-rounding-digits---weirdness" class="slide level2">
 <h2>Rounding digits - weirdness</h2>
 <p>There’s one weirdness with <code>round()</code> that seems surprising at first glance:</p>
 <div class="cell">
@@ -737,7 +756,7 @@ Figure&nbsp;1: A line plot with scheduled departure hour on the x-axis, and prop
 </div>
 <p><code>round()</code> uses what’s known as “round half to even” or Banker’s rounding: if a number is half way between two integers, it will be rounded to the <strong>even</strong> integer. This is a good strategy because it keeps the rounding unbiased: half of all 0.5s are rounded up, and half are rounded down.</p>
 </section>
-<section id="sec-rounding" class="slide level2">
+<section id="sec-rounding-digits---floorceiling" class="slide level2">
 <h2>Rounding digits - floor/ceiling</h2>
 <p><code>round()</code> is paired with <code>floor()</code> which always rounds down and <code>ceiling()</code> which always rounds up:</p>
 <div class="cell">
@@ -749,7 +768,7 @@ Figure&nbsp;1: A line plot with scheduled departure hour on the x-axis, and prop
 </div>
 </div>
 </section>
-<section id="cutting-numbers-into-ranges" class="slide level2">
+<section id="sec-cutting-numbers-into-ranges-1" class="slide level2">
 <h2>Cutting numbers into ranges</h2>
 <p>Use <code>cut()</code><sup>1</sup> to break up (aka bin) a numeric vector into discrete buckets:</p>
 <div class="cell">
@@ -759,7 +778,7 @@ Levels: (0,5] (5,10] (10,15] (15,20]</code></pre>
 </div>
 </div>
 <aside><ol class="aside-footnotes"><li id="fn1"><p>ggplot2 provides some helpers for common cases in <code>cut_interval()</code>, <code>cut_number()</code>, and <code>cut_width()</code>. ggplot2 is an admittedly weird place for these functions to live, but they are useful as part of histogram computation and were written before any other parts of the tidyverse existed.</p></li></ol></aside></section>
-<section id="cutting-numbers-into-ranges-1" class="slide level2">
+<section id="sec-cutting-numbers-into-ranges-2" class="slide level2">
 <h2>Cutting numbers into ranges</h2>
 <p>The breaks don’t need to be evenly spaced:</p>
 <div class="cell">
@@ -769,7 +788,7 @@ Levels: (0,5] (5,10] (10,100]</code></pre>
 </div>
 </div>
 </section>
-<section id="cutting-numbers-into-ranges-2" class="slide level2">
+<section id="sec-cutting-numbers-into-ranges-3" class="slide level2">
 <h2>Cutting numbers into ranges</h2>
 <p>You can optionally supply your own <code>labels</code>. Note that there should be one less <code>labels</code> than <code>breaks</code>.</p>
 <div class="cell">
@@ -779,7 +798,7 @@ Levels: sm md lg xl</code></pre>
 </div>
 </div>
 </section>
-<section id="cutting-numbers-into-ranges-3" class="slide level2">
+<section id="sec-cutting-numbers-into-ranges-4" class="slide level2">
 <h2>Cutting numbers into ranges</h2>
 <p>Any values outside of the range of the breaks will become <code>NA</code>:</p>
 <div class="cell">
@@ -801,11 +820,11 @@ Levels: (0,5] (5,10] (10,15] (15,20]</code></pre>
 <p>If you need more complex rolling or sliding aggregates, try the <a href="https://slider.r-lib.org/">slider</a> package.</p>
 </section></section>
 <section>
-<section id="general-transformations" class="title-slide slide level1 center">
+<section id="sec-general-transformations" class="title-slide slide level1 center">
 <h1>General transformations</h1>
 <p>The following sections describe some general transformations which are often used with numeric vectors, but can be applied to all other column types.</p>
 </section>
-<section id="ranks" class="slide level2">
+<section id="sec-ranks-1" class="slide level2">
 <h2>Ranks</h2>
 <p>dplyr provides a number of ranking functions inspired by SQL, but you should always start with <code>dplyr::min_rank()</code>. It uses the typical method for dealing with ties, e.g., 1st, 2nd, 2nd, 4th.</p>
 <div class="cell">
@@ -814,7 +833,7 @@ Levels: (0,5] (5,10] (10,15] (15,20]</code></pre>
 </div>
 </div>
 </section>
-<section id="ranks-1" class="slide level2">
+<section id="sec-ranks-2" class="slide level2">
 <h2>Ranks</h2>
 <p>Note that the smallest values get the lowest ranks; use <code>desc(x)</code> to give the largest values the smallest ranks:</p>
 <div class="cell">
@@ -823,7 +842,7 @@ Levels: (0,5] (5,10] (10,15] (15,20]</code></pre>
 </div>
 </div>
 </section>
-<section id="ranks-alternatives" class="slide level2">
+<section id="sec-ranks-alternatives" class="slide level2">
 <h2>Ranks alternatives</h2>
 <p>If <code>min_rank()</code> doesn’t do what you need, look at the variants <code>dplyr::row_number()</code>, <code>dplyr::dense_rank()</code>, <code>dplyr::percent_rank()</code>, and <code>dplyr::cume_dist()</code>. See the documentation for details.</p>
 <div class="cell">
@@ -840,7 +859,7 @@ Levels: (0,5] (5,10] (10,15] (15,20]</code></pre>
 </div>
 </div>
 </section>
-<section id="offsets" class="slide level2">
+<section id="sec-offsets" class="slide level2">
 <h2>Offsets</h2>
 <p><code>dplyr::lead()</code> and <code>dplyr::lag()</code> allow you to refer to the values just before or just after the “current” value. They return a vector of the same length as the input, padded with <code>NA</code>s at the start or end:</p>
 <div class="cell">
@@ -852,7 +871,7 @@ Levels: (0,5] (5,10] (10,15] (15,20]</code></pre>
 </div>
 </div>
 </section>
-<section id="offsets---lag" class="slide level2">
+<section id="sec-offsets---lag" class="slide level2">
 <h2>Offsets - lag</h2>
 <ul>
 <li><p><code>x - lag(x)</code> gives you the difference between the current and previous value.</p>
@@ -870,11 +889,11 @@ Levels: (0,5] (5,10] (10,15] (15,20]</code></pre>
 </ul>
 <p>You can lead or lag by more than one position by using the second argument, <code>n</code>.</p>
 </section>
-<section id="consecutive-identifiers" class="slide level2">
+<section id="sec-consecutive-identifiers-1" class="slide level2">
 <h2>Consecutive identifiers</h2>
 <p>Sometimes you want to start a new group every time some event occurs. For example, when you’re looking at website data, it’s common to want to break up events into sessions, where you begin a new session after a gap of more than <code>x</code> minutes since the last activity. For example, imagine you have the times when someone visited a website:</p>
 </section>
-<section id="consecutive-identifiers-1" class="slide level2">
+<section id="sec-consecutive-identifiers-2" class="slide level2">
 <h2>Consecutive identifiers</h2>
 <p>And you’ve computed the time between each event, and figured out if there’s a gap that’s big enough to qualify:</p>
 <div class="cell">
@@ -899,7 +918,7 @@ Levels: (0,5] (5,10] (10,15] (15,20]</code></pre>
 </div>
 </div>
 </section>
-<section id="consecutive-identifiers-2" class="slide level2">
+<section id="sec-consecutive-identifiers-3" class="slide level2">
 <h2>Consecutive identifiers</h2>
 <p>But how do we go from that logical vector to something that we can <code>group_by()</code>? <code>cumsum()</code>, from <a href="#/sec-cumulative-and-rolling-aggregates" class="quarto-xref">Section&nbsp;5.11</a>, comes to the rescue as gap, i.e.&nbsp;<code>has_gap</code> is <code>TRUE</code>, will increment <code>group</code> by one (<strong>?@sec-numeric-summaries-of-logicals</strong>):</p>
 <div class="cell">
@@ -924,11 +943,11 @@ Levels: (0,5] (5,10] (10,15] (15,20]</code></pre>
 </div>
 </div>
 </section>
-<section id="consecutive-identifiers-3" class="slide level2">
+<section id="sec-consecutive-identifiers-4" class="slide level2">
 <h2>Consecutive identifiers</h2>
 <p>Another approach for creating grouping variables is <code>consecutive_id()</code>, which starts a new group every time one of its arguments changes. For example, inspired by <a href="https://stackoverflow.com/questions/27482712">this stackoverflow question</a>, imagine you have a data frame with a bunch of repeated values:</p>
 </section>
-<section id="consecutive-identifiers-4" class="slide level2">
+<section id="sec-consecutive-identifiers-5" class="slide level2">
 <h2>Consecutive identifiers</h2>
 <p>If you want to keep the first row from each repeated <code>x</code>, you could use <code>group_by()</code>, <code>consecutive_id()</code>, and <code>slice_head()</code>:</p>
 <div class="cell">
@@ -948,25 +967,30 @@ Levels: (0,5] (5,10] (10,15] (15,20]</code></pre>
 </div>
 </section></section>
 <section>
-<section id="numeric-summaries" class="title-slide slide level1 center">
+<section id="sec-numeric-summaries" class="title-slide slide level1 center">
 <h1>Numeric summaries</h1>
 <p>Just using the counts, means, and sums that we’ve introduced already can get you a long way, but R provides many other useful summary functions. Here is a selection that you might find useful.</p>
 </section>
-<section id="center" class="slide level2">
+<section id="sec-center" class="slide level2">
 <h2>Center</h2>
 <ul>
 <li>Function <code>mean()</code></li>
 <li>Function <code>median()</code></li>
 </ul>
 </section>
-<section id="sec-min-max-summary" class="slide level2">
+<section id="sec-minimum-maximum-and-quantiles-1" class="slide level2">
 <h2>Minimum, maximum, and quantiles</h2>
 <ul>
 <li><code>min()</code> and <code>max()</code> will give you the largest and smallest values.</li>
-<li>Another powerful tool is <code>quantile()</code> which is a generalization of the median: ** <code>quantile(x, 0.25)</code> will find the value of <code>x</code> that is greater than 25% of the values, ** <code>quantile(x, 0.5)</code> is equivalent to the median, ** <code>quantile(x, 0.95)</code> will find the value that’s greater than 95% of the values.</li>
+<li>Another powerful tool is <code>quantile()</code> which is a generalization of the median:
+<ul>
+<li><code>quantile(x, 0.25)</code> will find the value of <code>x</code> that is greater than 25% of the values,</li>
+<li><code>quantile(x, 0.5)</code> is equivalent to the median,</li>
+<li><code>quantile(x, 0.95)</code> will find the value that’s greater than 95% of the values.</li>
+</ul></li>
 </ul>
 </section>
-<section id="sec-min-max-summary" class="slide level2">
+<section id="sec-minimum-maximum-and-quantiles-2" class="slide level2">
 <h2>Minimum, maximum, and quantiles</h2>
 <p>For the <code>flights</code> data, you might want to look at the 95% quantile of delays rather than the maximum, because it will ignore the 5% of most delayed flights which can be quite extreme.</p>
 <div class="cell">
@@ -988,13 +1012,25 @@ Levels: (0,5] (5,10] (10,15] (15,20]</code></pre>
 </div>
 </div>
 </section>
-<section id="variation" class="slide level2">
+<section id="sec-variation" class="slide level2">
 <h2>Variation</h2>
-<p>Two commonly used summaries are * the standard deviation <code>sd(x)</code>, * and the inter-quartile range, <code>IQR()</code>.</p>
+<p>Two commonly used summaries are</p>
+<ul>
+<li><p>the standard deviation <code>sd(x)</code>,</p></li>
+<li><p>the inter-quartile range, <code>IQR()</code>.</p></li>
+</ul>
 </section>
-<section id="positions" class="slide level2">
+<section id="sec-positions" class="slide level2">
 <h2>Positions</h2>
-<p>There’s one final type of summary that’s useful for numeric vectors, but also works with every other type of value: extracting a value at a specific position: * <code>first(x)</code>, * <code>last(x)</code>, and * <code>nth(x, n)</code>.</p>
+<p>There’s one final type of summary that’s useful for numeric vectors, but also works with every other type of value: extracting a value at a specific position:</p>
+<ul>
+<li><p><code>first(x)</code>,</p></li>
+<li><p><code>last(x)</code>, and</p></li>
+<li><p><code>nth(x, n)</code>.</p></li>
+</ul>
+</section>
+<section id="sec-positions-2" class="slide level2">
+<h2>Positions</h2>
 <p>For example, we can find the first, fifth and last departure for each day:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -1015,9 +1051,9 @@ Levels: (0,5] (5,10] (10,15] (15,20]</code></pre>
 # ℹ 355 more rows</code></pre>
 </div>
 </div>
-<p>(NB: Because dplyr functions use <code>_</code> to separate components of function and arguments names, these functions use <code>na_rm</code> instead of <code>na.rm</code>.)</p>
+<p>NB: Because dplyr functions use <code>_</code> to separate components of function and arguments names, these functions use <code>na_rm</code> instead of <code>na.rm</code>.</p>
 </section>
-<section id="with-mutate" class="slide level2">
+<section id="sec-with-mutate" class="slide level2">
 <h2>With <code>mutate()</code></h2>
 <p>As the names suggest, the summary functions are typically paired with <code>summarize()</code>. However, because of the recycling rules we discussed in <strong>?@sec-recycling</strong> they can also be usefully paired with <code>mutate()</code>, particularly when you want do some sort of group standardization. For example:</p>
 <ul>

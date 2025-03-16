@@ -98,8 +98,8 @@
     "text": "Goals"
   },
   {
-    "objectID": "slides/lec-8.html#setup",
-    "href": "slides/lec-8.html#setup",
+    "objectID": "slides/lec-8.html#sec-setup",
+    "href": "slides/lec-8.html#sec-setup",
     "title": "Data transformations",
     "section": "Setup",
     "text": "Setup\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
@@ -158,116 +158,144 @@
     "href": "slides/lec-8.html#fp-comparison-3",
     "title": "Data transformations",
     "section": "What’s going on?",
-    "text": "What’s going on?\nComputers store numbers with a fixed number of decimal places so there’s no way to exactly represent 1/49 or sqrt(2) and subsequent computations will be very slightly off. We can see the exact values by calling print() with the digits1 argument:\n\nprint(x, digits = 16)\n\n[1] 0.9999999999999999 2.0000000000000004\n\n\nYou can see why R defaults to rounding these numbers; they really are very close to what you expect.\nNow that you’ve seen why == is failing, what can you do about it?\nR normally calls print for you (i.e. x is a shortcut for print(x)), but calling it explicitly is useful if you want to provide other arguments."
+    "text": "What’s going on?\nComputers store numbers with a fixed number of decimal places so there’s no way to exactly represent 1/49 or sqrt(2) and subsequent computations will be very slightly off. We can see the exact values by calling print() with the digits argument:\n\nprint(x, digits = 16)\n\n[1] 0.9999999999999999 2.0000000000000004"
   },
   {
     "objectID": "slides/lec-8.html#fp-comparison-4",
     "href": "slides/lec-8.html#fp-comparison-4",
     "title": "Data transformations",
-    "section": "Solution",
-    "text": "Solution\nOne option is to use dplyr::near() which ignores small differences:\n\n\n[1] TRUE TRUE"
+    "section": "What’s going on?",
+    "text": "What’s going on?\n\nprint(x, digits = 16)\n\n[1] 0.9999999999999999 2.0000000000000004\n\n\nYou can see why R defaults to rounding these numbers; they really are very close to what you expect.\nNow that you’ve seen why == is failing, what can you do about it?"
   },
   {
-    "objectID": "slides/lec-8.html#sec-na-comparison-1",
-    "href": "slides/lec-8.html#sec-na-comparison-1",
+    "objectID": "slides/lec-8.html#fp-comparison-5",
+    "href": "slides/lec-8.html#fp-comparison-5",
+    "title": "Data transformations",
+    "section": "Solution",
+    "text": "Solution\nOne option is to use dplyr::near() which ignores small differences:\n\nnear(x, c(1, 2))\n\n[1] TRUE TRUE"
+  },
+  {
+    "objectID": "slides/lec-8.html#sec-missing-values-1",
+    "href": "slides/lec-8.html#sec-missing-values-1",
     "title": "Data transformations",
     "section": "Missing values",
     "text": "Missing values\nMissing values represent the unknown so they are “contagious”: almost any operation involving an unknown value will also be unknown:\n\nNA &gt; 5\n\n[1] NA\n\n10 == NA\n\n[1] NA\n\n\nThe most confusing result is this one:\n\nNA == NA\n\n[1] NA"
   },
   {
-    "objectID": "slides/lec-8.html#missing-values",
-    "href": "slides/lec-8.html#missing-values",
+    "objectID": "slides/lec-8.html#sec-missing-values-2",
+    "href": "slides/lec-8.html#sec-missing-values-2",
     "title": "Data transformations",
     "section": "Missing values",
-    "text": "Missing values\nIt’s easiest to understand why this is true if we artificially supply a little more context:\n\n\n[1] NA"
+    "text": "Missing values\nIt’s easiest to understand why this is true if we artificially supply a little more context:\n\n# We don't know how old Mary is\nage_mary &lt;- NA\n\n# We don't know how old John is\nage_john &lt;- NA\n\n# Are Mary and John the same age?\nage_mary == age_john\n\n[1] NA\n\n# We don't know!"
   },
   {
-    "objectID": "slides/lec-8.html#sec-na-comparison-2",
-    "href": "slides/lec-8.html#sec-na-comparison-2",
+    "objectID": "slides/lec-8.html#sec-missing-values-3",
+    "href": "slides/lec-8.html#sec-missing-values-3",
     "title": "Data transformations",
     "section": "Missing values",
-    "text": "Missing values\nSo if you want to find all flights where dep_time is missing, the following code doesn’t work because dep_time == NA will yield NA for every single row, and filter() automatically drops missing values:\n\n\n# A tibble: 0 × 19\n# ℹ 19 variables: year &lt;int&gt;, month &lt;int&gt;, day &lt;int&gt;, dep_time &lt;int&gt;,\n#   sched_dep_time &lt;int&gt;, dep_delay &lt;dbl&gt;, arr_time &lt;int&gt;,\n#   sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
+    "text": "Missing values\nSo if you want to find all flights where dep_time is missing, the following code doesn’t work because dep_time == NA will yield NA for every single row, and filter() automatically drops missing values:\n\nflights |&gt; \n  filter(dep_time == NA)\n\n# A tibble: 0 × 19\n# ℹ 19 variables: year &lt;int&gt;, month &lt;int&gt;, day &lt;int&gt;, dep_time &lt;int&gt;,\n#   sched_dep_time &lt;int&gt;, dep_delay &lt;dbl&gt;, arr_time &lt;int&gt;,\n#   sched_arr_time &lt;int&gt;, arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
   },
   {
-    "objectID": "slides/lec-8.html#sec-na-comparison-3",
-    "href": "slides/lec-8.html#sec-na-comparison-3",
+    "objectID": "slides/lec-8.html#sec-missing-values-4",
+    "href": "slides/lec-8.html#sec-missing-values-4",
     "title": "Data transformations",
     "section": "Missing values",
-    "text": "Missing values\nInstead we’ll need a new tool: is.na().\nis.na(x) works with any type of vector and returns TRUE for missing values and FALSE for everything else:\n\n\n[1] FALSE  TRUE FALSE\n\n\n[1] FALSE  TRUE FALSE\n\n\n[1] FALSE  TRUE FALSE"
+    "text": "Missing values\nInstead we’ll need a new tool: is.na().\nis.na(x) works with any type of vector and returns TRUE for missing values and FALSE for everything else:\n\nis.na(c(TRUE, NA, FALSE))\n\n[1] FALSE  TRUE FALSE\n\nis.na(c(1, NA, 3))\n\n[1] FALSE  TRUE FALSE\n\nis.na(c(\"a\", NA, \"b\"))\n\n[1] FALSE  TRUE FALSE"
   },
   {
-    "objectID": "slides/lec-8.html#sec-na-comparison-4",
-    "href": "slides/lec-8.html#sec-na-comparison-4",
+    "objectID": "slides/lec-8.html#sec-missing-values-5",
+    "href": "slides/lec-8.html#sec-missing-values-5",
     "title": "Data transformations",
     "section": "Missing values",
-    "text": "Missing values\nWe can use is.na() to find all the rows with a missing dep_time:\n\n\n# A tibble: 8,255 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1       NA           1630        NA       NA           1815\n 2  2013     1     1       NA           1935        NA       NA           2240\n 3  2013     1     1       NA           1500        NA       NA           1825\n 4  2013     1     1       NA            600        NA       NA            901\n 5  2013     1     2       NA           1540        NA       NA           1747\n 6  2013     1     2       NA           1620        NA       NA           1746\n 7  2013     1     2       NA           1355        NA       NA           1459\n 8  2013     1     2       NA           1420        NA       NA           1644\n 9  2013     1     2       NA           1321        NA       NA           1536\n10  2013     1     2       NA           1545        NA       NA           1910\n# ℹ 8,245 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
+    "text": "Missing values\nWe can use is.na() to find all the rows with a missing dep_time:\n\nflights |&gt; \n  filter(is.na(dep_time))\n\n# A tibble: 8,255 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1       NA           1630        NA       NA           1815\n 2  2013     1     1       NA           1935        NA       NA           2240\n 3  2013     1     1       NA           1500        NA       NA           1825\n 4  2013     1     1       NA            600        NA       NA            901\n 5  2013     1     2       NA           1540        NA       NA           1747\n 6  2013     1     2       NA           1620        NA       NA           1746\n 7  2013     1     2       NA           1355        NA       NA           1459\n 8  2013     1     2       NA           1420        NA       NA           1644\n 9  2013     1     2       NA           1321        NA       NA           1536\n10  2013     1     2       NA           1545        NA       NA           1910\n# ℹ 8,245 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
   },
   {
-    "objectID": "slides/lec-8.html#sec-na-comparison-5",
-    "href": "slides/lec-8.html#sec-na-comparison-5",
+    "objectID": "slides/lec-8.html#sec-missing-values-6",
+    "href": "slides/lec-8.html#sec-missing-values-6",
     "title": "Data transformations",
     "section": "Missing values",
-    "text": "Missing values\nis.na() can also be useful in arrange(). arrange() usually puts all the missing values at the end but you can override this default by first sorting by is.na():\n\n\n# A tibble: 842 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            600        -6      812            837\n 6  2013     1     1      554            558        -4      740            728\n 7  2013     1     1      555            600        -5      913            854\n 8  2013     1     1      557            600        -3      709            723\n 9  2013     1     1      557            600        -3      838            846\n10  2013     1     1      558            600        -2      753            745\n# ℹ 832 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\n# A tibble: 842 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1       NA           1630        NA       NA           1815\n 2  2013     1     1       NA           1935        NA       NA           2240\n 3  2013     1     1       NA           1500        NA       NA           1825\n 4  2013     1     1       NA            600        NA       NA            901\n 5  2013     1     1      517            515         2      830            819\n 6  2013     1     1      533            529         4      850            830\n 7  2013     1     1      542            540         2      923            850\n 8  2013     1     1      544            545        -1     1004           1022\n 9  2013     1     1      554            600        -6      812            837\n10  2013     1     1      554            558        -4      740            728\n# ℹ 832 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;\n\n\nWe’ll come back to cover missing values in more depth in ?@sec-missing-values."
+    "text": "Missing values\nis.na() can also be useful in arrange(). arrange() usually puts all the missing values at the end but you can override this default by first sorting by is.na():\n\nflights |&gt; \n  filter(month == 1, day == 1) |&gt; \n  arrange(dep_time)\n\n# A tibble: 842 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            600        -6      812            837\n 6  2013     1     1      554            558        -4      740            728\n 7  2013     1     1      555            600        -5      913            854\n 8  2013     1     1      557            600        -3      709            723\n 9  2013     1     1      557            600        -3      838            846\n10  2013     1     1      558            600        -2      753            745\n# ℹ 832 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
   },
   {
-    "objectID": "slides/lec-8.html#sec-na-boolean-1",
-    "href": "slides/lec-8.html#sec-na-boolean-1",
+    "objectID": "slides/lec-8.html#sec-missing-values-7",
+    "href": "slides/lec-8.html#sec-missing-values-7",
     "title": "Data transformations",
     "section": "Missing values",
-    "text": "Missing values\nThe rules for missing values in Boolean algebra are a little tricky to explain because they seem inconsistent at first glance:\n\n\n# A tibble: 3 × 3\n  x     and   or   \n  &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;\n1 TRUE  NA    TRUE \n2 FALSE FALSE NA   \n3 NA    NA    NA   \n\n\nTo understand what’s going on, think about NA | TRUE (NA or TRUE). A missing value in a logical vector means that the value could either be TRUE or FALSE. TRUE | TRUE and FALSE | TRUE are both TRUE because at least one of them is TRUE. NA | TRUE must also be TRUE because NA can either be TRUE or FALSE. However, NA | FALSE is NA because we don’t know if NA is TRUE or FALSE. Similar reasoning applies with NA & FALSE."
+    "text": "Missing values\nis.na() can also be useful in arrange(). arrange() usually puts all the missing values at the end but you can override this default by first sorting by is.na():\n\nflights |&gt;    \n  filter(month == 1, day == 1) |&gt;    \n  arrange(desc(is.na(dep_time)), dep_time)\n\n# A tibble: 842 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1       NA           1630        NA       NA           1815\n 2  2013     1     1       NA           1935        NA       NA           2240\n 3  2013     1     1       NA           1500        NA       NA           1825\n 4  2013     1     1       NA            600        NA       NA            901\n 5  2013     1     1      517            515         2      830            819\n 6  2013     1     1      533            529         4      850            830\n 7  2013     1     1      542            540         2      923            850\n 8  2013     1     1      544            545        -1     1004           1022\n 9  2013     1     1      554            600        -6      812            837\n10  2013     1     1      554            558        -4      740            728\n# ℹ 832 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
   },
   {
-    "objectID": "slides/lec-8.html#sec-order-operations-boolean-1",
-    "href": "slides/lec-8.html#sec-order-operations-boolean-1",
+    "objectID": "slides/lec-8.html#sec-missing-values-8",
+    "href": "slides/lec-8.html#sec-missing-values-8",
+    "title": "Data transformations",
+    "section": "Missing values",
+    "text": "Missing values\nThe rules for missing values in Boolean algebra are a little tricky to explain because they seem inconsistent at first glance:\n\ndf &lt;- tibble(x = c(TRUE, FALSE, NA))\ndf |&gt; \n  mutate(\n    and = x & NA,\n    or = x | NA\n  )\n\n# A tibble: 3 × 3\n  x     and   or   \n  &lt;lgl&gt; &lt;lgl&gt; &lt;lgl&gt;\n1 TRUE  NA    TRUE \n2 FALSE FALSE NA   \n3 NA    NA    NA"
+  },
+  {
+    "objectID": "slides/lec-8.html#sec-missing-values-9",
+    "href": "slides/lec-8.html#sec-missing-values-9",
+    "title": "Data transformations",
+    "section": "Missing values",
+    "text": "Missing values\nTo understand what’s going on, think about NA | TRUE (NA or TRUE).\nA missing value in a logical vector means that the value could either be TRUE or FALSE.\n\nTRUE | TRUE and FALSE | TRUE are both TRUE because at least one of them is TRUE.\nNA | TRUE must also be TRUE because NA can either be TRUE or FALSE.\nHowever, NA | FALSE is NA because we don’t know if NA is TRUE or FALSE.\nSimilar reasoning applies with NA & FALSE."
+  },
+  {
+    "objectID": "slides/lec-8.html#sec-order-operations-1",
+    "href": "slides/lec-8.html#sec-order-operations-1",
     "title": "Data transformations",
     "section": "Order of operations",
-    "text": "Order of operations\nNote that the order of operations doesn’t work like English. Take the following code that finds all flights that departed in November or December:"
+    "text": "Order of operations\nNote that the order of operations doesn’t work like English. Take the following code that finds all flights that departed in November or December:\n\nflights |&gt; \n   filter(month == 11 | month == 12)"
   },
   {
-    "objectID": "slides/lec-8.html#sec-order-operations-boolean-2",
-    "href": "slides/lec-8.html#sec-order-operations-boolean-2",
+    "objectID": "slides/lec-8.html#sec-order-operations-2",
+    "href": "slides/lec-8.html#sec-order-operations-2",
     "title": "Data transformations",
     "section": "Order of operations",
-    "text": "Order of operations\nYou might be tempted to write it like you’d say in English: “Find all flights that departed in November or December.”:\n\n\n# A tibble: 336,776 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            600        -6      812            837\n 6  2013     1     1      554            558        -4      740            728\n 7  2013     1     1      555            600        -5      913            854\n 8  2013     1     1      557            600        -3      709            723\n 9  2013     1     1      557            600        -3      838            846\n10  2013     1     1      558            600        -2      753            745\n# ℹ 336,766 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
+    "text": "Order of operations\nYou might be tempted to write it like you’d say in English: “Find all flights that departed in November or December.”:\n\nflights |&gt; \n   filter(month == 11 | 12)\n\n# A tibble: 336,776 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      517            515         2      830            819\n 2  2013     1     1      533            529         4      850            830\n 3  2013     1     1      542            540         2      923            850\n 4  2013     1     1      544            545        -1     1004           1022\n 5  2013     1     1      554            600        -6      812            837\n 6  2013     1     1      554            558        -4      740            728\n 7  2013     1     1      555            600        -5      913            854\n 8  2013     1     1      557            600        -3      709            723\n 9  2013     1     1      557            600        -3      838            846\n10  2013     1     1      558            600        -2      753            745\n# ℹ 336,766 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
   },
   {
-    "objectID": "slides/lec-8.html#order-of-operations",
-    "href": "slides/lec-8.html#order-of-operations",
+    "objectID": "slides/lec-8.html#sec-order-operations-3",
+    "href": "slides/lec-8.html#sec-order-operations-3",
     "title": "Data transformations",
     "section": "Order of operations",
-    "text": "Order of operations\nThis code doesn’t error but it also doesn’t seem to have worked.\nWhat’s going on?\nHere, R first evaluates month == 11 creating a logical vector, which we call nov. It computes nov | 12. When you use a number with a logical operator it converts everything apart from 0 to TRUE, so this is equivalent to nov | TRUE which will always be TRUE, so every row will be selected:\n\n\n# A tibble: 336,776 × 3\n   month nov   final\n   &lt;int&gt; &lt;lgl&gt; &lt;lgl&gt;\n 1     1 FALSE TRUE \n 2     1 FALSE TRUE \n 3     1 FALSE TRUE \n 4     1 FALSE TRUE \n 5     1 FALSE TRUE \n 6     1 FALSE TRUE \n 7     1 FALSE TRUE \n 8     1 FALSE TRUE \n 9     1 FALSE TRUE \n10     1 FALSE TRUE \n# ℹ 336,766 more rows"
+    "text": "Order of operations\nThis code doesn’t error but it also doesn’t seem to have worked.\n\nWhat’s going on?\nHere, R first evaluates month == 11 creating a logical vector, which we call nov."
+  },
+  {
+    "objectID": "slides/lec-8.html#sec-order-operations-4",
+    "href": "slides/lec-8.html#sec-order-operations-4",
+    "title": "Data transformations",
+    "section": "Order of operations",
+    "text": "Order of operations\nIt computes nov | 12. When you use a number with a logical operator it converts everything apart from 0 to TRUE, so this is equivalent to nov | TRUE which will always be TRUE, so every row will be selected:\n\nflights |&gt; \n  mutate(\n    nov = month == 11,\n    final = nov | 12,\n    .keep = \"used\"\n  )\n\n# A tibble: 336,776 × 3\n   month nov   final\n   &lt;int&gt; &lt;lgl&gt; &lt;lgl&gt;\n 1     1 FALSE TRUE \n 2     1 FALSE TRUE \n 3     1 FALSE TRUE \n 4     1 FALSE TRUE \n 5     1 FALSE TRUE \n 6     1 FALSE TRUE \n 7     1 FALSE TRUE \n 8     1 FALSE TRUE \n 9     1 FALSE TRUE \n10     1 FALSE TRUE \n# ℹ 336,766 more rows"
   },
   {
     "objectID": "slides/lec-8.html#in-part-1",
     "href": "slides/lec-8.html#in-part-1",
     "title": "Data transformations",
     "section": "%in%",
-    "text": "%in%\nAn easy way to avoid the problem of getting your ==s and |s in the right order is to use %in%. x %in% y returns a logical vector the same length as x that is TRUE whenever a value in x is anywhere in y .\n\n\n [1]  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE\n\n\n [1]  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE"
+    "text": "%in%\nAn easy way to avoid the problem of getting your ==s and |s in the right order is to use %in%. x %in% y returns a logical vector the same length as x that is TRUE whenever a value in x is anywhere in y .\n\n1:12 %in% c(1, 5, 11)\n\n [1]  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE\n\nletters[1:10] %in% c(\"a\", \"e\", \"i\", \"o\", \"u\")\n\n [1]  TRUE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE FALSE"
   },
   {
     "objectID": "slides/lec-8.html#in-part-2",
     "href": "slides/lec-8.html#in-part-2",
     "title": "Data transformations",
     "section": "%in%",
-    "text": "%in%\nSo to find all flights in November and December we could write:"
+    "text": "%in%\nSo to find all flights in November and December we could write:\n\nflights |&gt; \n  filter(month %in% c(11, 12))"
   },
   {
     "objectID": "slides/lec-8.html#in-part-3",
     "href": "slides/lec-8.html#in-part-3",
     "title": "Data transformations",
     "section": "%in%",
-    "text": "%in%\nNote that %in% obeys different rules for NA to ==, as NA %in% NA is TRUE.\n\n\n[1] NA NA NA\n\n\n[1] FALSE FALSE  TRUE"
+    "text": "%in%\nNote that %in% obeys different rules for NA to ==, as NA %in% NA is TRUE."
   },
   {
     "objectID": "slides/lec-8.html#in-part-4",
     "href": "slides/lec-8.html#in-part-4",
     "title": "Data transformations",
     "section": "%in%",
-    "text": "%in%\nThis can make for a useful shortcut:\n\n\n# A tibble: 8,803 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      800            800         0     1022           1014\n 2  2013     1     1      800            810       -10      949            955\n 3  2013     1     1       NA           1630        NA       NA           1815\n 4  2013     1     1       NA           1935        NA       NA           2240\n 5  2013     1     1       NA           1500        NA       NA           1825\n 6  2013     1     1       NA            600        NA       NA            901\n 7  2013     1     2      800            810       -10     1102           1116\n 8  2013     1     2       NA           1540        NA       NA           1747\n 9  2013     1     2       NA           1620        NA       NA           1746\n10  2013     1     2       NA           1355        NA       NA           1459\n# ℹ 8,793 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
+    "text": "%in%\nThis can make for a useful shortcut:\n\nflights |&gt; \n  filter(dep_time %in% c(NA, 0800))\n\n# A tibble: 8,803 × 19\n    year month   day dep_time sched_dep_time dep_delay arr_time sched_arr_time\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;    &lt;int&gt;          &lt;int&gt;     &lt;dbl&gt;    &lt;int&gt;          &lt;int&gt;\n 1  2013     1     1      800            800         0     1022           1014\n 2  2013     1     1      800            810       -10      949            955\n 3  2013     1     1       NA           1630        NA       NA           1815\n 4  2013     1     1       NA           1935        NA       NA           2240\n 5  2013     1     1       NA           1500        NA       NA           1825\n 6  2013     1     1       NA            600        NA       NA            901\n 7  2013     1     2      800            810       -10     1102           1116\n 8  2013     1     2       NA           1540        NA       NA           1747\n 9  2013     1     2       NA           1620        NA       NA           1746\n10  2013     1     2       NA           1355        NA       NA           1459\n# ℹ 8,793 more rows\n# ℹ 11 more variables: arr_delay &lt;dbl&gt;, carrier &lt;chr&gt;, flight &lt;int&gt;,\n#   tailnum &lt;chr&gt;, origin &lt;chr&gt;, dest &lt;chr&gt;, air_time &lt;dbl&gt;, distance &lt;dbl&gt;,\n#   hour &lt;dbl&gt;, minute &lt;dbl&gt;, time_hour &lt;dttm&gt;"
   },
   {
-    "objectID": "slides/lec-8.html#sec-logical-summaries",
-    "href": "slides/lec-8.html#sec-logical-summaries",
+    "objectID": "slides/lec-8.html#sec-logical-summaries-1",
+    "href": "slides/lec-8.html#sec-logical-summaries-1",
     "title": "Data transformations",
     "section": "Logical summaries",
     "text": "Logical summaries\nThere are two main logical summaries:\n\nany(x) is the equivalent of |; it’ll return TRUE if there are any TRUE’s in x.\nall(x) is equivalent of &; it’ll return TRUE only if all values of x are TRUE’s.\n\nLike all summary functions, they’ll return NA if there are any missing values present\nYou can make the missing values go away with na.rm = TRUE."
@@ -277,21 +305,28 @@
     "href": "slides/lec-8.html#sec-logical-summaries-2",
     "title": "Data transformations",
     "section": "Logical summaries",
-    "text": "Logical summaries\nFor example, we could use all() and any() to find out if every flight was delayed on departure by at most an hour or if any flights were delayed on arrival by five hours or more. And using group_by() allows us to do that by day:\n\n\n# A tibble: 365 × 5\n    year month   day all_delayed any_long_delay\n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;lgl&gt;       &lt;lgl&gt;         \n 1  2013     1     1 FALSE       TRUE          \n 2  2013     1     2 FALSE       TRUE          \n 3  2013     1     3 FALSE       FALSE         \n 4  2013     1     4 FALSE       FALSE         \n 5  2013     1     5 FALSE       TRUE          \n 6  2013     1     6 FALSE       FALSE         \n 7  2013     1     7 FALSE       TRUE          \n 8  2013     1     8 FALSE       FALSE         \n 9  2013     1     9 FALSE       TRUE          \n10  2013     1    10 FALSE       TRUE          \n# ℹ 355 more rows"
+    "text": "Logical summaries\nFor example, we could use all() and any() to find out if every flight was delayed on departure by at most an hour or if any flights were delayed on arrival by five hours or more. And using group_by() allows us to do that by day:\n\nflights |&gt; \n  group_by(year, month, day) |&gt; \n  summarize(\n    all_delayed = all(dep_delay &lt;= 60, na.rm = TRUE),\n    any_long_delay = any(arr_delay &gt;= 300, na.rm = TRUE),\n    .groups = \"drop\"\n  )\n\n# A tibble: 365 × 5\n    year month   day all_delayed any_long_delay\n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;lgl&gt;       &lt;lgl&gt;         \n 1  2013     1     1 FALSE       TRUE          \n 2  2013     1     2 FALSE       TRUE          \n 3  2013     1     3 FALSE       FALSE         \n 4  2013     1     4 FALSE       FALSE         \n 5  2013     1     5 FALSE       TRUE          \n 6  2013     1     6 FALSE       FALSE         \n 7  2013     1     7 FALSE       TRUE          \n 8  2013     1     8 FALSE       FALSE         \n 9  2013     1     9 FALSE       TRUE          \n10  2013     1    10 FALSE       TRUE          \n# ℹ 355 more rows"
   },
   {
-    "objectID": "slides/lec-8.html#logical-summaries",
-    "href": "slides/lec-8.html#logical-summaries",
+    "objectID": "slides/lec-8.html#sec-logical-summaries-3",
+    "href": "slides/lec-8.html#sec-logical-summaries-3",
     "title": "Data transformations",
     "section": "Logical summaries",
     "text": "Logical summaries\nIn most cases, however, any() and all() are a little too crude, and it would be nice to be able to get a little more detail about how many values are TRUE or FALSE.\nThat leads us to the numeric summaries."
   },
   {
-    "objectID": "slides/lec-8.html#sec-numeric-summaries-of-logicals",
-    "href": "slides/lec-8.html#sec-numeric-summaries-of-logicals",
+    "objectID": "slides/lec-8.html#sec-numeric-summaries-of-logicals-1",
+    "href": "slides/lec-8.html#sec-numeric-summaries-of-logicals-1",
     "title": "Data transformations",
     "section": "Numeric summaries of logical vectors",
-    "text": "Numeric summaries of logical vectors\nWhen you use a logical vector in a numeric context, TRUE becomes 1 and FALSE becomes 0.\nThis makes sum() and mean() very useful\n\nsum(x) gives the number of TRUEs\nmean(x) gives the proportion of TRUEs (because mean() is just sum() divided by length()).\n\nThat, for example, allows us to see the proportion of flights that were delayed on departure by at most an hour and the number of flights that were delayed on arrival by five hours or more:\n\n\n# A tibble: 365 × 5\n    year month   day proportion_delayed count_long_delay\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;              &lt;dbl&gt;            &lt;int&gt;\n 1  2013     1     1              0.939                3\n 2  2013     1     2              0.914                3\n 3  2013     1     3              0.941                0\n 4  2013     1     4              0.953                0\n 5  2013     1     5              0.964                1\n 6  2013     1     6              0.959                0\n 7  2013     1     7              0.956                1\n 8  2013     1     8              0.975                0\n 9  2013     1     9              0.986                1\n10  2013     1    10              0.977                2\n# ℹ 355 more rows"
+    "text": "Numeric summaries of logical vectors\nWhen you use a logical vector in a numeric context, TRUE becomes 1 and FALSE becomes 0.\nThis makes sum() and mean() very useful\n\nsum(x) gives the number of TRUEs\nmean(x) gives the proportion of TRUEs (because mean() is just sum() divided by length())."
+  },
+  {
+    "objectID": "slides/lec-8.html#sec-numeric-summaries-of-logicals-2",
+    "href": "slides/lec-8.html#sec-numeric-summaries-of-logicals-2",
+    "title": "Data transformations",
+    "section": "Numeric summaries of logical vectors",
+    "text": "Numeric summaries of logical vectors\nThat, for example, allows us to see the proportion of flights that were delayed on departure by at most an hour and the number of flights that were delayed on arrival by five hours or more:\n\n\n# A tibble: 365 × 5\n    year month   day proportion_delayed count_long_delay\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;              &lt;dbl&gt;            &lt;int&gt;\n 1  2013     1     1              0.939                3\n 2  2013     1     2              0.914                3\n 3  2013     1     3              0.941                0\n 4  2013     1     4              0.953                0\n 5  2013     1     5              0.964                1\n 6  2013     1     6              0.959                0\n 7  2013     1     7              0.956                1\n 8  2013     1     8              0.975                0\n 9  2013     1     9              0.986                1\n10  2013     1    10              0.977                2\n# ℹ 355 more rows"
   },
   {
     "objectID": "slides/lec-8.html#sec-logical-subsetting-1",
@@ -333,60 +368,60 @@
     "href": "slides/lec-8.html#sec-if_else-2",
     "title": "Data transformations",
     "section": "if_else()",
-    "text": "if_else()\nLet’s begin with a simple example of labeling a numeric vector as either “+ve” (positive) or “-ve” (negative):\n\n\n[1] \"-ve\" \"-ve\" \"-ve\" \"-ve\" \"+ve\" \"+ve\" \"+ve\" NA"
+    "text": "if_else()\nLet’s begin with a simple example of labeling a numeric vector as either “+ve” (positive) or “-ve” (negative):\n\nx &lt;- c(-3:3, NA)\nif_else(x &gt; 0, \"+ve\", \"-ve\")\n\n[1] \"-ve\" \"-ve\" \"-ve\" \"-ve\" \"+ve\" \"+ve\" \"+ve\" NA"
   },
   {
     "objectID": "slides/lec-8.html#sec-if_else-3",
     "href": "slides/lec-8.html#sec-if_else-3",
     "title": "Data transformations",
     "section": "if_else()",
-    "text": "if_else()\nThere’s an optional fourth argument, missing which will be used if the input is NA:\n\n\n[1] \"-ve\" \"-ve\" \"-ve\" \"-ve\" \"+ve\" \"+ve\" \"+ve\" \"???\""
+    "text": "if_else()\nThere’s an optional fourth argument, missing which will be used if the input is NA:\n\nif_else(x &gt; 0, \"+ve\", \"-ve\", \"???\")\n\n[1] \"-ve\" \"-ve\" \"-ve\" \"-ve\" \"+ve\" \"+ve\" \"+ve\" \"???\""
   },
   {
     "objectID": "slides/lec-8.html#sec-if_else-4",
     "href": "slides/lec-8.html#sec-if_else-4",
     "title": "Data transformations",
     "section": "if_else()",
-    "text": "if_else()\nYou can also use vectors for the true and false arguments. For example, this allows us to create a minimal implementation of abs():\n\n\n[1]  3  2  1  0  1  2  3 NA"
+    "text": "if_else()\nYou can also use vectors for the true and false arguments. For example, this allows us to create a minimal implementation of abs():\n\nif_else(x &lt; 0, -x, x)\n\n[1]  3  2  1  0  1  2  3 NA"
   },
   {
     "objectID": "slides/lec-8.html#sec-case_when-1",
     "href": "slides/lec-8.html#sec-case_when-1",
     "title": "Data transformations",
     "section": "case_when()",
-    "text": "case_when()\nSyntax to recreate our nested if_else() as follows:\n\n\n[1] \"-ve\" \"-ve\" \"-ve\" NA    \"+ve\" \"+ve\" \"+ve\" NA"
+    "text": "case_when()\nSyntax to recreate our nested if_else() as follows:\n\ncase_when(\n  x &lt; 0 ~ \"-ve\",\n  x &gt; 0 ~ \"+ve\"\n)\n\n[1] \"-ve\" \"-ve\" \"-ve\" NA    \"+ve\" \"+ve\" \"+ve\" NA"
   },
   {
     "objectID": "slides/lec-8.html#sec-case_when-2",
     "href": "slides/lec-8.html#sec-case_when-2",
     "title": "Data transformations",
     "section": "case_when()",
-    "text": "case_when()\nUse .default if you want to create a “default”/catch all value:\n\n\n[1] \"-ve\" \"-ve\" \"-ve\" \"???\" \"+ve\" \"+ve\" \"+ve\" \"???\""
+    "text": "case_when()\nUse .default if you want to create a “default”/catch all value:\n\ncase_when(\n  x &lt; 0 ~ \"-ve\",\n  x &gt; 0 ~ \"+ve\",\n  .default = \"???\"\n)\n\n[1] \"-ve\" \"-ve\" \"-ve\" \"???\" \"+ve\" \"+ve\" \"+ve\" \"???\""
   },
   {
     "objectID": "slides/lec-8.html#sec-case_when-3",
     "href": "slides/lec-8.html#sec-case_when-3",
     "title": "Data transformations",
     "section": "case_when()",
-    "text": "case_when()\nAnd note that if multiple conditions match, only the first will be used:\n\n\n[1] NA    NA    NA    NA    \"+ve\" \"+ve\" \"+ve\" NA"
+    "text": "case_when()\nAnd note that if multiple conditions match, only the first will be used:\n\ncase_when(\n  x &gt; 0 ~ \"+ve\",\n  x &gt; 2 ~ \"big\"\n)\n\n[1] NA    NA    NA    NA    \"+ve\" \"+ve\" \"+ve\" NA"
   },
   {
     "objectID": "slides/lec-8.html#sec-case_when-4",
     "href": "slides/lec-8.html#sec-case_when-4",
     "title": "Data transformations",
     "section": "case_when() example",
-    "text": "case_when() example\n\n\n# A tibble: 336,776 × 2\n   arr_delay status \n       &lt;dbl&gt; &lt;chr&gt;  \n 1        11 on time\n 2        20 late   \n 3        33 late   \n 4       -18 early  \n 5       -25 early  \n 6        12 on time\n 7        19 late   \n 8       -14 on time\n 9        -8 on time\n10         8 on time\n# ℹ 336,766 more rows\n\n\nBe wary when writing this sort of complex case_when() statement; my first two attempts used a mix of &lt; and &gt; and I kept accidentally creating overlapping conditions."
+    "text": "case_when() example\n\nflights |&gt; \n  mutate(\n    status = case_when(\n      is.na(arr_delay)      ~ \"cancelled\",\n      arr_delay &lt; -30       ~ \"very early\",\n      arr_delay &lt; -15       ~ \"early\",\n      abs(arr_delay) &lt;= 15  ~ \"on time\",\n      arr_delay &lt; 60        ~ \"late\",\n      arr_delay &lt; Inf       ~ \"very late\",\n    ),\n    .keep = \"used\"\n  )\n\n# A tibble: 336,776 × 2\n   arr_delay status \n       &lt;dbl&gt; &lt;chr&gt;  \n 1        11 on time\n 2        20 late   \n 3        33 late   \n 4       -18 early  \n 5       -25 early  \n 6        12 on time\n 7        19 late   \n 8       -14 on time\n 9        -8 on time\n10         8 on time\n# ℹ 336,766 more rows\n\n\nBe wary when writing this sort of complex case_when() statement; my first two attempts used a mix of &lt; and &gt; and I kept accidentally creating overlapping conditions."
   },
   {
-    "objectID": "slides/lec-8.html#compatible-types",
-    "href": "slides/lec-8.html#compatible-types",
+    "objectID": "slides/lec-8.html#sec-compatibility-types-1",
+    "href": "slides/lec-8.html#sec-compatibility-types-1",
     "title": "Data transformations",
     "section": "Compatible types",
-    "text": "Compatible types\nNote that both if_else() and case_when() require compatible types in the output. If they’re not compatible, you’ll see errors like this:\n\n\nError in `if_else()`:\n! Can't combine `true` &lt;character&gt; and `false` &lt;double&gt;.\n\n\nError in `case_when()`:\n! Can't combine `..1 (right)` &lt;logical&gt; and `..2 (right)` &lt;datetime&lt;local&gt;&gt;."
+    "text": "Compatible types\nNote that both if_else() and case_when() require compatible types in the output. If they’re not compatible, you’ll see errors like this:\n\nif_else(TRUE, \"a\", 1)\n\nError in `if_else()`:\n! Can't combine `true` &lt;character&gt; and `false` &lt;double&gt;.\n\ncase_when(\n  x &lt; -1 ~ TRUE,  \n  x &gt; 0  ~ now()\n)\n\nError in `case_when()`:\n! Can't combine `..1 (right)` &lt;logical&gt; and `..2 (right)` &lt;datetime&lt;local&gt;&gt;."
   },
   {
-    "objectID": "slides/lec-8.html#compatible-types-1",
-    "href": "slides/lec-8.html#compatible-types-1",
+    "objectID": "slides/lec-8.html#sec-compatibility-types-2",
+    "href": "slides/lec-8.html#sec-compatibility-types-2",
     "title": "Data transformations",
     "section": "Compatible types",
     "text": "Compatible types\nOverall, relatively few types are compatible, because automatically converting one type of vector to another is a common source of errors. Here are the most important cases that are compatible:\n\nNumeric and logical vectors are compatible.\nStrings and factors are compatible, because you can think of a factor as a string with a restricted set of values.\nDates and date-times are compatible because you can think of a date as a special case of date-time.\nNA, which is technically a logical vector, is compatible with everything because every vector has some way of representing a missing value.\n\n\n\n\nhttps://bovi-analytics.github.io/BeastsAndBytes/"
@@ -1745,29 +1780,29 @@
     "text": "Overlap joins\n\nbetween(x, y_lower, y_upper) is short for x &gt;= y_lower, x &lt;= y_upper.\nwithin(x_lower, x_upper, y_lower, y_upper) is short for x_lower &gt;= y_lower, x_upper &lt;= y_upper.\noverlaps(x_lower, x_upper, y_lower, y_upper) is short for x_lower &lt;= y_upper, x_upper &gt;= y_lower.\n\n\n\n\nhttps://bovi-analytics.github.io/BeastsAndBytes/"
   },
   {
-    "objectID": "slides/lec-9.html#setup",
-    "href": "slides/lec-9.html#setup",
+    "objectID": "slides/lec-9.html#sec-setup",
+    "href": "slides/lec-9.html#sec-setup",
     "title": "Data transformations",
     "section": "Setup",
     "text": "Setup\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
   },
   {
-    "objectID": "slides/lec-9.html#prerequisites",
-    "href": "slides/lec-9.html#prerequisites",
+    "objectID": "slides/lec-9.html#sec-prerequisites",
+    "href": "slides/lec-9.html#sec-prerequisites",
     "title": "Data transformations",
     "section": "Prerequisites",
     "text": "Prerequisites\n\nNumeric vectors are the backbone of data science\nBut we still need the tidyverse because we’ll use these base R functions inside of tidyverse functions like mutate() and filter().\n\n\nlibrary(tidyverse)\nlibrary(nycflights13)"
   },
   {
-    "objectID": "slides/lec-9.html#making-numbers",
-    "href": "slides/lec-9.html#making-numbers",
+    "objectID": "slides/lec-9.html#sec-making-numbers",
+    "href": "slides/lec-9.html#sec-making-numbers",
     "title": "Data transformations",
     "section": "Making numbers",
-    "text": "Making numbers\nIn most cases, you’ll get numbers already recorded in one of R’s numeric types: * integer * double. In some cases, however, you’ll encounter them as strings, possibly because you’ve created them by pivoting from column headers or because something has gone wrong in your data import process."
+    "text": "Making numbers\nIn most cases, you’ll get numbers already recorded in one of R’s numeric types:\n\ninteger\ndouble.\n\nIn some cases, however, you’ll encounter them as strings, possibly because you’ve created them by pivoting from column headers or because something has gone wrong in your data import process."
   },
   {
-    "objectID": "slides/lec-9.html#parsing-numbers",
-    "href": "slides/lec-9.html#parsing-numbers",
+    "objectID": "slides/lec-9.html#sec-parsing-numbers",
+    "href": "slides/lec-9.html#sec-parsing-numbers",
     "title": "Data transformations",
     "section": "Parsing numbers",
     "text": "Parsing numbers\nreadr provides two useful functions for parsing strings into numbers: parse_double() and parse_number(). Use parse_double() when you have numbers that have been written as strings:\n\n\n[1]    1.2    5.6 1000.0\n\n\nUse parse_number() when the string contains non-numeric text that you want to ignore. This is particularly useful for currency data and percentages:\n\n\n[1] 1234 3513   59"
@@ -1777,7 +1812,7 @@
     "href": "slides/lec-9.html#sec-counts-2",
     "title": "Data transformations",
     "section": "Counts",
-    "text": "Counts\nIf you want to see the most common values, add sort = TRUE:\n\n\n# A tibble: 105 × 2\n   dest      n\n   &lt;chr&gt; &lt;int&gt;\n 1 ORD   17283\n 2 ATL   17215\n 3 LAX   16174\n 4 BOS   15508\n 5 MCO   14082\n 6 CLT   14064\n 7 SFO   13331\n 8 FLL   12055\n 9 MIA   11728\n10 DCA    9705\n# ℹ 95 more rows\n\n\nIf you want to see all the values: * |&gt; View() * |&gt; print(n = Inf)."
+    "text": "Counts\nIf you want to see the most common values, add sort = TRUE:\n\n\n# A tibble: 105 × 2\n   dest      n\n   &lt;chr&gt; &lt;int&gt;\n 1 ORD   17283\n 2 ATL   17215\n 3 LAX   16174\n 4 BOS   15508\n 5 MCO   14082\n 6 CLT   14064\n 7 SFO   13331\n 8 FLL   12055\n 9 MIA   11728\n10 DCA    9705\n# ℹ 95 more rows\n\n\nIf you want to see all the values:\n\n|&gt; View()\n|&gt; print(n = Inf)."
   },
   {
     "objectID": "slides/lec-9.html#sec-counts-3",
@@ -1805,7 +1840,7 @@
     "href": "slides/lec-9.html#sec-counts-6",
     "title": "Data transformations",
     "section": "Weighted count",
-    "text": "Weighted count\nWeighted counts are a common problem so count() has a wt argument that does the same thing:\n::: {.cell}\n\n:::"
+    "text": "Weighted count\nWeighted counts are a common problem so count() has a wt argument that does the same thing:\n```{r}\n#| results: false\nflights |&gt; count(tailnum, wt = distance)\n```"
   },
   {
     "objectID": "slides/lec-9.html#sec-counts-7",
@@ -1815,85 +1850,106 @@
     "text": "Counts missing\n\nYou can count missing values by combining sum() and is.na(). In the flights dataset this represents flights that are cancelled:\n\n\n# A tibble: 105 × 2\n   dest  n_cancelled\n   &lt;chr&gt;       &lt;int&gt;\n 1 ABQ             0\n 2 ACK             0\n 3 ALB            20\n 4 ANC             0\n 5 ATL           317\n 6 AUS            21\n 7 AVL            12\n 8 BDL            31\n 9 BGR            15\n10 BHM            25\n# ℹ 95 more rows"
   },
   {
-    "objectID": "slides/lec-9.html#minimum-and-maximum",
-    "href": "slides/lec-9.html#minimum-and-maximum",
+    "objectID": "slides/lec-9.html#sec-minimum-and-maximum-1",
+    "href": "slides/lec-9.html#sec-minimum-and-maximum-1",
     "title": "Data transformations",
     "section": "Minimum and maximum",
     "text": "Minimum and maximum\nThe arithmetic functions work with pairs of variables (or columns). Two closely related functions are pmin() and pmax(), which when given two or more variables will return the smallest or largest value in each row:\n\n\n# A tibble: 3 × 4\n      x     y   min   max\n  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     1     3     1     3\n2     5     2     2     5\n3     7    NA     7     7"
   },
   {
-    "objectID": "slides/lec-9.html#minimum-and-maximum-1",
-    "href": "slides/lec-9.html#minimum-and-maximum-1",
+    "objectID": "slides/lec-9.html#sec-minimum-and-maximum-2",
+    "href": "slides/lec-9.html#sec-minimum-and-maximum-2",
     "title": "Data transformations",
     "section": "Minimum and maximum",
     "text": "Minimum and maximum\nNote that these are different to the summary functions min() and max() which take multiple observations and return a single value. You can tell that you’ve used the wrong form when all the minimums and all the maximums have the same value:\n\n\n# A tibble: 3 × 4\n      x     y   min   max\n  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;\n1     1     3     1     7\n2     5     2     1     7\n3     7    NA     1     7"
   },
   {
-    "objectID": "slides/lec-9.html#modular-arithmetic",
-    "href": "slides/lec-9.html#modular-arithmetic",
+    "objectID": "slides/lec-9.html#sec-modular-arithmetic-1",
+    "href": "slides/lec-9.html#sec-modular-arithmetic-1",
     "title": "Data transformations",
     "section": "Modular arithmetic",
     "text": "Modular arithmetic\nModular arithmetic is the technical name for the type of math you did before you learned about decimal places, i.e. division that yields a whole number and a remainder. In R, %/% does integer division and %% computes the remainder:\n\n\n [1] 0 0 1 1 1 2 2 2 3 3\n\n\n [1] 1 2 0 1 2 0 1 2 0 1"
   },
   {
-    "objectID": "slides/lec-9.html#modular-arithmetic-1",
-    "href": "slides/lec-9.html#modular-arithmetic-1",
+    "objectID": "slides/lec-9.html#sec-modular-arithmetic-2",
+    "href": "slides/lec-9.html#sec-modular-arithmetic-2",
     "title": "Data transformations",
     "section": "Modular arithmetic",
     "text": "Modular arithmetic\nModular arithmetic is handy for the flights dataset, because we can use it to unpack the sched_dep_time variable into hour and minute:\n\n\n# A tibble: 336,776 × 3\n   sched_dep_time  hour minute\n            &lt;int&gt; &lt;dbl&gt;  &lt;dbl&gt;\n 1            515     5     15\n 2            529     5     29\n 3            540     5     40\n 4            545     5     45\n 5            600     6      0\n 6            558     5     58\n 7            600     6      0\n 8            600     6      0\n 9            600     6      0\n10            600     6      0\n# ℹ 336,766 more rows"
   },
   {
-    "objectID": "slides/lec-9.html#modular-arithmetic-2",
-    "href": "slides/lec-9.html#modular-arithmetic-2",
+    "objectID": "slides/lec-9.html#sec-modular-arithmetic-3",
+    "href": "slides/lec-9.html#sec-modular-arithmetic-3",
     "title": "Data transformations",
     "section": "Modular arithmetic",
     "text": "Modular arithmetic\nWe can combine that with the mean(is.na(x)) trick from ?@sec-logical-summaries to see how the proportion of cancelled flights varies over the course of the day. The results are shown in Figure 1.\n\n\nFigure 1: A line plot with scheduled departure hour on the x-axis, and proportion of cancelled flights on the y-axis. Cancellations seem to accumulate over the course of the day until 8pm, very late flights are much less likely to be cancelled."
   },
   {
-    "objectID": "slides/lec-9.html#three-logarithms",
-    "href": "slides/lec-9.html#three-logarithms",
+    "objectID": "slides/lec-9.html#sec-three-logarithms",
+    "href": "slides/lec-9.html#sec-three-logarithms",
     "title": "Data transformations",
     "section": "Three logarithms",
-    "text": "Three logarithms\nIn R, you have a choice of three logarithms: * log() (the natural log, base e), * log2() (base 2), * log10() (base 10)."
+    "text": "Three logarithms\nIn R, you have a choice of three logarithms:\n\nlog() (the natural log, base e),\nlog2() (base 2),\nlog10() (base 10)."
   },
   {
-    "objectID": "slides/lec-9.html#logarithm-recommendation",
-    "href": "slides/lec-9.html#logarithm-recommendation",
+    "objectID": "slides/lec-9.html#sec-logarithm-recommendation",
+    "href": "slides/lec-9.html#sec-logarithm-recommendation",
     "title": "Data transformations",
     "section": "Logarithm recommendation",
-    "text": "Logarithm recommendation\nWe recommend using log2() or log10(): * log2() is easy to interpret because a difference of 1 on the log scale corresponds to doubling on the original scale and a difference of -1 corresponds to halving; * log10() is easy to back-transform because (e.g.) 3 is 10^3 = 1000.\nThe inverse of log() is exp(); to compute the inverse of log2() or log10() you’ll need to use 2^ or 10^."
+    "text": "Logarithm recommendation\nWe recommend using log2() or log10():\n\nlog2() is easy to interpret because a difference of 1 on the log scale corresponds to doubling on the original scale and a difference of -1 corresponds to halving;\nlog10() is easy to back-transform because (e.g.) 3 is 10^3 = 1000.\n\nThe inverse of log() is exp(); to compute the inverse of log2() or log10() you’ll need to use 2^ or 10^."
   },
   {
     "objectID": "slides/lec-9.html#sec-rounding",
     "href": "slides/lec-9.html#sec-rounding",
     "title": "Data transformations",
+    "section": "Rounding",
+    "text": "Rounding\nUse round(x) to round a number to the nearest integer:\n\n\n[1] 123"
+  },
+  {
+    "objectID": "slides/lec-9.html#sec-rounding-digits",
+    "href": "slides/lec-9.html#sec-rounding-digits",
+    "title": "Data transformations",
+    "section": "Rounding digits",
+    "text": "Rounding digits\nYou can control the precision of the rounding with the second argument, digits. round(x, digits) rounds to the nearest 10^-n so digits = 2 will round to the nearest 0.01. This definition is useful because it implies round(x, -3) will round to the nearest thousand, which indeed it does:\n\n\n[1] 123.46\n\n\n[1] 123.5\n\n\n[1] 120\n\n\n[1] 100"
+  },
+  {
+    "objectID": "slides/lec-9.html#sec-rounding-digits---weirdness",
+    "href": "slides/lec-9.html#sec-rounding-digits---weirdness",
+    "title": "Data transformations",
+    "section": "Rounding digits - weirdness",
+    "text": "Rounding digits - weirdness\nThere’s one weirdness with round() that seems surprising at first glance:\n\n\n[1] 2 2\n\n\nround() uses what’s known as “round half to even” or Banker’s rounding: if a number is half way between two integers, it will be rounded to the even integer. This is a good strategy because it keeps the rounding unbiased: half of all 0.5s are rounded up, and half are rounded down."
+  },
+  {
+    "objectID": "slides/lec-9.html#sec-rounding-digits---floorceiling",
+    "href": "slides/lec-9.html#sec-rounding-digits---floorceiling",
+    "title": "Data transformations",
     "section": "Rounding digits - floor/ceiling",
     "text": "Rounding digits - floor/ceiling\nround() is paired with floor() which always rounds down and ceiling() which always rounds up:\n\n\n[1] 123\n\n\n[1] 124"
   },
   {
-    "objectID": "slides/lec-9.html#cutting-numbers-into-ranges",
-    "href": "slides/lec-9.html#cutting-numbers-into-ranges",
+    "objectID": "slides/lec-9.html#sec-cutting-numbers-into-ranges-1",
+    "href": "slides/lec-9.html#sec-cutting-numbers-into-ranges-1",
     "title": "Data transformations",
     "section": "Cutting numbers into ranges",
     "text": "Cutting numbers into ranges\nUse cut()1 to break up (aka bin) a numeric vector into discrete buckets:\n\n\n[1] (0,5]   (0,5]   (0,5]   (5,10]  (10,15] (15,20]\nLevels: (0,5] (5,10] (10,15] (15,20]\n\n\nggplot2 provides some helpers for common cases in cut_interval(), cut_number(), and cut_width(). ggplot2 is an admittedly weird place for these functions to live, but they are useful as part of histogram computation and were written before any other parts of the tidyverse existed."
   },
   {
-    "objectID": "slides/lec-9.html#cutting-numbers-into-ranges-1",
-    "href": "slides/lec-9.html#cutting-numbers-into-ranges-1",
+    "objectID": "slides/lec-9.html#sec-cutting-numbers-into-ranges-2",
+    "href": "slides/lec-9.html#sec-cutting-numbers-into-ranges-2",
     "title": "Data transformations",
     "section": "Cutting numbers into ranges",
     "text": "Cutting numbers into ranges\nThe breaks don’t need to be evenly spaced:\n\n\n[1] (0,5]    (0,5]    (0,5]    (5,10]   (10,100] (10,100]\nLevels: (0,5] (5,10] (10,100]"
   },
   {
-    "objectID": "slides/lec-9.html#cutting-numbers-into-ranges-2",
-    "href": "slides/lec-9.html#cutting-numbers-into-ranges-2",
+    "objectID": "slides/lec-9.html#sec-cutting-numbers-into-ranges-3",
+    "href": "slides/lec-9.html#sec-cutting-numbers-into-ranges-3",
     "title": "Data transformations",
     "section": "Cutting numbers into ranges",
     "text": "Cutting numbers into ranges\nYou can optionally supply your own labels. Note that there should be one less labels than breaks.\n\n\n[1] sm sm sm md lg xl\nLevels: sm md lg xl"
   },
   {
-    "objectID": "slides/lec-9.html#cutting-numbers-into-ranges-3",
-    "href": "slides/lec-9.html#cutting-numbers-into-ranges-3",
+    "objectID": "slides/lec-9.html#sec-cutting-numbers-into-ranges-4",
+    "href": "slides/lec-9.html#sec-cutting-numbers-into-ranges-4",
     "title": "Data transformations",
     "section": "Cutting numbers into ranges",
     "text": "Cutting numbers into ranges\nAny values outside of the range of the breaks will become NA:\n\n\n[1] &lt;NA&gt;   &lt;NA&gt;   (0,5]  (5,10] &lt;NA&gt;  \nLevels: (0,5] (5,10] (10,15] (15,20]\n\n\nSee the documentation for other useful arguments like right and include.lowest, which control if the intervals are [a, b) or (a, b] and if the lowest interval should be [a, b]."
@@ -1906,106 +1962,120 @@
     "text": "Cumulative and rolling aggregates\nBase R provides cumsum(), cumprod(), cummin(), cummax() for running, or cumulative, sums, products, mins and maxes. dplyr provides cummean() for cumulative means. Cumulative sums tend to come up the most in practice:\n\n\n [1]  1  3  6 10 15 21 28 36 45 55\n\n\nIf you need more complex rolling or sliding aggregates, try the slider package."
   },
   {
-    "objectID": "slides/lec-9.html#ranks",
-    "href": "slides/lec-9.html#ranks",
+    "objectID": "slides/lec-9.html#sec-ranks-1",
+    "href": "slides/lec-9.html#sec-ranks-1",
     "title": "Data transformations",
     "section": "Ranks",
     "text": "Ranks\ndplyr provides a number of ranking functions inspired by SQL, but you should always start with dplyr::min_rank(). It uses the typical method for dealing with ties, e.g., 1st, 2nd, 2nd, 4th.\n\n\n[1]  1  2  2  4  5 NA"
   },
   {
-    "objectID": "slides/lec-9.html#ranks-1",
-    "href": "slides/lec-9.html#ranks-1",
+    "objectID": "slides/lec-9.html#sec-ranks-2",
+    "href": "slides/lec-9.html#sec-ranks-2",
     "title": "Data transformations",
     "section": "Ranks",
     "text": "Ranks\nNote that the smallest values get the lowest ranks; use desc(x) to give the largest values the smallest ranks:\n\n\n[1]  5  3  3  2  1 NA"
   },
   {
-    "objectID": "slides/lec-9.html#ranks-alternatives",
-    "href": "slides/lec-9.html#ranks-alternatives",
+    "objectID": "slides/lec-9.html#sec-ranks-alternatives",
+    "href": "slides/lec-9.html#sec-ranks-alternatives",
     "title": "Data transformations",
     "section": "Ranks alternatives",
     "text": "Ranks alternatives\nIf min_rank() doesn’t do what you need, look at the variants dplyr::row_number(), dplyr::dense_rank(), dplyr::percent_rank(), and dplyr::cume_dist(). See the documentation for details.\n\n\n# A tibble: 6 × 5\n      x row_number dense_rank percent_rank cume_dist\n  &lt;dbl&gt;      &lt;int&gt;      &lt;int&gt;        &lt;dbl&gt;     &lt;dbl&gt;\n1     1          1          1         0          0.2\n2     2          2          2         0.25       0.6\n3     2          3          2         0.25       0.6\n4     3          4          3         0.75       0.8\n5     4          5          4         1          1  \n6    NA         NA         NA        NA         NA"
   },
   {
-    "objectID": "slides/lec-9.html#offsets",
-    "href": "slides/lec-9.html#offsets",
+    "objectID": "slides/lec-9.html#sec-offsets",
+    "href": "slides/lec-9.html#sec-offsets",
     "title": "Data transformations",
     "section": "Offsets",
     "text": "Offsets\ndplyr::lead() and dplyr::lag() allow you to refer to the values just before or just after the “current” value. They return a vector of the same length as the input, padded with NAs at the start or end:\n\n\n[1] NA  2  5 11 11 19\n\n\n[1]  5 11 11 19 35 NA"
   },
   {
-    "objectID": "slides/lec-9.html#offsets---lag",
-    "href": "slides/lec-9.html#offsets---lag",
+    "objectID": "slides/lec-9.html#sec-offsets---lag",
+    "href": "slides/lec-9.html#sec-offsets---lag",
     "title": "Data transformations",
     "section": "Offsets - lag",
     "text": "Offsets - lag\n\nx - lag(x) gives you the difference between the current and previous value.\n\n\n[1] NA  3  6  0  8 16\n\n\nx == lag(x) tells you when the current value changes.\n\n\n[1]    NA FALSE FALSE  TRUE FALSE FALSE\n\n\n\nYou can lead or lag by more than one position by using the second argument, n."
   },
   {
-    "objectID": "slides/lec-9.html#consecutive-identifiers",
-    "href": "slides/lec-9.html#consecutive-identifiers",
+    "objectID": "slides/lec-9.html#sec-consecutive-identifiers-1",
+    "href": "slides/lec-9.html#sec-consecutive-identifiers-1",
     "title": "Data transformations",
     "section": "Consecutive identifiers",
     "text": "Consecutive identifiers\nSometimes you want to start a new group every time some event occurs. For example, when you’re looking at website data, it’s common to want to break up events into sessions, where you begin a new session after a gap of more than x minutes since the last activity. For example, imagine you have the times when someone visited a website:"
   },
   {
-    "objectID": "slides/lec-9.html#consecutive-identifiers-1",
-    "href": "slides/lec-9.html#consecutive-identifiers-1",
+    "objectID": "slides/lec-9.html#sec-consecutive-identifiers-2",
+    "href": "slides/lec-9.html#sec-consecutive-identifiers-2",
     "title": "Data transformations",
     "section": "Consecutive identifiers",
     "text": "Consecutive identifiers\nAnd you’ve computed the time between each event, and figured out if there’s a gap that’s big enough to qualify:\n\n\n# A tibble: 14 × 3\n    time  diff has_gap\n   &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;  \n 1     0     0 FALSE  \n 2     1     1 FALSE  \n 3     2     1 FALSE  \n 4     3     1 FALSE  \n 5     5     2 FALSE  \n 6    10     5 TRUE   \n 7    12     2 FALSE  \n 8    15     3 FALSE  \n 9    17     2 FALSE  \n10    19     2 FALSE  \n11    20     1 FALSE  \n12    27     7 TRUE   \n13    28     1 FALSE  \n14    30     2 FALSE"
   },
   {
-    "objectID": "slides/lec-9.html#consecutive-identifiers-2",
-    "href": "slides/lec-9.html#consecutive-identifiers-2",
+    "objectID": "slides/lec-9.html#sec-consecutive-identifiers-3",
+    "href": "slides/lec-9.html#sec-consecutive-identifiers-3",
     "title": "Data transformations",
     "section": "Consecutive identifiers",
     "text": "Consecutive identifiers\nBut how do we go from that logical vector to something that we can group_by()? cumsum(), from Section 5.11, comes to the rescue as gap, i.e. has_gap is TRUE, will increment group by one (?@sec-numeric-summaries-of-logicals):\n\n\n# A tibble: 14 × 4\n    time  diff has_gap group\n   &lt;dbl&gt; &lt;dbl&gt; &lt;lgl&gt;   &lt;int&gt;\n 1     0     0 FALSE       0\n 2     1     1 FALSE       0\n 3     2     1 FALSE       0\n 4     3     1 FALSE       0\n 5     5     2 FALSE       0\n 6    10     5 TRUE        1\n 7    12     2 FALSE       1\n 8    15     3 FALSE       1\n 9    17     2 FALSE       1\n10    19     2 FALSE       1\n11    20     1 FALSE       1\n12    27     7 TRUE        2\n13    28     1 FALSE       2\n14    30     2 FALSE       2"
   },
   {
-    "objectID": "slides/lec-9.html#consecutive-identifiers-3",
-    "href": "slides/lec-9.html#consecutive-identifiers-3",
+    "objectID": "slides/lec-9.html#sec-consecutive-identifiers-4",
+    "href": "slides/lec-9.html#sec-consecutive-identifiers-4",
     "title": "Data transformations",
     "section": "Consecutive identifiers",
     "text": "Consecutive identifiers\nAnother approach for creating grouping variables is consecutive_id(), which starts a new group every time one of its arguments changes. For example, inspired by this stackoverflow question, imagine you have a data frame with a bunch of repeated values:"
   },
   {
-    "objectID": "slides/lec-9.html#consecutive-identifiers-4",
-    "href": "slides/lec-9.html#consecutive-identifiers-4",
+    "objectID": "slides/lec-9.html#sec-consecutive-identifiers-5",
+    "href": "slides/lec-9.html#sec-consecutive-identifiers-5",
     "title": "Data transformations",
     "section": "Consecutive identifiers",
     "text": "Consecutive identifiers\nIf you want to keep the first row from each repeated x, you could use group_by(), consecutive_id(), and slice_head():\n\n\n# A tibble: 7 × 3\n# Groups:   id [7]\n  x         y    id\n  &lt;chr&gt; &lt;dbl&gt; &lt;int&gt;\n1 a         1     1\n2 b         2     2\n3 c         4     3\n4 d         3     4\n5 e         9     5\n6 a         4     6\n7 b        10     7"
   },
   {
-    "objectID": "slides/lec-9.html#center",
-    "href": "slides/lec-9.html#center",
+    "objectID": "slides/lec-9.html#sec-center",
+    "href": "slides/lec-9.html#sec-center",
     "title": "Data transformations",
     "section": "Center",
     "text": "Center\n\nFunction mean()\nFunction median()"
   },
   {
-    "objectID": "slides/lec-9.html#sec-min-max-summary",
-    "href": "slides/lec-9.html#sec-min-max-summary",
+    "objectID": "slides/lec-9.html#sec-minimum-maximum-and-quantiles-1",
+    "href": "slides/lec-9.html#sec-minimum-maximum-and-quantiles-1",
+    "title": "Data transformations",
+    "section": "Minimum, maximum, and quantiles",
+    "text": "Minimum, maximum, and quantiles\n\nmin() and max() will give you the largest and smallest values.\nAnother powerful tool is quantile() which is a generalization of the median:\n\nquantile(x, 0.25) will find the value of x that is greater than 25% of the values,\nquantile(x, 0.5) is equivalent to the median,\nquantile(x, 0.95) will find the value that’s greater than 95% of the values."
+  },
+  {
+    "objectID": "slides/lec-9.html#sec-minimum-maximum-and-quantiles-2",
+    "href": "slides/lec-9.html#sec-minimum-maximum-and-quantiles-2",
     "title": "Data transformations",
     "section": "Minimum, maximum, and quantiles",
     "text": "Minimum, maximum, and quantiles\nFor the flights data, you might want to look at the 95% quantile of delays rather than the maximum, because it will ignore the 5% of most delayed flights which can be quite extreme.\n\n\n# A tibble: 365 × 5\n    year month   day   max   q95\n   &lt;int&gt; &lt;int&gt; &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;\n 1  2013     1     1   853  70.1\n 2  2013     1     2   379  85  \n 3  2013     1     3   291  68  \n 4  2013     1     4   288  60  \n 5  2013     1     5   327  41  \n 6  2013     1     6   202  51  \n 7  2013     1     7   366  51.6\n 8  2013     1     8   188  35.3\n 9  2013     1     9  1301  27.2\n10  2013     1    10  1126  31  \n# ℹ 355 more rows"
   },
   {
-    "objectID": "slides/lec-9.html#variation",
-    "href": "slides/lec-9.html#variation",
+    "objectID": "slides/lec-9.html#sec-variation",
+    "href": "slides/lec-9.html#sec-variation",
     "title": "Data transformations",
     "section": "Variation",
-    "text": "Variation\nTwo commonly used summaries are * the standard deviation sd(x), * and the inter-quartile range, IQR()."
+    "text": "Variation\nTwo commonly used summaries are\n\nthe standard deviation sd(x),\nthe inter-quartile range, IQR()."
   },
   {
-    "objectID": "slides/lec-9.html#positions",
-    "href": "slides/lec-9.html#positions",
+    "objectID": "slides/lec-9.html#sec-positions",
+    "href": "slides/lec-9.html#sec-positions",
     "title": "Data transformations",
     "section": "Positions",
-    "text": "Positions\nThere’s one final type of summary that’s useful for numeric vectors, but also works with every other type of value: extracting a value at a specific position: * first(x), * last(x), and * nth(x, n).\nFor example, we can find the first, fifth and last departure for each day:\n\n\n# A tibble: 365 × 6\n# Groups:   year, month [12]\n    year month   day first_dep fifth_dep last_dep\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;int&gt;     &lt;int&gt;    &lt;int&gt;\n 1  2013     1     1       517       554     2356\n 2  2013     1     2        42       535     2354\n 3  2013     1     3        32       520     2349\n 4  2013     1     4        25       531     2358\n 5  2013     1     5        14       534     2357\n 6  2013     1     6        16       555     2355\n 7  2013     1     7        49       536     2359\n 8  2013     1     8       454       544     2351\n 9  2013     1     9         2       524     2252\n10  2013     1    10         3       530     2320\n# ℹ 355 more rows\n\n\n(NB: Because dplyr functions use _ to separate components of function and arguments names, these functions use na_rm instead of na.rm.)"
+    "text": "Positions\nThere’s one final type of summary that’s useful for numeric vectors, but also works with every other type of value: extracting a value at a specific position:\n\nfirst(x),\nlast(x), and\nnth(x, n)."
   },
   {
-    "objectID": "slides/lec-9.html#with-mutate",
-    "href": "slides/lec-9.html#with-mutate",
+    "objectID": "slides/lec-9.html#sec-positions-2",
+    "href": "slides/lec-9.html#sec-positions-2",
+    "title": "Data transformations",
+    "section": "Positions",
+    "text": "Positions\nFor example, we can find the first, fifth and last departure for each day:\n\n\n# A tibble: 365 × 6\n# Groups:   year, month [12]\n    year month   day first_dep fifth_dep last_dep\n   &lt;int&gt; &lt;int&gt; &lt;int&gt;     &lt;int&gt;     &lt;int&gt;    &lt;int&gt;\n 1  2013     1     1       517       554     2356\n 2  2013     1     2        42       535     2354\n 3  2013     1     3        32       520     2349\n 4  2013     1     4        25       531     2358\n 5  2013     1     5        14       534     2357\n 6  2013     1     6        16       555     2355\n 7  2013     1     7        49       536     2359\n 8  2013     1     8       454       544     2351\n 9  2013     1     9         2       524     2252\n10  2013     1    10         3       530     2320\n# ℹ 355 more rows\n\n\nNB: Because dplyr functions use _ to separate components of function and arguments names, these functions use na_rm instead of na.rm."
+  },
+  {
+    "objectID": "slides/lec-9.html#sec-with-mutate",
+    "href": "slides/lec-9.html#sec-with-mutate",
     "title": "Data transformations",
     "section": "With mutate()",
     "text": "With mutate()\nAs the names suggest, the summary functions are typically paired with summarize(). However, because of the recycling rules we discussed in ?@sec-recycling they can also be usefully paired with mutate(), particularly when you want do some sort of group standardization. For example:\n\nx / sum(x) calculates the proportion of a total.\n(x - mean(x)) / sd(x) computes a Z-score (standardized to mean 0 and sd 1).\n(x - min(x)) / (max(x) - min(x)) standardizes to range [0, 1].\nx / first(x) computes an index based on the first observation.\n\n\n\n\nhttps://bovi-analytics.github.io/BeastsAndBytes/"
