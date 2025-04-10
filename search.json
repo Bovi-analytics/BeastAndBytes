@@ -714,6 +714,216 @@
     "text": "Is the intercept meaningful?\n✅ The intercept is meaningful in context of the data if\n\nthe predictor can feasibly take values equal to or near zero or\nthe predictor has values near zero in the observed data\n\n\n🛑 Otherwise, it might not be meaningful!\n\n\n\nhttps://bovi-analytics.github.io/BeastsAndBytes/"
   },
   {
+    "objectID": "slides/lec-11.html#sec-prerequisites",
+    "href": "slides/lec-11.html#sec-prerequisites",
+    "title": "Data transformations",
+    "section": "Prerequisites",
+    "text": "Prerequisites\n\nThis chapter will focus on the lubridate package, which makes it easier to work with dates and times in R.\nAs of the latest tidyverse release, lubridate is part of core tidyverse.\n\n\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-dt-basics-1",
+    "href": "slides/lec-11.html#sec-dt-basics-1",
+    "title": "Data transformations",
+    "section": "Date and time basics",
+    "text": "Date and time basics\nThere are three types of date/time data that refer to an instant in time:\n\nA date. Tibbles print this as &lt;date&gt;.\nA time within a day. Tibbles print this as &lt;time&gt;.\nA date-time is a date plus a time: it uniquely identifies an instant in time (typically to the nearest second). Tibbles print this as &lt;dttm&gt;."
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-dt-basics-2",
+    "href": "slides/lec-11.html#sec-dt-basics-2",
+    "title": "Data transformations",
+    "section": "Date and time basics",
+    "text": "Date and time basics\nYou should always use the simplest possible data type that works for your needs.\nThat means if you can use a date instead of a date-time, you should.\nDate-times are substantially more complicated because of the need to handle time zones, which we’ll come back to at the end of the chapter."
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-current",
+    "href": "slides/lec-11.html#sec-current",
+    "title": "Data transformations",
+    "section": "Current",
+    "text": "Current\nTo get the current date or date-time you can use today() or now():\n\ntoday()\n\n[1] \"2025-04-10\"\n\nnow()\n\n[1] \"2025-04-10 11:13:04 EDT\""
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-dt-import-1",
+    "href": "slides/lec-11.html#sec-dt-import-1",
+    "title": "Data transformations",
+    "section": "Date-time importing",
+    "text": "Date-time importing\nIf your CSV contains an ISO8601 date or date-time, you don’t need to do anything; readr will automatically recognize it:\n\ncsv &lt;- \"\n  date,datetime\n  2022-01-02,2022-01-02 05:12\n\"\nread_csv(csv)\n\nRows: 1 Columns: 2\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\ndttm (1): datetime\ndate (1): date\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n\n\n# A tibble: 1 × 2\n  date       datetime           \n  &lt;date&gt;     &lt;dttm&gt;             \n1 2022-01-02 2022-01-02 05:12:00"
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-dt-import-2",
+    "href": "slides/lec-11.html#sec-dt-import-2",
+    "title": "Data transformations",
+    "section": "ISO8601",
+    "text": "ISO8601\nIf you haven’t heard of ISO8601 before, it’s an international standard1 for writing dates where the components of a date are organized from biggest to smallest separated by -.\nFor example, in ISO8601 May 3 2022 is 2022-05-03. ISO8601 dates can also include times, where hour, minute, and second are separated by :, and the date and time components are separated by either a T or a space.\nFor example, you could write 4:26pm on May 3 2022 as either 2022-05-03 16:26 or 2022-05-03T16:26.\nhttps://xkcd.com/1179/"
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-dt-import-3",
+    "href": "slides/lec-11.html#sec-dt-import-3",
+    "title": "Data transformations",
+    "section": "Other formats",
+    "text": "Other formats\nFor other date-time formats, you’ll need to use col_types plus col_date() or col_datetime() along with a date-time format. The date-time format used by readr is a standard used across many programming languages, describing a date component with a % followed by a single character. For example, %Y-%m-%d specifies a date that’s a year, -, month (as number) -, day."
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-dt-import-4a",
+    "href": "slides/lec-11.html#sec-dt-import-4a",
+    "title": "Data transformations",
+    "section": "Other formats",
+    "text": "Other formats\n\n\n\nType\nCode\nMeaning\nExample\n\n\n\n\nYear\n%Y\n4 digit year\n2021\n\n\n\n%y\n2 digit year\n21\n\n\nMonth\n%m\nNumber\n2\n\n\n\n%b\nAbbreviated name\nFeb\n\n\n\n%B\nFull name\nFebruary\n\n\nDay\n%d\nOne or two digits\n2\n\n\n\n%e\nTwo digits\n02"
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-dt-import-4b",
+    "href": "slides/lec-11.html#sec-dt-import-4b",
+    "title": "Data transformations",
+    "section": "Other formats",
+    "text": "Other formats\n\n\n\nType\nCode\nMeaning\nExample\n\n\n\n\nTime\n%H\n24-hour hour\n13\n\n\n\n%I\n12-hour hour\n1\n\n\n\n%p\nAM/PM\npm\n\n\n\n%M\nMinutes\n35\n\n\n\n%S\nSeconds\n45\n\n\n\n%OS\nSeconds with decimal component\n45.35\n\n\n\n%Z\nTime zone name\nAmerica/Chicago\n\n\n\n%z\nOffset from UTC\n+0800\n\n\nOther\n%.\nSkip one non-digit\n:\n\n\n\n%*\nSkip any number of non-digits"
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-dt-import-5",
+    "href": "slides/lec-11.html#sec-dt-import-5",
+    "title": "Data transformations",
+    "section": "Datetime exmaple",
+    "text": "Datetime exmaple\n\ncsv &lt;- \"\n  date\n  01/02/15\n\"\n\nread_csv(csv, col_types = cols(date = col_date(\"%m/%d/%y\")))\n\n# A tibble: 1 × 1\n  date      \n  &lt;date&gt;    \n1 2015-01-02\n\nread_csv(csv, col_types = cols(date = col_date(\"%d/%m/%y\")))\n\n# A tibble: 1 × 1\n  date      \n  &lt;date&gt;    \n1 2015-02-01\n\nread_csv(csv, col_types = cols(date = col_date(\"%y/%m/%d\")))\n\n# A tibble: 1 × 1\n  date      \n  &lt;date&gt;    \n1 2001-02-15"
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-dt-components-get-1",
+    "href": "slides/lec-11.html#sec-dt-components-get-1",
+    "title": "Data transformations",
+    "section": "Getting components",
+    "text": "Getting components\nYou can pull out individual parts of the date with the accessor functions year(), month(), mday() (day of the month), yday() (day of the year), wday() (day of the week), hour(), minute(), and second(). These are effectively the opposites of make_datetime()."
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-dt-components-get-2",
+    "href": "slides/lec-11.html#sec-dt-components-get-2",
+    "title": "Data transformations",
+    "section": "Getting components",
+    "text": "Getting components\n\ndatetime &lt;- ymd_hms(\"2026-07-08 12:34:56\")\n\nyear(datetime)\n\n[1] 2026\n\nmonth(datetime)\n\n[1] 7\n\nmday(datetime)\n\n[1] 8\n\nyday(datetime)\n\n[1] 189\n\nwday(datetime)\n\n[1] 4"
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-dt-components-abbr",
+    "href": "slides/lec-11.html#sec-dt-components-abbr",
+    "title": "Data transformations",
+    "section": "Getting components",
+    "text": "Getting components\nFor month() and wday() you can set label = TRUE to return the abbreviated name of the month or day of the week. Set abbr = FALSE to return the full name.\n\nmonth(datetime, label = TRUE)\n\n[1] Jul\n12 Levels: Jan &lt; Feb &lt; Mar &lt; Apr &lt; May &lt; Jun &lt; Jul &lt; Aug &lt; Sep &lt; ... &lt; Dec\n\nwday(datetime, label = TRUE, abbr = FALSE)\n\n[1] Wednesday\n7 Levels: Sunday &lt; Monday &lt; Tuesday &lt; Wednesday &lt; Thursday &lt; ... &lt; Saturday"
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-dt-rounding",
+    "href": "slides/lec-11.html#sec-dt-rounding",
+    "title": "Data transformations",
+    "section": "Datetime rounding",
+    "text": "Datetime rounding\nAn alternative approach to plotting individual components is to round the date to a nearby unit of time, with floor_date(), round_date(), and ceiling_date(). Each function takes a vector of dates to adjust and then the name of the unit to round down (floor), round up (ceiling), or round to.\n\nweek = floor_date(dep_time, \"week\")"
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-dt-modifying-1",
+    "href": "slides/lec-11.html#sec-dt-modifying-1",
+    "title": "Data transformations",
+    "section": "Datetime modifying",
+    "text": "Datetime modifying\nYou can also use each accessor function to modify the components of a date/time. This doesn’t come up much in data analysis, but can be useful when cleaning data that has clearly incorrect dates.\n\n(datetime &lt;- ymd_hms(\"2026-07-08 12:34:56\"))\n\n[1] \"2026-07-08 12:34:56 UTC\"\n\nyear(datetime) &lt;- 2030\ndatetime\n\n[1] \"2030-07-08 12:34:56 UTC\"\n\nmonth(datetime) &lt;- 01\ndatetime\n\n[1] \"2030-01-08 12:34:56 UTC\"\n\nhour(datetime) &lt;- hour(datetime) + 1\ndatetime\n\n[1] \"2030-01-08 13:34:56 UTC\""
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-dt-modifying-2",
+    "href": "slides/lec-11.html#sec-dt-modifying-2",
+    "title": "Data transformations",
+    "section": "Datetime updating",
+    "text": "Datetime updating\nYou can also use each accessor function to modify the components of a date/time. This doesn’t come up much in data analysis, but can be useful when cleaning data that has clearly incorrect dates.\n\nupdate(datetime, year = 2030, month = 2, mday = 2, hour = 2)\n\n[1] \"2030-02-02 02:34:56 UTC\""
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-timespan-basics-1",
+    "href": "slides/lec-11.html#sec-timespan-basics-1",
+    "title": "Data transformations",
+    "section": "Time span",
+    "text": "Time span\nNext you’ll learn about how arithmetic with dates works, including subtraction, addition, and division. Along the way, you’ll learn about three important classes that represent time spans:\n\nDurations, which represent an exact number of seconds.\nPeriods, which represent human units like weeks and months.\nIntervals, which represent a starting and ending point."
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-timespan-basics-2",
+    "href": "slides/lec-11.html#sec-timespan-basics-2",
+    "title": "Data transformations",
+    "section": "Time span",
+    "text": "Time span\nHow do you pick between duration, periods, and intervals?\nAs always, pick the simplest data structure that solves your problem.\n\nIf you only care about physical time, use a duration;\nIf you need to add human times, use a period;\nIf you need to figure out how long a span is in human units, use an interval."
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-duration-1",
+    "href": "slides/lec-11.html#sec-duration-1",
+    "title": "Data transformations",
+    "section": "Durations",
+    "text": "Durations\nIn R, when you subtract two dates, you get a difftime object:\n\n# How old is Miel?\nh_age &lt;- today() - ymd(\"1982-04-27\")\nh_age\n\nTime difference of 15689 days"
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-duration-2",
+    "href": "slides/lec-11.html#sec-duration-2",
+    "title": "Data transformations",
+    "section": "Durations",
+    "text": "Durations\nA difftime class object records a time span of seconds, minutes, hours, days, or weeks.\nThis ambiguity can make difftimes a little painful to work with, so lubridate provides an alternative which always uses seconds: the duration.\n\nas.duration(h_age)\n\n[1] \"1355529600s (~42.95 years)\""
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-duration-3",
+    "href": "slides/lec-11.html#sec-duration-3",
+    "title": "Data transformations",
+    "section": "Durations",
+    "text": "Durations\nDurations come with a bunch of convenient constructors:\n\ndseconds(15)\n\n[1] \"15s\"\n\ndminutes(10)\n\n[1] \"600s (~10 minutes)\"\n\ndhours(c(12, 24))\n\n[1] \"43200s (~12 hours)\" \"86400s (~1 days)\"  \n\nddays(0:5)\n\n[1] \"0s\"                \"86400s (~1 days)\"  \"172800s (~2 days)\"\n[4] \"259200s (~3 days)\" \"345600s (~4 days)\" \"432000s (~5 days)\"\n\ndweeks(3)\n\n[1] \"1814400s (~3 weeks)\"\n\ndyears(1)\n\n[1] \"31557600s (~1 years)\""
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-duration-4",
+    "href": "slides/lec-11.html#sec-duration-4",
+    "title": "Data transformations",
+    "section": "Durations",
+    "text": "Durations\n\nDurations always record the time span in seconds.\nLarger units are created by converting minutes, hours, days, weeks, and years to seconds: 60 seconds in a minute, 60 minutes in an hour, 24 hours in a day, and 7 days in a week.\nLarger time units are more problematic.\nA year uses the “average” number of days in a year, i.e. 365.25.\nThere’s no way to convert a month to a duration, because there’s just too much variation."
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-duration-5",
+    "href": "slides/lec-11.html#sec-duration-5",
+    "title": "Data transformations",
+    "section": "Add and multiply durations",
+    "text": "Add and multiply durations\nYou can add and multiply durations:\n\n2 * dyears(1)\n\n[1] \"63115200s (~2 years)\"\n\ndyears(1) + dweeks(12) + dhours(15)\n\n[1] \"38869200s (~1.23 years)\""
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-duration-6",
+    "href": "slides/lec-11.html#sec-duration-6",
+    "title": "Data transformations",
+    "section": "Add and substract durations",
+    "text": "Add and substract durations\nYou can add and subtract durations to and from days:\n\ntomorrow &lt;- today() + ddays(1)\ntomorrow\n\n[1] \"2025-04-11\"\n\nlast_year &lt;- today() - dyears(1)\nlast_year\n\n[1] \"2024-04-09 18:00:00 UTC\""
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-duration-7",
+    "href": "slides/lec-11.html#sec-duration-7",
+    "title": "Data transformations",
+    "section": "Whatch for unexpected results",
+    "text": "Whatch for unexpected results\nHowever, because durations represent an exact number of seconds, sometimes you might get an unexpected result:\n\none_am &lt;- ymd_hms(\"2026-03-08 01:00:00\", tz = \"America/New_York\")\n\none_am\n\n[1] \"2026-03-08 01:00:00 EST\"\n\none_am + ddays(1)\n\n[1] \"2026-03-09 02:00:00 EDT\"\n\n\nWhy is one day after 1am March 8, 2am March 9? If you look carefully at the date you might also notice that the time zones have changed. March 8 only has 23 hours because it’s when DST starts, so if we add a full days worth of seconds we end up with a different time."
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-periods-1",
+    "href": "slides/lec-11.html#sec-periods-1",
+    "title": "Data transformations",
+    "section": "Periods",
+    "text": "Periods\nLubridate provides periods solve this problem.\nPeriods are time spans but don’t have a fixed length in seconds, instead they work with “human” times, like days and months.\nThat allows them to work in a more intuitive way:\n\none_am\n\n[1] \"2026-03-08 01:00:00 EST\"\n\none_am + days(1)\n\n[1] \"2026-03-09 01:00:00 EDT\""
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-periods-2",
+    "href": "slides/lec-11.html#sec-periods-2",
+    "title": "Data transformations",
+    "section": "Periods",
+    "text": "Periods\nLike durations, periods can be created with a number of friendly constructor functions.\n\nhours(c(12, 24))\n\n[1] \"12H 0M 0S\" \"24H 0M 0S\"\n\ndays(7)\n\n[1] \"7d 0H 0M 0S\"\n\nmonths(1:6)\n\n[1] \"1m 0d 0H 0M 0S\" \"2m 0d 0H 0M 0S\" \"3m 0d 0H 0M 0S\" \"4m 0d 0H 0M 0S\"\n[5] \"5m 0d 0H 0M 0S\" \"6m 0d 0H 0M 0S\""
+  },
+  {
+    "objectID": "slides/lec-11.html#periods",
+    "href": "slides/lec-11.html#periods",
+    "title": "Data transformations",
+    "section": "Periods",
+    "text": "Periods\nYou can add and multiply periods:\n\n10 * (months(6) + days(1))\n\n[1] \"60m 10d 0H 0M 0S\"\n\ndays(50) + hours(25) + minutes(2)\n\n[1] \"50d 25H 2M 0S\""
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-periods-3",
+    "href": "slides/lec-11.html#sec-periods-3",
+    "title": "Data transformations",
+    "section": "Periods",
+    "text": "Periods\nAnd of course, add them to dates. Compared to durations, periods are more likely to do what you expect:\n\n# A leap year\nymd(\"2024-01-01\") + dyears(1)\n\n[1] \"2024-12-31 06:00:00 UTC\"\n\nymd(\"2024-01-01\") + years(1)\n\n[1] \"2025-01-01\"\n\n# Daylight saving time\none_am + ddays(1)\n\n[1] \"2026-03-09 02:00:00 EDT\"\n\none_am + days(1)\n\n[1] \"2026-03-09 01:00:00 EDT\""
+  },
+  {
+    "objectID": "slides/lec-11.html#sec-tz-1",
+    "href": "slides/lec-11.html#sec-tz-1",
+    "title": "Data transformations",
+    "section": "Time zones",
+    "text": "Time zones\nTime zones are an enormously complicated topic because of their interaction with geopolitical entities. Fortunately we don’t need to dig into all the details as they’re not all important for data analysis, but there are a few challenges we’ll need to tackle head on.\n\n\n\nhttps://bovi-analytics.github.io/BeastsAndBytes/"
+  },
+  {
     "objectID": "slides/lec-1.html#meet-the-teacher",
     "href": "slides/lec-1.html#meet-the-teacher",
     "title": "Lecture 1 - Meet + greet",
@@ -1333,7 +1543,7 @@
     "href": "index.html",
     "title": "Data Science Applications in Agriculture",
     "section": "",
-    "text": "This page contains an outline of the topics, content, and assignments for the course. Note that this schedule will be updated as the course progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nTeachers\nPrepare\nLecture\nCode’n practice\nProject\nProgress meeting\n\n\n\n\n1\n1/20\nIntroduction\nDr. Hostens\n📖\n🖥️\n💻\n📂\n✍️\n\n\n2\n1/27\nData science basics\nDr. Hostens\n📖\n🖥️\n💻\n📂\n✍️\n\n\n3\n2/3\nVisualisation basics\nDr. Hostens\n📖\n🖥️\n💻\n📂\n✍️\n\n\n4\n2/10\nSimple linear regression\nDr. Hostens\n📖\n🖥️\n💻\n📂\n✍️\n\n\n5\n2/17\nFebruary break (no class)\n\n\n\n\n📂\n✍️\n\n\n6\n2/24\nMultiple linear regression\nDr. Hostens and S. Hayu\n📖\n🖥️\n💻\n📂\n✍️\n\n\n7\n3/3\nLogistic regression\nDr. Hostens\n📖\n🖥️\n💻\n📂\n✍️\n\n\n8\n3/10\nData joining\nDr. Hostens\n📖\n🖥️\n💻\n📂\n✍️\n\n\n9\n3/17\nData transformations\nDr. Hostens\n📖\n🖥️\n💻\n📂\n✍️\n\n\n10\n3/24\nData transformations\nDr. Hostens\n📖\n🖥️\n💻\n📂\n✍️\n\n\n11\n3/31\nSpring Break (no class)\n\n\n\n\n📂\n✍️\n\n\n12\n4/7\nTBD\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n13\n4/14\nTBD\n\n📖\n🖥️\n💻\n📂\n✍️\n\n\n14\n4/21\nProject presentation & report\n\n\n\n\n📂",
+    "text": "This page contains an outline of the topics, content, and assignments for the course. Note that this schedule will be updated as the course progresses, with all changes documented here.\n\n\n\n\n\n\n\n\n\n\n\n\nWeek\nDate\nTopic\nTeachers\nPrepare\nLecture\n\n\n\n\n1\n1/20\nIntroduction\nDr. Hostens\n📖\n🖥️\n\n\n2\n1/27\nData science basics\nDr. Hostens\n📖\n🖥️\n\n\n3\n2/3\nVisualisation basics\nDr. Hostens\n📖\n🖥️\n\n\n4\n2/10\nSimple linear regression\nDr. Hostens\n📖\n🖥️\n\n\n5\n2/17\nFebruary break (no class)\n\n\n\n\n\n6\n2/24\nMultiple linear regression\nDr. Hostens and S. Hayu\n📖\n🖥️\n\n\n7\n3/3\nLogistic regression\nDr. Hostens\n📖\n🖥️\n\n\n8\n3/10\nData joining\nDr. Hostens\n📖\n🖥️\n\n\n9\n3/17\nData transformations - logical vectors\nDr. Hostens\n📖\n🖥️\n\n\n10\n3/24\nData transformations - numerical vectors\nDr. Hostens\n📖\n🖥️\n\n\n11\n3/31\nSpring Break (no class)\n\n\n\n\n\n12\n4/7\nData transformations - datetimes & factors\nDr. Hostens\n📖\nfactors =&gt;🖥️ datetimes=&gt; 🖥️\n\n\n13\n4/14\nTBD\nDr. Hostens\n📖\n🖥️\n\n\n14\n4/21\nTBD\nDr. Hostens\n📖\n🖥️\n\n\n15\n4/28\nTBD\nTBD\n📖\n🖥️\n\n\n16\n5/5\nTBD\nTBD\n📖\n\n\n\n17\n5/12\nTBD\nTBD\n📖\n\n\n\n18\n5/17\nProject presentation & report",
     "crumbs": [
       "Course information",
       "Schedule"
@@ -1400,6 +1610,125 @@
       "Project",
       "Tips + resources"
     ]
+  },
+  {
+    "objectID": "slides/lec-10.html#sec-prerequisites",
+    "href": "slides/lec-10.html#sec-prerequisites",
+    "title": "Data transformations",
+    "section": "Prerequisites",
+    "text": "Prerequisites\n\nBase R provides some basic tools for creating and manipulating factors.\nWe’ll supplement these with the forcats package, which is part of the core tidyverse. It provides tools for dealing with categorical variables (and it’s an anagram of factors!) using a wide range of helpers for working with factors.\n\n\nlibrary(tidyverse)"
+  },
+  {
+    "objectID": "slides/lec-10.html#sec-factor-basics",
+    "href": "slides/lec-10.html#sec-factor-basics",
+    "title": "Data transformations",
+    "section": "Factor basics",
+    "text": "Factor basics\nImagine that you have a variable that records month:\n\nx1 &lt;- c(\"Dec\", \"Apr\", \"Jan\", \"Mar\")"
+  },
+  {
+    "objectID": "slides/lec-10.html#sec-factor-basics-2",
+    "href": "slides/lec-10.html#sec-factor-basics-2",
+    "title": "Data transformations",
+    "section": "Factor basics",
+    "text": "Factor basics\nUsing a string to record this variable has two problems:\n\nThere are only twelve possible months, and there’s nothing saving you from typos:\n\nx2 &lt;- c(\"Dec\", \"Apr\", \"Jam\", \"Mar\")\n\nIt doesn’t sort in a useful way:\n\nsort(x1)\n\n[1] \"Apr\" \"Dec\" \"Jan\" \"Mar\""
+  },
+  {
+    "objectID": "slides/lec-10.html#sec-factor-basics-3",
+    "href": "slides/lec-10.html#sec-factor-basics-3",
+    "title": "Data transformations",
+    "section": "Factor basics",
+    "text": "Factor basics\nYou can fix both of these problems with a factor.\nTo create a factor you must start by creating a list of the valid levels:\n\nmonth_levels &lt;- c(\n  \"Jan\", \"Feb\", \"Mar\", \"Apr\", \"May\", \"Jun\",\n  \"Jul\", \"Aug\", \"Sep\", \"Oct\", \"Nov\", \"Dec\"\n)"
+  },
+  {
+    "objectID": "slides/lec-10.html#sec-factor-basics-4",
+    "href": "slides/lec-10.html#sec-factor-basics-4",
+    "title": "Data transformations",
+    "section": "Factor basics",
+    "text": "Factor basics\nNow you can create a factor:\n\ny1 &lt;- factor(x1, levels = month_levels)\ny1\n\n[1] Dec Apr Jan Mar\nLevels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec\n\nsort(y1)\n\n[1] Jan Mar Apr Dec\nLevels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
+  },
+  {
+    "objectID": "slides/lec-10.html#sec-factor-basics-6",
+    "href": "slides/lec-10.html#sec-factor-basics-6",
+    "title": "Data transformations",
+    "section": "Factor NA",
+    "text": "Factor NA\nAnd any values not in the level will be silently converted to NA:\n\nx2 &lt;- c(\"Dec\", \"Apr\", \"Jam\", \"Mar\")\ny2 &lt;- factor(x2, levels = month_levels)\ny2\n\n[1] Dec  Apr  &lt;NA&gt; Mar \nLevels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
+  },
+  {
+    "objectID": "slides/lec-10.html#sec-factor-basics-7",
+    "href": "slides/lec-10.html#sec-factor-basics-7",
+    "title": "Data transformations",
+    "section": "Factor NA",
+    "text": "Factor NA\nThis seems risky, so you might want to use forcats::fct() instead, which will throw a error warning:\n\ny2 &lt;- fct(x2, levels = month_levels)\n\nError in `fct()`:\n! All values of `x` must appear in `levels` or `na`\nℹ Missing level: \"Jam\""
+  },
+  {
+    "objectID": "slides/lec-10.html#sec-factor-basics-8",
+    "href": "slides/lec-10.html#sec-factor-basics-8",
+    "title": "Data transformations",
+    "section": "Factor sorting",
+    "text": "Factor sorting\nSorting alphabetically is slightly risky because not every computer will sort strings in the same way. So forcats::fct() orders by first appearance in the original vector:\n\nfct(x1)\n\n[1] Dec Apr Jan Mar\nLevels: Dec Apr Jan Mar"
+  },
+  {
+    "objectID": "slides/lec-10.html#sec-factor-basics-9",
+    "href": "slides/lec-10.html#sec-factor-basics-9",
+    "title": "Data transformations",
+    "section": "Factor access",
+    "text": "Factor access\nIf you ever need to see the set of valid levels directly, you can do so with levels():\n\nlevels(y2)\n\n [1] \"Jan\" \"Feb\" \"Mar\" \"Apr\" \"May\" \"Jun\" \"Jul\" \"Aug\" \"Sep\" \"Oct\" \"Nov\" \"Dec\""
+  },
+  {
+    "objectID": "slides/lec-10.html#sec-reading-csvs",
+    "href": "slides/lec-10.html#sec-reading-csvs",
+    "title": "Data transformations",
+    "section": "Factors in CSV files",
+    "text": "Factors in CSV files\nYou can also create a factor when reading your data with readr with col_factor():\n\ncsv &lt;- \"\nmonth,value\nJan,12\nFeb,56\nMar,12\"\n\ndf &lt;- read_csv(csv, col_types = cols(month = col_factor(month_levels)))\ndf$month\n\n[1] Jan Feb Mar\nLevels: Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec"
+  },
+  {
+    "objectID": "slides/lec-10.html#sec-factor-reorder-1",
+    "href": "slides/lec-10.html#sec-factor-reorder-1",
+    "title": "Data transformations",
+    "section": "Factor reorder",
+    "text": "Factor reorder\nImagine the following plot, what would you like to ameliorate it for"
+  },
+  {
+    "objectID": "slides/lec-10.html#sec-factor-reorder-2",
+    "href": "slides/lec-10.html#sec-factor-reorder-2",
+    "title": "Data transformations",
+    "section": "Factor reorder",
+    "text": "Factor reorder\nIt is hard to read this plot because there’s no overall pattern. We can improve it by reordering the levels of relig using fct_reorder(). fct_reorder() takes three arguments:\n\n.f, the factor whose levels you want to modify.\n.x, a numeric vector that you want to use to reorder the levels.\nOptionally, .fun, a function that’s used if there are mu\n\n\nggplot(relig_summary, aes(x = tvhours, y = fct_reorder(relig, tvhours))) +\n  geom_point()"
+  },
+  {
+    "objectID": "slides/lec-10.html#sec-factor-reorder-3",
+    "href": "slides/lec-10.html#sec-factor-reorder-3",
+    "title": "Data transformations",
+    "section": "Factor reorder",
+    "text": "Factor reorder"
+  },
+  {
+    "objectID": "slides/lec-10.html#sec-factor-relevel-1",
+    "href": "slides/lec-10.html#sec-factor-relevel-1",
+    "title": "Data transformations",
+    "section": "Factor relevel",
+    "text": "Factor relevel\nImagine the following plot, maybe you would like to have “Not applicable” not show up at the top of the graph."
+  },
+  {
+    "objectID": "slides/lec-10.html#sec-factor-relevel-2",
+    "href": "slides/lec-10.html#sec-factor-relevel-2",
+    "title": "Data transformations",
+    "section": "Factor relevel",
+    "text": "Factor relevel\nYou can use fct_relevel(). It takes a factor, .f, and then any number of levels that you want to move to the front of the line.\n\nggplot(rincome_summary, aes(x = age, y = fct_relevel(rincome, \"Not applicable\"))) +\n  geom_point()"
+  },
+  {
+    "objectID": "slides/lec-10.html#sec-other-factor-1",
+    "href": "slides/lec-10.html#sec-other-factor-1",
+    "title": "Data transformations",
+    "section": "Other usefull refactoring functions",
+    "text": "Other usefull refactoring functions\n\nfct_reorder2(.f, .x, .y) reorders the factor .f by the .y values associated with the largest .x values.\nfct_infreq() to order levels in decreasing frequency.\nCombine it with fct_rev() if you want them in increasing frequency.\nfct_recode() allows you to recode, or change, the value of each level."
+  },
+  {
+    "objectID": "slides/lec-10.html#sec-other-factor-2",
+    "href": "slides/lec-10.html#sec-other-factor-2",
+    "title": "Data transformations",
+    "section": "Other usefull re-factoring functions",
+    "text": "Other usefull re-factoring functions\n\nfct_collapse() is a useful variant of fct_recode() using a vector of old levels.\nfct_lump_lowfreq() is a simple starting point that progressively lumps the smallest groups categories into “Other”, always keeping “Other” as the smallest category.\nfct_lump_n() specifies the exact number of groups.\n\n\n\n\nhttps://bovi-analytics.github.io/BeastsAndBytes/"
   },
   {
     "objectID": "slides/lec-2.html#what-are-the-fair-principles",
@@ -1791,7 +2120,7 @@
     "href": "slides/lec-9.html#sec-setup",
     "title": "Data transformations",
     "section": "Setup",
-    "text": "Setup\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.3     ✔ tidyr     1.3.1\n✔ purrr     1.0.2     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
+    "text": "Setup\n\n\n── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──\n✔ dplyr     1.1.4     ✔ readr     2.1.5\n✔ forcats   1.0.0     ✔ stringr   1.5.1\n✔ ggplot2   3.5.1     ✔ tibble    3.2.1\n✔ lubridate 1.9.4     ✔ tidyr     1.3.1\n✔ purrr     1.0.4     \n── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──\n✖ dplyr::filter() masks stats::filter()\n✖ dplyr::lag()    masks stats::lag()\nℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors"
   },
   {
     "objectID": "slides/lec-9.html#sec-prerequisites",
