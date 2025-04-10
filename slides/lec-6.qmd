@@ -226,7 +226,7 @@ summary(cows_fit)
 exp(coef(cows_fit))
 ```
 
-## Logistic regression interpretation 2 
+## Logistic regression interpretation 2
 
 ```{r}
 #| echo: true

@@ -1,6 +1,6 @@
 ---
 title: "Data transformations"
-subtitle: "Lecture 8"
+subtitle: "Lecture 9"
 date: "March 17, 2025"
 format: 
   revealjs:
@@ -40,7 +40,7 @@ library(nycflights13)
 
 In most cases, you'll get numbers already recorded in one of R's numeric types:
 
--    integer
+-   integer
 
 -   double.
 
@@ -51,6 +51,8 @@ In some cases, however, you'll encounter them as strings, possibly because you'v
 readr provides two useful functions for parsing strings into numbers: `parse_double()` and `parse_number()`. Use `parse_double()` when you have numbers that have been written as strings:
 
 ```{r}
+#| echo: true
+#| message: true
 x <- c("1.2", "5.6", "1e3")
 parse_double(x)
 ```
@@ -58,6 +60,8 @@ parse_double(x)
 Use `parse_number()` when the string contains non-numeric text that you want to ignore. This is particularly useful for currency data and percentages:
 
 ```{r}
+#| echo: true
+#| message: true
 x <- c("$1,234", "USD 3,513", "59%")
 parse_number(x)
 ```
@@ -67,6 +71,8 @@ parse_number(x)
 The `dplyr::count()` is great for quick exploration and checks during analysis:
 
 ```{r}
+#| echo: true
+#| message: true
 flights |> count(dest)
 ```
 
@@ -75,6 +81,8 @@ flights |> count(dest)
 If you want to see the most common values, add `sort = TRUE`:
 
 ```{r}
+#| echo: true
+#| message: true
 flights |> count(dest, sort = TRUE)
 ```
 
@@ -89,6 +97,8 @@ If you want to see all the values:
 Same computation "by hand" with `group_by()`, `summarize()` and `n()`.
 
 ```{r}
+#| echo: true
+#| message: true
 flights |> 
   group_by(dest) |> 
   summarize(
@@ -104,6 +114,8 @@ There are a couple of variants of `n()` and `count()` that you might find useful
 -   `n_distinct(x)` counts the number of distinct (unique) values of one or more variables. For example, we could figure out which destinations are served by the most carriers:
 
     ```{r}
+    #| echo: true
+    #| message: true
     flights |> 
       group_by(dest) |> 
       summarize(carriers = n_distinct(carrier)) |> 
@@ -115,6 +127,8 @@ There are a couple of variants of `n()` and `count()` that you might find useful
 -   A weighted count is a sum. For example you could "count" the number of miles each plane flew:
 
     ```{r}
+    #| echo: true
+    #| message: true
     flights |> 
       group_by(tailnum) |> 
       summarize(miles = sum(distance))
@@ -134,6 +148,8 @@ flights |> count(tailnum, wt = distance)
 -   You can count missing values by combining `sum()` and `is.na()`. In the `flights` dataset this represents flights that are cancelled:
 
     ```{r}
+    #| echo: true
+    #| message: true
     flights |> 
       group_by(dest) |> 
       summarize(n_cancelled = sum(is.na(dep_time))) 
@@ -148,6 +164,8 @@ Transformation functions work well with `mutate()` because their output is the s
 The arithmetic functions work with pairs of variables (or columns). Two closely related functions are `pmin()` and `pmax()`, which when given two or more variables will return the smallest or largest value in each row:
 
 ```{r}
+#| echo: true
+#| message: true
 df <- tribble(
   ~x, ~y,
   1,  3,
@@ -167,6 +185,8 @@ df |>
 Note that these are different to the summary functions `min()` and `max()` which take multiple observations and return a single value. You can tell that you've used the wrong form when all the minimums and all the maximums have the same value:
 
 ```{r}
+#| echo: true
+#| message: true
 df |> 
   mutate(
     min = min(x, y, na.rm = TRUE),
@@ -179,6 +199,8 @@ df |>
 Modular arithmetic is the technical name for the type of math you did before you learned about decimal places, i.e. division that yields a whole number and a remainder. In R, `%/%` does integer division and `%%` computes the remainder:
 
 ```{r}
+#| echo: true
+#| message: true
 1:10 %/% 3
 1:10 %% 3
 ```
@@ -188,6 +210,8 @@ Modular arithmetic is the technical name for the type of math you did before you
 Modular arithmetic is handy for the `flights` dataset, because we can use it to unpack the `sched_dep_time` variable into `hour` and `minute`:
 
 ```{r}
+#| echo: true
+#| message: true
 flights |> 
   mutate(
     hour = sched_dep_time %/% 100,
@@ -201,6 +225,8 @@ flights |>
 We can combine that with the `mean(is.na(x))` trick from @sec-logical-summaries to see how the proportion of cancelled flights varies over the course of the day. The results are shown in @fig-prop-cancelled.
 
 ```{r}
+#| echo: true
+#| message: true
 #| label: fig-prop-cancelled
 #| fig-cap: | 
 #|   A line plot with scheduled departure hour on the x-axis, and proportion
@@ -238,7 +264,7 @@ In R, you have a choice of three logarithms:
 
 We recommend using `log2()` or `log10()`:
 
--    `log2()` is easy to interpret because a difference of 1 on the log scale corresponds to doubling on the original scale and a difference of -1 corresponds to halving;
+-   `log2()` is easy to interpret because a difference of 1 on the log scale corresponds to doubling on the original scale and a difference of -1 corresponds to halving;
 
 -   `log10()` is easy to back-transform because (e.g.) 3 is 10\^3 = 1000.
 
@@ -249,6 +275,8 @@ The inverse of `log()` is `exp()`; to compute the inverse of `log2()` or `log10(
 Use `round(x)` to round a number to the nearest integer:
 
 ```{r}
+#| echo: true
+#| message: true
 round(123.456)
 ```
 
@@ -257,6 +285,8 @@ round(123.456)
 You can control the precision of the rounding with the second argument, `digits`. `round(x, digits)` rounds to the nearest `10^-n` so `digits = 2` will round to the nearest 0.01. This definition is useful because it implies `round(x, -3)` will round to the nearest thousand, which indeed it does:
 
 ```{r}
+#| echo: true
+#| message: true
 round(123.456, 2)  # two digits
 round(123.456, 1)  # one digit
 round(123.456, -1) # round to nearest ten
@@ -268,6 +298,8 @@ round(123.456, -2) # round to nearest hundred
 There's one weirdness with `round()` that seems surprising at first glance:
 
 ```{r}
+#| echo: true
+#| message: true
 round(c(1.5, 2.5))
 ```
 
@@ -278,6 +310,8 @@ round(c(1.5, 2.5))
 `round()` is paired with `floor()` which always rounds down and `ceiling()` which always rounds up:
 
 ```{r}
+#| echo: true
+#| message: true
 x <- 123.456
 
 floor(x)
@@ -291,7 +325,10 @@ Use `cut()`[^1] to break up (aka bin) a numeric vector into discrete buckets:
 [^1]: ggplot2 provides some helpers for common cases in `cut_interval()`, `cut_number()`, and `cut_width()`. ggplot2 is an admittedly weird place for these functions to live, but they are useful as part of histogram computation and were written before any other parts of the tidyverse existed.
 
 ```{r}
+#| echo: true
+#| message: true
 x <- c(1, 2, 5, 10, 15, 20)
+x
 cut(x, breaks = c(0, 5, 10, 15, 20))
 ```
 
@@ -300,6 +337,8 @@ cut(x, breaks = c(0, 5, 10, 15, 20))
 The breaks don't need to be evenly spaced:
 
 ```{r}
+#| echo: true
+#| message: true
 cut(x, breaks = c(0, 5, 10, 100))
 ```
 
@@ -308,6 +347,8 @@ cut(x, breaks = c(0, 5, 10, 100))
 You can optionally supply your own `labels`. Note that there should be one less `labels` than `breaks`.
 
 ```{r}
+#| echo: true
+#| message: true
 cut(x, 
   breaks = c(0, 5, 10, 15, 20), 
   labels = c("sm", "md", "lg", "xl")
@@ -319,6 +360,8 @@ cut(x,
 Any values outside of the range of the breaks will become `NA`:
 
 ```{r}
+#| echo: true
+#| message: true
 y <- c(NA, -10, 5, 10, 30)
 cut(y, breaks = c(0, 5, 10, 15, 20))
 ```
@@ -330,8 +373,11 @@ See the documentation for other useful arguments like `right` and `include.lowes
 Base R provides `cumsum()`, `cumprod()`, `cummin()`, `cummax()` for running, or cumulative, sums, products, mins and maxes. dplyr provides `cummean()` for cumulative means. Cumulative sums tend to come up the most in practice:
 
 ```{r}
+#| echo: true
+#| message: true
 x <- 1:10
-cumsum(x)
+x
+cumprod(x)
 ```
 
 If you need more complex rolling or sliding aggregates, try the [slider](https://slider.r-lib.org/) package.
@@ -345,7 +391,9 @@ The following sections describe some general transformations which are often use
 dplyr provides a number of ranking functions inspired by SQL, but you should always start with `dplyr::min_rank()`. It uses the typical method for dealing with ties, e.g., 1st, 2nd, 2nd, 4th.
 
 ```{r}
-x <- c(1, 2, 2, 3, 4, NA)
+#| echo: true
+#| message: true
+x <- c(1, 3, 2, 2, 4, 20, 15, NA)
 min_rank(x)
 ```
 
@@ -354,6 +402,8 @@ min_rank(x)
 Note that the smallest values get the lowest ranks; use `desc(x)` to give the largest values the smallest ranks:
 
 ```{r}
+#| echo: true
+#| message: true
 min_rank(desc(x))
 ```
 
@@ -362,6 +412,8 @@ min_rank(desc(x))
 If `min_rank()` doesn't do what you need, look at the variants `dplyr::row_number()`, `dplyr::dense_rank()`, `dplyr::percent_rank()`, and `dplyr::cume_dist()`. See the documentation for details.
 
 ```{r}
+#| echo: true
+#| message: true
 df <- tibble(x = x)
 df |> 
   mutate(
@@ -377,6 +429,8 @@ df |>
 `dplyr::lead()` and `dplyr::lag()` allow you to refer to the values just before or just after the "current" value. They return a vector of the same length as the input, padded with `NA`s at the start or end:
 
 ```{r}
+#| echo: true
+#| message: true
 x <- c(2, 5, 11, 11, 19, 35)
 lag(x)
 lead(x)
@@ -387,12 +441,16 @@ lead(x)
 -   `x - lag(x)` gives you the difference between the current and previous value.
 
     ```{r}
+    #| echo: true
+    #| message: true
     x - lag(x)
     ```
 
 -   `x == lag(x)` tells you when the current value changes.
 
     ```{r}
+    #| echo: true
+    #| message: true
     x == lag(x)
     ```
 
@@ -403,6 +461,8 @@ You can lead or lag by more than one position by using the second argument, `n`.
 Sometimes you want to start a new group every time some event occurs. For example, when you're looking at website data, it's common to want to break up events into sessions, where you begin a new session after a gap of more than `x` minutes since the last activity. For example, imagine you have the times when someone visited a website:
 
 ```{r}
+#| echo: true
+#| message: true
 events <- tibble(
   time = c(0, 1, 2, 3, 5, 10, 12, 15, 17, 19, 20, 27, 28, 30)
 )
@@ -414,6 +474,8 @@ events <- tibble(
 And you've computed the time between each event, and figured out if there's a gap that's big enough to qualify:
 
 ```{r}
+#| echo: true
+#| message: true
 events <- events |> 
   mutate(
     diff = time - lag(time, default = first(time)),
@@ -427,6 +489,8 @@ events
 But how do we go from that logical vector to something that we can `group_by()`? `cumsum()`, from @sec-cumulative-and-rolling-aggregates, comes to the rescue as gap, i.e. `has_gap` is `TRUE`, will increment `group` by one (@sec-numeric-summaries-of-logicals):
 
 ```{r}
+#| echo: true
+#| message: true
 events |> mutate(
   group = cumsum(has_gap)
 )
@@ -437,6 +501,8 @@ events |> mutate(
 Another approach for creating grouping variables is `consecutive_id()`, which starts a new group every time one of its arguments changes. For example, inspired by [this stackoverflow question](https://stackoverflow.com/questions/27482712), imagine you have a data frame with a bunch of repeated values:
 
 ```{r}
+#| echo: true
+#| message: true
 df <- tibble(
   x = c("a", "a", "a", "b", "c", "c", "d", "e", "a", "a", "b", "b"),
   y = c(1, 2, 3, 2, 4, 1, 3, 9, 4, 8, 10, 199)
@@ -448,6 +514,8 @@ df <- tibble(
 If you want to keep the first row from each repeated `x`, you could use `group_by()`, `consecutive_id()`, and `slice_head()`:
 
 ```{r}
+#| echo: true
+#| message: true
 df |> 
   group_by(id = consecutive_id(x)) |> 
   slice_head(n = 1)
@@ -475,6 +543,8 @@ Just using the counts, means, and sums that we've introduced already can get you
 For the `flights` data, you might want to look at the 95% quantile of delays rather than the maximum, because it will ignore the 5% of most delayed flights which can be quite extreme.
 
 ```{r}
+#| echo: true
+#| message: true
 flights |>
   group_by(year, month, day) |>
   summarize(
@@ -507,6 +577,8 @@ There's one final type of summary that's useful for numeric vectors, but also wo
 For example, we can find the first, fifth and last departure for each day:
 
 ```{r}
+#| echo: true
+#| message: true
 flights |> 
   group_by(year, month, day) |> 
   summarize(

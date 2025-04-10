@@ -57,6 +57,8 @@ ggplot2::theme_set(theme_gray(base_size = 16))
 A very common way to create a logical vector is via a numeric comparison with `<`, `<=`, `>`, `>=`, `!=`, and `==`. So far, we've mostly created logical variables transiently within `filter()` --- they are computed, used, and then thrown away. For example, the following filter finds all daytime departures that arrive roughly on time:
 
 ```{r}
+#| echo: true
+#| results: false
 flights |> 
   filter(dep_time > 600 & dep_time < 2000 & abs(arr_delay) < 20)
 ```
@@ -83,7 +85,7 @@ This is particularly useful for more complicated logic because naming the interm
 All up, the initial filter is equivalent to:
 
 ```{r}
-#| results: false
+#| echo: true
 
 flights |> 
   mutate(
@@ -403,6 +405,7 @@ This makes `sum()` and `mean()` very useful
 That, for example, allows us to see the proportion of flights that were delayed on departure by at most an hour and the number of flights that were delayed on arrival by five hours or more:
 
 ```{r}
+#| echo: true
 flights |> 
   group_by(year, month, day) |> 
   summarize(
@@ -423,6 +426,7 @@ This makes use of the base `[]` (pronounced subset) operator
 Imagine we wanted to look at the average delay just for flights that were actually delayed. One way to do so would be to first filter the flights and then calculate the average delay:
 
 ```{r}
+#| echo: true
 flights |> 
   filter(arr_delay > 0) |> 
   group_by(year, month, day) |> 
@@ -448,6 +452,7 @@ Instead you could use `[` to perform an inline filtering: `arr_delay[arr_delay >
 This leads to:
 
 ```{r}
+#| echo: true
 flights |> 
   group_by(year, month, day) |> 
   summarize(
@@ -531,6 +536,19 @@ case_when(
 
 ## `case_when()` {#sec-case_when-3}
 
+Use `.default` if you want to create a "default"/catch all value:
+
+```{r}
+#| echo: true
+case_when(
+  x < 0 ~ "-ve",
+  x > 0 ~ "+ve",
+  TRUE ~ "???"
+)
+```
+
+## `case_when()` {#sec-case_when-4}
+
 And note that if multiple conditions match, only the first will be used:
 
 ```{r}
@@ -541,7 +559,7 @@ case_when(
 )
 ```
 
-## `case_when() example` {#sec-case_when-4}
+## `case_when() example` {#sec-case_when-5}
 
 ```{r}
 #| echo: true
