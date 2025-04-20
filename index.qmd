@@ -21,7 +21,7 @@ This page contains an outline of the topics, content, and assignments for the co
 | 11 | 3/31 | Spring Break (no class) |  |  |  |
 | 12 | 4/7 | Data transformations - datetimes & factors | Dr. Hostens | 📖 | factors =\>[🖥️](slides/lec-10.html) datetimes=\> [🖥️](slides/lec-11.html) |
 | 13 | 4/14 | Decision trees | S. Hayu | 📖 | [🖥️](slides/lec-12.html) |
-| 14 | 4/21 | TBD | Dr. Hostens | 📖 | 🖥️ |
+| 14 | 4/21 | Regular expressions | Dr. Hostens | 📖 | [🖥️](slides/lec-13.html) |
 | 15 | 4/28 | TBD | TBD | 📖 | 🖥️ |
 | 16 | 5/5 | TBD | TBD | 📖 |  |
 | 17 | 5/12 | TBD | TBD | 📖 |  |
