@@ -877,10 +877,7 @@
 </section>
 <section id="sec-character-classes-3" class="slide level2">
 <h2>Character classes</h2>
-<p>Some character classes are used so commonly that they get their own shortcut. You’ve already seen <code>.</code>, which matches any character apart from a newline. There are three other particularly useful pairs<sup>1</sup>:</p>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Remember, to create a regular expression containing <code>\d</code> or <code>\s</code>, you’ll need to escape the <code>\</code> for the string, so you’ll type <code>"\\d"</code> or <code>"\\s"</code>.</p></li></ol></aside></section>
-<section id="sec-character-classes-4" class="slide level2">
-<h2>Character classes</h2>
+<p>Some character classes are used so commonly that they get their own shortcut. You’ve already seen <code>.</code>, which matches any character apart from a newline. There are three other particularly useful pairs:</p>
 <ul>
 <li><code>\d</code> matches any digit;<br>
 <code>\D</code> matches anything that isn’t a digit.</li>
@@ -923,7 +920,7 @@
 </section>
 <section id="sec-quantifiers-3" class="slide level2">
 <h2>Quantifiers</h2>
-<p><strong>Quantifiers</strong> control how many times a pattern matches. In <strong>?@sec-reg-basics</strong> you learned about <code>?</code> (0 or 1 matches), <code>+</code> (1 or more matches), and <code>*</code> (0 or more matches). For example, <code>colou?r</code> will match American or British spelling, <code>\d+</code> will match one or more digits, and <code>\s?</code> will optionally match a single item of whitespace. You can also specify the number of matches precisely with <code>{}</code>:</p>
+<p><strong>Quantifiers</strong> control how many times a pattern matches. Previously, we learned about <code>?</code> (0 or 1 matches), <code>+</code> (1 or more matches), and <code>*</code> (0 or more matches). For example, <code>colou?r</code> will match American or British spelling, <code>\d+</code> will match one or more digits, and <code>\s?</code> will optionally match a single item of whitespace. You can also specify the number of matches precisely with <code>{}</code>:</p>
 <ul>
 <li><code>{n}</code> matches exactly n times.</li>
 <li><code>{n,}</code> matches at least n times.</li>
@@ -932,7 +929,12 @@
 </section>
 <section id="sec-operator-precedence-and-parentheses" class="slide level2">
 <h2>Operator precedence and parentheses</h2>
-<p>Regular expressions have their own precedence rules - Quantifiers have high precedence and alternation has low precedence which means that <code>ab+</code> is equivalent to <code>a(b+)</code>, and <code>^a|b$</code> is equivalent to <code>(^a)|(b$)</code>.</p>
+<ul>
+<li><p>Regular expressions have their own precedence rules</p></li>
+<li><p>Quantifiers have high precedence</p></li>
+<li><p>Alternation has low precedence</p>
+<p>which means that <code>ab+</code> is equivalent to <code>a(b+)</code>, and <code>^a|b$</code> is equivalent to <code>(^a)|(b$)</code>.</p></li>
+</ul>
 <p>Just like with algebra, you can use parentheses to override the usual order. But unlike algebra you’re unlikely to remember the precedence rules for regexes, so feel free to use parentheses liberally.</p>
 </section>
 <section id="sec-grouping-and-capturing" class="slide level2">
@@ -1003,7 +1005,6 @@
 </div>
 </div>
 </section></section>
-
     </div>
   </div>
 

@@ -949,14 +949,7 @@
     "href": "slides/lec-13.html#sec-character-classes-3",
     "title": "Regular expressions",
     "section": "Character classes",
-    "text": "Character classes\nSome character classes are used so commonly that they get their own shortcut. You’ve already seen ., which matches any character apart from a newline. There are three other particularly useful pairs1:\nRemember, to create a regular expression containing \\d or \\s, you’ll need to escape the \\ for the string, so you’ll type \"\\\\d\" or \"\\\\s\"."
-  },
-  {
-    "objectID": "slides/lec-13.html#sec-character-classes-4",
-    "href": "slides/lec-13.html#sec-character-classes-4",
-    "title": "Regular expressions",
-    "section": "Character classes",
-    "text": "Character classes\n\n\\d matches any digit;\n\\D matches anything that isn’t a digit.\n\\s matches any whitespace (e.g., space, tab, newline);\n\\S matches anything that isn’t whitespace.\n\\w matches any “word” character, i.e. letters and numbers;\n\\W matches any “non-word” character."
+    "text": "Character classes\nSome character classes are used so commonly that they get their own shortcut. You’ve already seen ., which matches any character apart from a newline. There are three other particularly useful pairs:\n\n\\d matches any digit;\n\\D matches anything that isn’t a digit.\n\\s matches any whitespace (e.g., space, tab, newline);\n\\S matches anything that isn’t whitespace.\n\\w matches any “word” character, i.e. letters and numbers;\n\\W matches any “non-word” character."
   },
   {
     "objectID": "slides/lec-13.html#sec-character-classes-5",
@@ -970,14 +963,14 @@
     "href": "slides/lec-13.html#sec-quantifiers-3",
     "title": "Regular expressions",
     "section": "Quantifiers",
-    "text": "Quantifiers\nQuantifiers control how many times a pattern matches. In ?@sec-reg-basics you learned about ? (0 or 1 matches), + (1 or more matches), and * (0 or more matches). For example, colou?r will match American or British spelling, \\d+ will match one or more digits, and \\s? will optionally match a single item of whitespace. You can also specify the number of matches precisely with {}:\n\n{n} matches exactly n times.\n{n,} matches at least n times.\n{n,m} matches between n and m times."
+    "text": "Quantifiers\nQuantifiers control how many times a pattern matches. Previously, we learned about ? (0 or 1 matches), + (1 or more matches), and * (0 or more matches). For example, colou?r will match American or British spelling, \\d+ will match one or more digits, and \\s? will optionally match a single item of whitespace. You can also specify the number of matches precisely with {}:\n\n{n} matches exactly n times.\n{n,} matches at least n times.\n{n,m} matches between n and m times."
   },
   {
     "objectID": "slides/lec-13.html#sec-operator-precedence-and-parentheses",
     "href": "slides/lec-13.html#sec-operator-precedence-and-parentheses",
     "title": "Regular expressions",
     "section": "Operator precedence and parentheses",
-    "text": "Operator precedence and parentheses\nRegular expressions have their own precedence rules - Quantifiers have high precedence and alternation has low precedence which means that ab+ is equivalent to a(b+), and ^a|b$ is equivalent to (^a)|(b$).\nJust like with algebra, you can use parentheses to override the usual order. But unlike algebra you’re unlikely to remember the precedence rules for regexes, so feel free to use parentheses liberally."
+    "text": "Operator precedence and parentheses\n\nRegular expressions have their own precedence rules\nQuantifiers have high precedence\nAlternation has low precedence\nwhich means that ab+ is equivalent to a(b+), and ^a|b$ is equivalent to (^a)|(b$).\n\nJust like with algebra, you can use parentheses to override the usual order. But unlike algebra you’re unlikely to remember the precedence rules for regexes, so feel free to use parentheses liberally."
   },
   {
     "objectID": "slides/lec-13.html#sec-grouping-and-capturing",
