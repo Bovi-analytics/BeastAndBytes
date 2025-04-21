@@ -77,7 +77,7 @@ str_view(fruit, "a...e")
 
 -   `*` lets a pattern be optional or repeat (i.e. it matches any number of times, including 0).
 
-## Quantifier `?` {#sec-quantifier-?}
+## Quantifier `?`  {#sec-quantifier-question}
 
 ```{r}
 #| echo: true
@@ -86,7 +86,7 @@ str_view(fruit, "a...e")
 str_view(c("a", "ab", "abb"), "ab?")
 ```
 
-## Quantifier `+` {#sec-quantifier-+}
+## Quantifier `+`  {#sec-quantifier-plus}
 
 ```{r}
 #| echo: true
@@ -95,7 +95,7 @@ str_view(c("a", "ab", "abb"), "ab?")
 str_view(c("a", "ab", "abb"), "ab+")
 ```
 
-## Quantifier `*` {#sec-quantifier-*}
+## Quantifier `*`  {#sec-quantifier-star}
 
 ```{r}
 #| echo: true
@@ -191,7 +191,7 @@ str_replace_all(x, "[aeiou]", "-")
 Consider the following dataset
 
 ```{r}
-#| echo: false
+#| echo: true
 #| message: true
 df <- tribble(
   ~str,
@@ -253,13 +253,13 @@ cat("\n")
 str_view(c("abc", "a.c", "bef"), "a\\.c")
 ```
 
-## Escaping and literal  {#sec-escaping-and-literal}
+## Escaping and literal {#sec-escaping-and-literal}
 
 If `\` is used as an escape character in regular expressions, how do you match a literal `\`?
 
 -   Well, you need to escape it, creating the regular expression `\\`. To create that regular expression, you need to use a string, which also needs to escape `\`. That means to match a literal `\` you need to write `"\\\\"` — you need four backslashes to match one!
 
-## Escaping and literal  {#sec-escaping-and-literal-2}
+## Escaping and literal {#sec-escaping-and-literal-2}
 
 ```{r}
 #| echo: true
@@ -375,11 +375,7 @@ str_view("a-b-c", "[a\\-c]")
 
 ## Character classes {#sec-character-classes-3}
 
-Some character classes are used so commonly that they get their own shortcut. You've already seen `.`, which matches any character apart from a newline. There are three other particularly useful pairs[^1]:
-
-[^1]: Remember, to create a regular expression containing `\d` or `\s`, you'll need to escape the `\` for the string, so you'll type `"\\d"` or `"\\s"`.
-
-## Character classes {#sec-character-classes-4}
+Some character classes are used so commonly that they get their own shortcut. You've already seen `.`, which matches any character apart from a newline. There are three other particularly useful pairs:
 
 -   `\d` matches any digit;\
     `\D` matches anything that isn't a digit.
@@ -406,7 +402,7 @@ str_view(x, "\\W+")
 
 ## Quantifiers {#sec-quantifiers-3}
 
-**Quantifiers** control how many times a pattern matches. In @sec-reg-basics you learned about `?` (0 or 1 matches), `+` (1 or more matches), and `*` (0 or more matches). For example, `colou?r` will match American or British spelling, `\d+` will match one or more digits, and `\s?` will optionally match a single item of whitespace. You can also specify the number of matches precisely with `{}`:
+**Quantifiers** control how many times a pattern matches. Previously, we learned about `?` (0 or 1 matches), `+` (1 or more matches), and `*` (0 or more matches). For example, `colou?r` will match American or British spelling, `\d+` will match one or more digits, and `\s?` will optionally match a single item of whitespace. You can also specify the number of matches precisely with `{}`:
 
 -   `{n}` matches exactly n times.
 -   `{n,}` matches at least n times.
@@ -414,7 +410,13 @@ str_view(x, "\\W+")
 
 ## Operator precedence and parentheses {#sec-operator-precedence-and-parentheses}
 
-Regular expressions have their own precedence rules - Quantifiers have high precedence and alternation has low precedence which means that `ab+` is equivalent to `a(b+)`, and `^a|b$` is equivalent to `(^a)|(b$)`.
+-   Regular expressions have their own precedence rules
+
+-   Quantifiers have high precedence
+
+-   Alternation has low precedence
+
+    which means that `ab+` is equivalent to `a(b+)`, and `^a|b$` is equivalent to `(^a)|(b$)`.
 
 Just like with algebra, you can use parentheses to override the usual order. But unlike algebra you're unlikely to remember the precedence rules for regexes, so feel free to use parentheses liberally.
 
