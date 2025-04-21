@@ -756,25 +756,25 @@
     "text": "Quantifiers\nQuantifiers control how many times a pattern can match:\n\n? makes a pattern optional (i.e. it matches 0 or 1 times)\n+ lets a pattern repeat (i.e. it matches at least once)\n* lets a pattern be optional or repeat (i.e. it matches any number of times, including 0)."
   },
   {
-    "objectID": "slides/lec-13.html#quantifier-sec-quantifier-",
-    "href": "slides/lec-13.html#quantifier-sec-quantifier-",
+    "objectID": "slides/lec-13.html#sec-quantifier-question",
+    "href": "slides/lec-13.html#sec-quantifier-question",
     "title": "Regular expressions",
-    "section": "Quantifier ? {#sec-quantifier-?}",
-    "text": "Quantifier ? {#sec-quantifier-?}\n\n# ab? matches an \"a\", optionally followed by a \"b\".\nstr_view(c(\"a\", \"ab\", \"abb\"), \"ab?\")\n\n[1] │ &lt;a&gt;\n[2] │ &lt;ab&gt;\n[3] │ &lt;ab&gt;b"
+    "section": "Quantifier ?",
+    "text": "Quantifier ?\n\n# ab? matches an \"a\", optionally followed by a \"b\".\nstr_view(c(\"a\", \"ab\", \"abb\"), \"ab?\")\n\n[1] │ &lt;a&gt;\n[2] │ &lt;ab&gt;\n[3] │ &lt;ab&gt;b"
   },
   {
-    "objectID": "slides/lec-13.html#quantifier-sec-quantifier--1",
-    "href": "slides/lec-13.html#quantifier-sec-quantifier--1",
+    "objectID": "slides/lec-13.html#sec-quantifier-plus",
+    "href": "slides/lec-13.html#sec-quantifier-plus",
     "title": "Regular expressions",
-    "section": "Quantifier + {#sec-quantifier-+}",
-    "text": "Quantifier + {#sec-quantifier-+}\n\n# ab+ matches an \"a\", followed by at least one \"b\".\nstr_view(c(\"a\", \"ab\", \"abb\"), \"ab+\")\n\n[2] │ &lt;ab&gt;\n[3] │ &lt;abb&gt;"
+    "section": "Quantifier +",
+    "text": "Quantifier +\n\n# ab+ matches an \"a\", followed by at least one \"b\".\nstr_view(c(\"a\", \"ab\", \"abb\"), \"ab+\")\n\n[2] │ &lt;ab&gt;\n[3] │ &lt;abb&gt;"
   },
   {
-    "objectID": "slides/lec-13.html#quantifier-sec-quantifier--2",
-    "href": "slides/lec-13.html#quantifier-sec-quantifier--2",
+    "objectID": "slides/lec-13.html#sec-quantifier-star",
+    "href": "slides/lec-13.html#sec-quantifier-star",
     "title": "Regular expressions",
-    "section": "Quantifier * {#sec-quantifier-*}",
-    "text": "Quantifier * {#sec-quantifier-*}\n\n# ab* matches an \"a\", followed by any number of \"b\"s.\nstr_view(c(\"a\", \"ab\", \"abb\"), \"ab*\")\n\n[1] │ &lt;a&gt;\n[2] │ &lt;ab&gt;\n[3] │ &lt;abb&gt;"
+    "section": "Quantifier *",
+    "text": "Quantifier *\n\n# ab* matches an \"a\", followed by any number of \"b\"s.\nstr_view(c(\"a\", \"ab\", \"abb\"), \"ab*\")\n\n[1] │ &lt;a&gt;\n[2] │ &lt;ab&gt;\n[3] │ &lt;abb&gt;"
   },
   {
     "objectID": "slides/lec-13.html#sec-character-classes-2",
@@ -837,7 +837,7 @@
     "href": "slides/lec-13.html#sec-extract-variables",
     "title": "Regular expressions",
     "section": "Extract variables",
-    "text": "Extract variables\nConsider the following dataset"
+    "text": "Extract variables\nConsider the following dataset\n\ndf &lt;- tribble(\n  ~str,\n  \"&lt;Sheryl&gt;-F_34\",\n  \"&lt;Kisha&gt;-F_45\", \n  \"&lt;Brandon&gt;-N_33\",\n  \"&lt;Sharon&gt;-F_38\", \n  \"&lt;Penny&gt;-F_58\",\n  \"&lt;Justin&gt;-M_41\", \n  \"&lt;Patricia&gt;-F_84\", \n)"
   },
   {
     "objectID": "slides/lec-13.html#sec-extract-variables-2",
