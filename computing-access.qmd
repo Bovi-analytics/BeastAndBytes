@@ -6,9 +6,7 @@ You can choose 2 ways of working with R.
 
 # Offline
 
-You can choose to install R ('*the engine*') and R-studio ('*the dashboard*') on your own computer. This works well when you want to learn to use R in a simple way. The downside if the local approach is that when working in a team the use of additional tools is needed (eg. GitHub).
-
-Follow the Dodona tutorial on the use of R and R studio ([here](https://dodona.be/en/courses/2982/series/32096/activities/1261547186/)).
+You will work primarily in Python using PyCharm in combination with an Anaconda environment, as configured through Dodona. If you encounter any confusion related to these differences or the environment setup, feel free to reach out to the TA for assistance.
 
 # Online
 
