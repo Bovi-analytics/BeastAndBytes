@@ -27,7 +27,6 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y \
-            libglpk40 \
             libcurl4-openssl-dev \
             libssl-dev \
             libxml2-dev \
@@ -35,7 +34,13 @@ jobs:
             libfreetype6-dev \
             libharfbuzz-dev \
             libfribidi-dev \
-            libpng-dev
+            libpng-dev \
+            libjpeg-dev \
+            libtiff5-dev \
+            libcairo2-dev \
+            libx11-dev \
+            libxt-dev \
+            libglpk40
 
       - name: Install R Dependencies
         uses: r-lib/actions/setup-renv@v2
