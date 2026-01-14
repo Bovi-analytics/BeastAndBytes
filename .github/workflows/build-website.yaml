@@ -30,7 +30,12 @@ jobs:
             libglpk40 \
             libcurl4-openssl-dev \
             libssl-dev \
-            libxml2-dev
+            libxml2-dev \
+            libfontconfig1-dev \
+            libfreetype6-dev \
+            libharfbuzz-dev \
+            libfribidi-dev \
+            libpng-dev
 
       - name: Install R Dependencies
         uses: r-lib/actions/setup-renv@v2
