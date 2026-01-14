@@ -45,9 +45,6 @@ The four primary deliverables for the final project are
 
 -   Describe a research question you're interested in answering using this data.
 
-#### Glimpse of data
-
--   Use the `glimpse` function to provide an overview of each data set
 
 ## Project proposal {#project-proposal}
 
@@ -73,12 +70,11 @@ In this section, you will describe the data set you wish to explore. This includ
 
 ### Section 3 - Analysis approach
 
-In this section, you will provide a brief overview of your analysis approach. This includes:
+In this section, you will provide a brief overview of your analysis approach. This includes but not limited to:
 
 -   Description of the response variable.
 -   Visualization and summary statistics for the response variable.
 -   List of variables that will be considered as predictors
--   Regression model technique (multiple linear regression and logistic regression)
 
 ### Data dictionary (aka code book)
 
@@ -192,11 +188,11 @@ This is an assessment of the overall presentation and formatting of the written 
 
 The report neatly written and organized with clear section headers and appropriately sized figures with informative labels. Numerical results are displayed with a reasonable number of digits, and all visualizations are neatly formatted. All citations and links are properly formatted. If there is an appendix, it is reasonably organized and easy for the reader to find relevant information. All code, warnings, and messages are suppressed. The main body of the written report (not including the appendix) is no longer than 10 pages.
 
-## Video presentation + slides
+## Presentation + slides
 
 ### Slides
 
-In addition to the written report, your team will also create presentation slides and record a video presentation that summarize and showcase your project. Introduce your research question and data set, showcase visualizations, and discuss the primary conclusions. These slides should serve as a brief visual addition to your written report and will be graded for content and quality.
+In addition to the written report, your team will also create presentation slides and present your project. Introduce your research question and data set, showcase visualizations, and discuss the primary conclusions. These slides should serve as a brief visual addition to your written report and will be graded for content and quality.
 
 **For submission, convert these slides to a .pdf document, and submit the PDF of the slides on Gradescope.**
 
