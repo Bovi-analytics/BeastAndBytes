@@ -13,6 +13,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
+```
 
 
 ## Data sources
@@ -70,7 +71,7 @@ import seaborn as sns
 
 import warnings
 warnings.filterwarnings("ignore")
-
+```
 
 ### Headers
 
@@ -113,14 +114,14 @@ Be sure all plot titles and axis labels are visible and easy to read.
 ```python
 sns.countplot(data=mpg, x="manufacturer")
 plt.show()
-
+```
 
 ✅ **YES! Names are readable**
 
 ```python
 sns.countplot(data=mpg, y="manufacturer")
 plt.show()
-
+```
 
 ### Do a little more to make the plot look professional!
 
@@ -146,7 +147,7 @@ plt.ylabel("Manufacturer")
 plt.title("Most Common Car Manufacturers")
 plt.tight_layout()
 plt.show()
-
+```
 
 ### Tables and model output
 
@@ -160,7 +161,7 @@ import statsmodels.formula.api as smf
 
 model = smf.ols("mpg ~ hp", data=mtcars).fit()
 model.summary2().tables[1].round(3)
-
+```
 
 ### Guidelines for communicating results
 
