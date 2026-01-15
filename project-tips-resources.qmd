@@ -2,19 +2,6 @@
 title: "Project tips + resources"
 ---
 
-```python
-#| label: set-up
-#| include: false
-
-import warnings
-warnings.filterwarnings("ignore")
-
-import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
-```
-
 
 ## Data sources
 
@@ -66,9 +53,6 @@ import seaborn as sns
 -   Include the following code in a code chunk at the top of your .qmd file to suppress all code, warnings, and other messages. 
 
 ```python
-#| label: set-up
-#| include: false
-
 import warnings
 warnings.filterwarnings("ignore")
 ```
