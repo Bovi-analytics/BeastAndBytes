@@ -2,19 +2,25 @@
 title: "Project tips + resources"
 ---
 
-```{r include = F}
-library(tidyverse)
-library(knitr)
-library(broom)
+```{python}
+#| label: set-up
+#| include: false
+
+import warnings
+warnings.filterwarnings("ignore")
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+
 ```
 
 ## Data sources
 
 ### Some resources that may be helpful as you find data:
 
--   [R Data Sources for Regression Analysis](https://rfun.library.duke.edu/blog/data-sources-for-regression-analysis/)
 -   [FiveThirtyEight data](https://data.fivethirtyeight.com/)
--   [TidyTuesday](https://github.com/rfordatascience/tidytuesday)
 
 ### Other data repositories
 
@@ -39,7 +45,7 @@ library(broom)
 
 -   Ask questions if any of the expectations are unclear.
 
--   **Code:** In your write up your code should be hidden (`echo = FALSE`) so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your qmd file I should be able to obtain the results you presented.
+-   **Code:** In your write up your code should be hidden so that your document is neat and easy to read. However your document should include all your code such that if I re-knit your qmd file I should be able to obtain the results you presented.
 
     -   **Exception:** If you want to highlight something specific about a piece of code, you're welcome to show that portion.
 
@@ -49,17 +55,24 @@ library(broom)
 
 -   All team members are expected to contribute equally to the completion of this assignment and group assessments will be given at its completion - anyone judged to not have sufficient contributed to the final product will have their grade penalized. While different teams members may have different backgrounds and abilities, it is the responsibility of every team member to understand how and why all code and approaches in the assignment works.
 
+-   You can also chose to visualize your results after data processing in Tableau. Tableau is a powerfull and intuitive data visualisation tool with many options to make figures look nice. 
+
+-   On the website of the Bovi-Analytics lab there are also tons of tutorials to help get you started using the tools in the course. [tutorials](https://bovi-analytics.com/tutorials/)
+
 ## Formatting + communication tips
 
 ### Suppress Code, Warnings, & Messages
 
--   Include the following code in a code chunk at the top of your .qmd file to suppress all code, warnings, and other messages. Use the code chunk header `{r set-up, include = FALSE}` to suppress this set up code.
+-   Include the following code in a code chunk at the top of your .qmd file to suppress all code, warnings, and other messages. 
 
-``` r
-knitr::opts_chunk$set(echo = FALSE,
-                      warning = FALSE, 
-                      message = FALSE)
-```
+#| label: set-up
+#| include: false
+
+import warnings
+warnings.filterwarnings("ignore")
+
+To hide code in individual chunks, use:
+#| echo: false
 
 ### Headers
 
@@ -79,13 +92,17 @@ knitr::opts_chunk$set(echo = FALSE,
 
 ### Resize figures
 
-Resize plots and figures, so you have more space for the narrative.
+Resize plots and figures, so you have more space for the narrative. Example:
+
+#| fig-width: 6
+#| fig-height: 4
 
 ### Arranging plots
 
-Arrange plots in a grid, instead of one after the other. This is especially useful when displaying plots for exploratory data analysis and to check assumptions.
+Arrange plots in a grid, instead of one after the other. This is especially useful when displaying plots for exploratory data analysis and to check assumptions. In Python Matplotlib has a function subplot() to do this.
+Look for documentation and examples how to make graphs look nice at [matplotlib tutorials](https://matplotlib.org/stable/tutorials/index).
 
-If you're using ggplot2 functions, the `patchwork` package makes it easy to arrange plots in a grid. See the documentation and examples [here](https://patchwork.data-imaginist.com/).
+
 
 ### Plot titles and axis labels
 
@@ -95,16 +112,16 @@ Be sure all plot titles and axis labels are visible and easy to read.
 
 ❌ **NO! The x-axis is hard to read because the names overlap.**
 
-```{r}
-ggplot(data = mpg, aes(x = manufacturer)) +
-  geom_bar()
+```{python}
+sns.countplot(data=mpg, x="manufacturer")
+plt.show()
 ```
 
 ✅ **YES! Names are readable**
 
-```{r}
-ggplot(data = mpg, aes(y = manufacturer)) +
-  geom_bar()
+```{python}
+sns.countplot(data=mpg, y="manufacturer")
+plt.show()
 ```
 
 ### Do a little more to make the plot look professional!
@@ -116,16 +133,21 @@ ggplot(data = mpg, aes(y = manufacturer)) +
 -   *Optional: Added color - Use a coordinated color scheme throughout paper / presentation*
 -   *Optional: Applied a theme - Use same theme throughout paper / presentation*
 
-```{r}
-mpg %>%
-  count(manufacturer) %>%
-  mutate(manufacturer = str_to_title(manufacturer)) %>%
-  ggplot(aes(y = fct_reorder(manufacturer,n), x = n)) +
-  geom_bar(stat = "identity", fill = "steelblue") +
-  labs(x = "Manufacturer", 
-       y = "Count", 
-       title = "The most common manufacturer is Dodge") +
-  theme_minimal() 
+```{python}
+counts = (
+mpg["manufacturer"]
+.str.title()
+.value_counts()
+.sort_values()
+)
+
+plt.figure(figsize=(6, 5))
+counts.plot(kind="barh", color="steelblue")
+plt.xlabel("Count")
+plt.ylabel("Manufacturer")
+plt.title("Most Common Car Manufacturers")
+plt.tight_layout()
+plt.show()
 ```
 
 ### Tables and model output
@@ -135,10 +157,12 @@ mpg %>%
     -   Use the `digits` argument to display only 3 or 4 significant digits.
     -   Use the `caption` argument to add captions to your table.
 
-```{r}
-model <- lm(mpg ~ hp, data = mtcars)
-tidy(model) %>%
-  kable(digits = 3)
+```{python}
+import statsmodels.formula.api as smf
+
+model = smf.ols("mpg ~ hp", data=mtcars).fit()
+model.summary2().tables[1].round(3)
+
 ```
 
 ### Guidelines for communicating results
@@ -163,13 +187,11 @@ tidy(model) %>%
 
 ## Additional resources
 
--   [R for Data Science](https://r4ds.had.co.nz/)
-
+-   [Python for Data Science](https://jakevdp.github.io/PythonDataScienceHandbook/)
+-   [Think stats ebook about using python for data science](https://greenteapress.com/wp/think-stats-3e/)
 -   [Quarto Documentation](https://quarto.org/)
 
 -   Data visualization
 
-    -   [ggplot2 Reference](https://ggplot2.tidyverse.org/reference/index.html)
-    -   [ggplot2: Elegant Graphics for Data Analysis](https://ggplot2-book.org/)
-    -   [Data Visualization: A Practice Introduction](https://socviz.co/index.html)
-    -   [Patchwork R Package](https://patchwork.data-imaginist.com/index.html)
+    -   [Data Visualization in python](https://medium.com/@nomannayeem/mastering-data-visualization-with-python-an-end-to-end-guide-84334b28087c)
+    -   [Get a license for Tableau, a powerfull data visualisation platform](https://bovi-analytics.com/tutorials/tableau.html)
