@@ -2,7 +2,7 @@
 title: "Project tips + resources"
 ---
 
-```{.python}
+```python
 #| label: set-up
 #| include: false
 
@@ -64,7 +64,7 @@ import seaborn as sns
 
 -   Include the following code in a code chunk at the top of your .qmd file to suppress all code, warnings, and other messages. 
 
-```{.python}
+```python
 #| label: set-up
 #| include: false
 
@@ -110,14 +110,14 @@ Be sure all plot titles and axis labels are visible and easy to read.
 
 ❌ **NO! The x-axis is hard to read because the names overlap.**
 
-```{.python}
+```python
 sns.countplot(data=mpg, x="manufacturer")
 plt.show()
 
 
 ✅ **YES! Names are readable**
 
-```{.python}
+```python
 sns.countplot(data=mpg, y="manufacturer")
 plt.show()
 
@@ -131,7 +131,7 @@ plt.show()
 -   *Optional: Added color - Use a coordinated color scheme throughout paper / presentation*
 -   *Optional: Applied a theme - Use same theme throughout paper / presentation*
 
-```{.python}
+```python
 counts = (
 mpg["manufacturer"]
 .str.title()
@@ -155,7 +155,7 @@ plt.show()
     -   Use the `digits` argument to display only 3 or 4 significant digits.
     -   Use the `caption` argument to add captions to your table.
 
-```{.python}
+```python
 import statsmodels.formula.api as smf
 
 model = smf.ols("mpg ~ hp", data=mtcars).fit()
