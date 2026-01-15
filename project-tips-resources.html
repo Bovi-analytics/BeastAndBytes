@@ -548,7 +548,7 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>```{.python} #| label: set-up #| include: false</p>
+<p>```python #| label: set-up #| include: false</p>
 <p>import warnings warnings.filterwarnings(“ignore”)</p>
 <p>import pandas as pd import numpy as np import matplotlib.pyplot as plt import seaborn as sns</p>
 <section id="data-sources" class="level2">
@@ -603,7 +603,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Include the following code in a code chunk at the top of your .qmd file to suppress all code, warnings, and other messages.</li>
 </ul>
-<p>```{.python} #| label: set-up #| include: false</p>
+<p>```python #| label: set-up #| include: false</p>
 <p>import warnings warnings.filterwarnings(“ignore”)</p>
 </section>
 <section id="headers" class="level3">
@@ -644,9 +644,9 @@ ul.task-list li input[type="checkbox"] {
 <li>Use informative titles, <em>not</em> variable names, for titles and axis labels.</li>
 </ul>
 <p>❌ <strong>NO! The x-axis is hard to read because the names overlap.</strong></p>
-<p>```{.python} sns.countplot(data=mpg, x=“manufacturer”) plt.show()</p>
+<p>```python sns.countplot(data=mpg, x=“manufacturer”) plt.show()</p>
 <p>✅ <strong>YES! Names are readable</strong></p>
-<p>```{.python} sns.countplot(data=mpg, y=“manufacturer”) plt.show()</p>
+<p>```python sns.countplot(data=mpg, y=“manufacturer”) plt.show()</p>
 </section>
 <section id="do-a-little-more-to-make-the-plot-look-professional" class="level3">
 <h3 class="anchored" data-anchor-id="do-a-little-more-to-make-the-plot-look-professional">Do a little more to make the plot look professional!</h3>
@@ -658,7 +658,7 @@ ul.task-list li input[type="checkbox"] {
 <li><em>Optional: Added color - Use a coordinated color scheme throughout paper / presentation</em></li>
 <li><em>Optional: Applied a theme - Use same theme throughout paper / presentation</em></li>
 </ul>
-<p>```{.python} counts = ( mpg[“manufacturer”] .str.title() .value_counts() .sort_values() )</p>
+<p>```python counts = ( mpg[“manufacturer”] .str.title() .value_counts() .sort_values() )</p>
 <p>plt.figure(figsize=(6, 5)) counts.plot(kind=“barh”, color=“steelblue”) plt.xlabel(“Count”) plt.ylabel(“Manufacturer”) plt.title(“Most Common Car Manufacturers”) plt.tight_layout() plt.show()</p>
 </section>
 <section id="tables-and-model-output" class="level3">
@@ -670,7 +670,7 @@ ul.task-list li input[type="checkbox"] {
 <li>Use the <code>caption</code> argument to add captions to your table.</li>
 </ul></li>
 </ul>
-<p>```{.python} import statsmodels.formula.api as smf</p>
+<p>```python import statsmodels.formula.api as smf</p>
 <p>model = smf.ols(“mpg ~ hp”, data=mtcars).fit() model.summary2().tables[1].round(3)</p>
 </section>
 <section id="guidelines-for-communicating-results" class="level3">
