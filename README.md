@@ -1,4 +1,4 @@
-# Website for DataDigital Agriculture (Dier & Data) at Utrecht University
+# Website for Beats and Bytes
 
 🔗 https://bovi-analytics.github.io/BeastAndBytes/
 
