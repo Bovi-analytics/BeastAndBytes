@@ -65,14 +65,13 @@ import seaborn as sns
 
 -   Include the following code in a code chunk at the top of your .qmd file to suppress all code, warnings, and other messages. 
 
+```{python}
 #| label: set-up
 #| include: false
 
 import warnings
 warnings.filterwarnings("ignore")
-
-To hide code in individual chunks, use:
-#| echo: false
+```
 
 ### Headers
 
