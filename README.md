@@ -1,4 +1,4 @@
-# Website for Beats and Bytes
+# Website for Beast and Bytes
 
 🔗 https://bovi-analytics.github.io/BeastAndBytes/
 
