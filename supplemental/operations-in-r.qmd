@@ -4,7 +4,7 @@ format: html
 editor: visual
 ---
 Highlights of CS 1133 Short Course in Python (2025SP) by Craig Frey. This file can be used as a cheatsheet for python operations. 
-```
+```text
 # String Slicing
 s = 'Scooby is a good dog.'
 s[0:2]           # Sc
