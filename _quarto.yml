@@ -4,8 +4,8 @@ website:
   page-navigation: true
   title: "Beasts & Bytes"
   description: "Homepage for Beasts & Bytes"
-  site-url: "https://bovi-analytics.github.io/BeastAndBytes/"
-  repo-url: https://github.com/Bovi-analytics/BeastAndBytes/
+  site-url: "https://bovi-analytics.github.io/BeastsAndBytes/"
+  repo-url: https://github.com/Bovi-analytics/BeastsAndBytes/
   repo-actions: [edit, issue]
 
   open-graph: true
