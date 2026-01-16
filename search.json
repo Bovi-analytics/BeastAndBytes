@@ -15,7 +15,7 @@
     "href": "supplemental/operations-in-r.html",
     "title": "Python Code Examples",
     "section": "",
-    "text": "#Coming soon",
+    "text": "Highlights of CS 1133 Short Course in Python (2025SP) by Craig Frey. This file can be used as a cheatsheet for python operations.\n\nString Slicing\ns = ‘Scooby is a good dog.’ s[0:2] # Sc s[1:4] # coo s[:4] # Scoo s[12:] # good dog.\n\n\nConcatenation\nx = ‘Scooby’ y = ‘Chenille’ z = 3 x + y # ScoobyChenille x + ’ ’ + y # Scooby Chenille x + str(z) # Scooby3\n\n\nString methods\ns = ‘Scooby is a good dog.’ s.find(‘o’) # 2 s.index(‘o’) # 2 s.find(‘x’) # -1 s.index(‘x’) # error s.index(‘o’,4) # 13\ns = ‘ant, bat, cow’ s.split() # [‘ant,’, ‘bat,’, ‘cow’] (splits on spaces by default) s.split(‘,’) # [‘ant’, ’ bat’, ’ cow’]\ns = ’ Go Big Red ’ s.strip() # Go Big Red\ns = ‘Scooby barks’ s.upper() # SCOOBY BARKS s.lower() # scooby barks\ns = ‘123’ s.isalpha() # False s.isnumeric() # True s = ‘-123’ s.isnumeric() # False\n\n\nConditionals\nx = 1 #x = ‘1’ # what would this do if uncommented? if x == 0: print(‘x is 0’) elif x == 1: print(‘x is 1’) else: print(‘x is not 0 or 1’)\n\n\nand, or\nx = 2 if x == 2 or x == 3: print(‘or’) elif x == 2 and x == 3: print(‘and’) #if x == 2 or 3: # nope, must have complete expressions\n\n\nContainers - Lists\nl = [] # blank list l = list() # same l = [2, 4, 6] # populated list l = [2, ‘bat’, 3.14] # mixed contents l.append(7) # adds the int 7 to the end of the list l.append(‘dog’) # adds the string ‘dog’ to the end of the list\n\n\nSlicing lists is a lot like slicing strings!\nl = [3.1, 6.2, 7.7, 8.8] # Addressing one element returns that element l[2] # 7.7 # Slicing the list creates a new list l[2:] # [7.7, 8.8]\n\n\nin / not in\nif 4 in l: print(‘Found 4’) if 5 not in l: print(‘No 5’)\n\n\nLoops\ncritters = [‘ant’, ‘bat’, ‘cow’] for x in critters: print(x)\n\n\nContainers - Dictionaries\nkey = 3 value = ‘cow’ d = {} # blank dictionary d = dict() # same d[key] = value # adding values to a dict if key in d: print(‘Found key’ + str(key))\n\n\nContainers - Tuples\nt = () # blank tuple t = tuple() # same t = (3,) # single element tuple nt = (3) # not a tuple t = (3,4,5) # tuple x = 3 y = ‘cow’ t = (x,y) # (3, ‘cow’) print(‘t is a’ + str(type(t)) + ’ and equals ’ + str(t))\n\n\nContainers - Sets\ns = set() # blank set s = {2,3} # populated set s.add(3) s.add(7) s.add(3) print(s) # {2, 3, 7}\n\n\nFunctions\ndef doubleMe(x): return (x * 2) x = 5 print(doubleMe(x)) y = 6 print(doubleMe(y))\ndef varsAreLocal(x): x = 0 x = 3 varsAreLocal(x) print(x)\n\n\ndates\nimport datetime now = datetime.datetime.now() myDate = datetime.datetime.strftime(now, ‘%Y-%m-%d’) myDate2 = datetime.datetime.strftime(now, ‘%m/%d/%Y’) print(myDate)",
     "crumbs": [
       "Supplemental notes",
       "Operations in Python"
@@ -900,7 +900,7 @@
     "href": "slides/lec-11.html#sec-current",
     "title": "Data transformations",
     "section": "Current",
-    "text": "Current\nTo get the current date or date-time you can use today() or now():\n\ntoday()\n\n[1] \"2026-01-15\"\n\nnow()\n\n[1] \"2026-01-15 16:45:06 UTC\""
+    "text": "Current\nTo get the current date or date-time you can use today() or now():\n\ntoday()\n\n[1] \"2026-01-16\"\n\nnow()\n\n[1] \"2026-01-16 16:29:33 UTC\""
   },
   {
     "objectID": "slides/lec-11.html#sec-dt-import-1",
@@ -1005,14 +1005,14 @@
     "href": "slides/lec-11.html#sec-duration-1",
     "title": "Data transformations",
     "section": "Durations",
-    "text": "Durations\nIn R, when you subtract two dates, you get a difftime object:\n\n# How old is Miel?\nh_age &lt;- today() - ymd(\"1982-04-27\")\nh_age\n\nTime difference of 15969 days"
+    "text": "Durations\nIn R, when you subtract two dates, you get a difftime object:\n\n# How old is Miel?\nh_age &lt;- today() - ymd(\"1982-04-27\")\nh_age\n\nTime difference of 15970 days"
   },
   {
     "objectID": "slides/lec-11.html#sec-duration-2",
     "href": "slides/lec-11.html#sec-duration-2",
     "title": "Data transformations",
     "section": "Durations",
-    "text": "Durations\nA difftime class object records a time span of seconds, minutes, hours, days, or weeks.\nThis ambiguity can make difftimes a little painful to work with, so lubridate provides an alternative which always uses seconds: the duration.\n\nas.duration(h_age)\n\n[1] \"1379721600s (~43.72 years)\""
+    "text": "Durations\nA difftime class object records a time span of seconds, minutes, hours, days, or weeks.\nThis ambiguity can make difftimes a little painful to work with, so lubridate provides an alternative which always uses seconds: the duration.\n\nas.duration(h_age)\n\n[1] \"1379808000s (~43.72 years)\""
   },
   {
     "objectID": "slides/lec-11.html#sec-duration-3",
@@ -1040,7 +1040,7 @@
     "href": "slides/lec-11.html#sec-duration-6",
     "title": "Data transformations",
     "section": "Add and substract durations",
-    "text": "Add and substract durations\nYou can add and subtract durations to and from days:\n\ntomorrow &lt;- today() + ddays(1)\ntomorrow\n\n[1] \"2026-01-16\"\n\nlast_year &lt;- today() - dyears(1)\nlast_year\n\n[1] \"2025-01-14 18:00:00 UTC\""
+    "text": "Add and substract durations\nYou can add and subtract durations to and from days:\n\ntomorrow &lt;- today() + ddays(1)\ntomorrow\n\n[1] \"2026-01-17\"\n\nlast_year &lt;- today() - dyears(1)\nlast_year\n\n[1] \"2025-01-15 18:00:00 UTC\""
   },
   {
     "objectID": "slides/lec-11.html#sec-duration-7",

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.26">
+<meta name="generator" content="quarto-1.8.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -37,9 +37,9 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-b758ccaa5987ceb1b75504551e579abf.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-587c61ba64f3a5504c4d52d930310e48.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-4d9afe2b8d18ee9fa5d0d57b5ed4214d.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ed96de9b727972fe78a7b5d16c58bf87.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-93c24b18a4e2c4901e4c5a1205a972ff.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -496,8 +496,27 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#string-slicing" id="toc-string-slicing" class="nav-link active" data-scroll-target="#string-slicing">String Slicing</a></li>
+  <li><a href="#concatenation" id="toc-concatenation" class="nav-link" data-scroll-target="#concatenation">Concatenation</a></li>
+  <li><a href="#string-methods" id="toc-string-methods" class="nav-link" data-scroll-target="#string-methods">String methods</a></li>
+  <li><a href="#conditionals" id="toc-conditionals" class="nav-link" data-scroll-target="#conditionals">Conditionals</a></li>
+  <li><a href="#and-or" id="toc-and-or" class="nav-link" data-scroll-target="#and-or">and, or</a></li>
+  <li><a href="#containers---lists" id="toc-containers---lists" class="nav-link" data-scroll-target="#containers---lists">Containers - Lists</a></li>
+  <li><a href="#slicing-lists-is-a-lot-like-slicing-strings" id="toc-slicing-lists-is-a-lot-like-slicing-strings" class="nav-link" data-scroll-target="#slicing-lists-is-a-lot-like-slicing-strings">Slicing lists is a lot like slicing strings!</a></li>
+  <li><a href="#in-not-in" id="toc-in-not-in" class="nav-link" data-scroll-target="#in-not-in">in / not in</a></li>
+  <li><a href="#loops" id="toc-loops" class="nav-link" data-scroll-target="#loops">Loops</a></li>
+  <li><a href="#containers---dictionaries" id="toc-containers---dictionaries" class="nav-link" data-scroll-target="#containers---dictionaries">Containers - Dictionaries</a></li>
+  <li><a href="#containers---tuples" id="toc-containers---tuples" class="nav-link" data-scroll-target="#containers---tuples">Containers - Tuples</a></li>
+  <li><a href="#containers---sets" id="toc-containers---sets" class="nav-link" data-scroll-target="#containers---sets">Containers - Sets</a></li>
+  <li><a href="#functions" id="toc-functions" class="nav-link" data-scroll-target="#functions">Functions</a></li>
+  <li><a href="#dates" id="toc-dates" class="nav-link" data-scroll-target="#dates">dates</a></li>
+  </ul>
+<div class="toc-actions"><ul><li><a href="https://github.com/Bovi-analytics/BeastAndBytes/edit/main/supplemental/operations-in-r.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Bovi-analytics/BeastAndBytes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -522,9 +541,70 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>#Coming soon</p>
+<p>Highlights of CS 1133 Short Course in Python (2025SP) by Craig Frey. This file can be used as a cheatsheet for python operations.</p>
+<section id="string-slicing" class="level1">
+<h1>String Slicing</h1>
+<p>s = ‘Scooby is a good dog.’ s[0:2] # Sc s[1:4] # coo s[:4] # Scoo s[12:] # good dog.</p>
+</section>
+<section id="concatenation" class="level1">
+<h1>Concatenation</h1>
+<p>x = ‘Scooby’ y = ‘Chenille’ z = 3 x + y # ScoobyChenille x + ’ ’ + y # Scooby Chenille x + str(z) # Scooby3</p>
+</section>
+<section id="string-methods" class="level1">
+<h1>String methods</h1>
+<p>s = ‘Scooby is a good dog.’ s.find(‘o’) # 2 s.index(‘o’) # 2 s.find(‘x’) # -1 s.index(‘x’) # error s.index(‘o’,4) # 13</p>
+<p>s = ‘ant, bat, cow’ s.split() # [‘ant,’, ‘bat,’, ‘cow’] (splits on spaces by default) s.split(‘,’) # [‘ant’, ’ bat’, ’ cow’]</p>
+<p>s = ’ Go Big Red ’ s.strip() # Go Big Red</p>
+<p>s = ‘Scooby barks’ s.upper() # SCOOBY BARKS s.lower() # scooby barks</p>
+<p>s = ‘123’ s.isalpha() # False s.isnumeric() # True s = ‘-123’ s.isnumeric() # False</p>
+</section>
+<section id="conditionals" class="level1">
+<h1>Conditionals</h1>
+<p>x = 1 #x = ‘1’ # what would this do if uncommented? if x == 0: print(‘x is 0’) elif x == 1: print(‘x is 1’) else: print(‘x is not 0 or 1’)</p>
+</section>
+<section id="and-or" class="level1">
+<h1>and, or</h1>
+<p>x = 2 if x == 2 or x == 3: print(‘or’) elif x == 2 and x == 3: print(‘and’) #if x == 2 or 3: # nope, must have complete expressions</p>
+</section>
+<section id="containers---lists" class="level1">
+<h1>Containers - Lists</h1>
+<p>l = [] # blank list l = list() # same l = [2, 4, 6] # populated list l = [2, ‘bat’, 3.14] # mixed contents l.append(7) # adds the int 7 to the end of the list l.append(‘dog’) # adds the string ‘dog’ to the end of the list</p>
+</section>
+<section id="slicing-lists-is-a-lot-like-slicing-strings" class="level1">
+<h1>Slicing lists is a lot like slicing strings!</h1>
+<p>l = [3.1, 6.2, 7.7, 8.8] # Addressing one element returns that element l[2] # 7.7 # Slicing the list creates a new list l[2:] # [7.7, 8.8]</p>
+</section>
+<section id="in-not-in" class="level1">
+<h1>in / not in</h1>
+<p>if 4 in l: print(‘Found 4’) if 5 not in l: print(‘No 5’)</p>
+</section>
+<section id="loops" class="level1">
+<h1>Loops</h1>
+<p>critters = [‘ant’, ‘bat’, ‘cow’] for x in critters: print(x)</p>
+</section>
+<section id="containers---dictionaries" class="level1">
+<h1>Containers - Dictionaries</h1>
+<p>key = 3 value = ‘cow’ d = {} # blank dictionary d = dict() # same d[key] = value # adding values to a dict if key in d: print(‘Found key’ + str(key))</p>
+</section>
+<section id="containers---tuples" class="level1">
+<h1>Containers - Tuples</h1>
+<p>t = () # blank tuple t = tuple() # same t = (3,) # single element tuple nt = (3) # not a tuple t = (3,4,5) # tuple x = 3 y = ‘cow’ t = (x,y) # (3, ‘cow’) print(‘t is a’ + str(type(t)) + ’ and equals ’ + str(t))</p>
+</section>
+<section id="containers---sets" class="level1">
+<h1>Containers - Sets</h1>
+<p>s = set() # blank set s = {2,3} # populated set s.add(3) s.add(7) s.add(3) print(s) # {2, 3, 7}</p>
+</section>
+<section id="functions" class="level1">
+<h1>Functions</h1>
+<p>def doubleMe(x): return (x * 2) x = 5 print(doubleMe(x)) y = 6 print(doubleMe(y))</p>
+<p>def varsAreLocal(x): x = 0 x = 3 varsAreLocal(x) print(x)</p>
+</section>
+<section id="dates" class="level1">
+<h1>dates</h1>
+<p>import datetime now = datetime.datetime.now() myDate = datetime.datetime.strftime(now, ‘%Y-%m-%d’) myDate2 = datetime.datetime.strftime(now, ‘%m/%d/%Y’) print(myDate)</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -957,7 +1037,7 @@ ul.task-list li input[type="checkbox"] {
 </div>   
     <div class="nav-footer-center">
       &nbsp;
-    <div class="toc-actions"><ul><li><a href="https://github.com/Bovi-analytics/BeastAndBytes/edit/main/supplemental/operations-in-r.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Bovi-analytics/BeastAndBytes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
+    <div class="toc-actions d-sm-block d-md-none"><ul><li><a href="https://github.com/Bovi-analytics/BeastAndBytes/edit/main/supplemental/operations-in-r.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/Bovi-analytics/BeastAndBytes/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></div>
     <div class="nav-footer-right">
 <p>This page is built with <a href="https://quarto.org/">Quarto</a>.</p>
 </div>
