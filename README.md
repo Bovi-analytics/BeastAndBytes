@@ -1,6 +1,6 @@
 # Website for Beast and Bytes
 
-🔗 https://bovi-analytics.github.io/BeastAndBytes/
+🔗 https://bovi-analytics.github.io/BeastsAndBytes/
 
 ## After updating R
 
